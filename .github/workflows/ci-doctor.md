@@ -7,7 +7,7 @@ description: |
 
 on:
   workflow_run:
-    workflows: ["Daily Perf Improver", "Daily Test Coverage Improver"]  # Monitor the CI workflow specifically
+    workflows: ["Deploy static site to GitHub Pages"]  # this repo's only pipeline that runs on every push to main
     types:
       - completed
     branches:
