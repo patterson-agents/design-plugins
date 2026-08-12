@@ -74,7 +74,12 @@ chrome and the navy lockup on light surfaces, and never redraw the wave mark.
 ## Images
 
 The starter uses Astro's passthrough image service, configured in `astro.config.mjs`.
-Images are copied through untouched rather than optimized at build time, which keeps
-the project free of a native image binary. If you later need resizing or format
-conversion, pre-process the assets before committing them rather than adding an image
-pipeline dependency.
+Images are copied through untouched rather than optimized at build time, so no image
+library is loaded during a build. If you later need resizing or format conversion,
+pre-process the assets before committing them rather than adding an image pipeline
+dependency.
+
+Astro declares `sharp` as an *optional* dependency, so it does land in `node_modules` on
+a default install even though passthrough never calls it. Leave it there. Installing
+with `--omit=optional` removes Rolldown's native binding at the same time, and the build
+fails with `Cannot find native binding`.

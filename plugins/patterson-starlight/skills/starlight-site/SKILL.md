@@ -86,10 +86,15 @@ social previews.
 ## Dependency rule
 
 `astro@7.1.5` and `@astrojs/starlight@0.41.5` are pinned without a caret and are the
-only two dependencies. The image pipeline uses Astro's `passthroughImageService`
-rather than an optimizing image library, deliberately, so nothing native compiles at
-install time. Adding any dependency means supply-chain scoring it first and surfacing
-anything below 90 to the user.
+only two direct dependencies. Adding one means supply-chain scoring it first and
+surfacing anything below 90 to the user.
+
+The image pipeline deliberately uses Astro's `passthroughImageService()` rather than the
+default sharp-backed service. Astro still declares `sharp` as an *optional* dependency,
+so `sharp@0.35.3` appears in the lockfile and in `node_modules`; it is simply never
+loaded. Do not add sharp directly and do not switch the image service back. Do not
+suggest `bun install --omit=optional` either — it strips Rolldown's native binding along
+with sharp and breaks the Astro 7 build.
 
 ## Contents
 

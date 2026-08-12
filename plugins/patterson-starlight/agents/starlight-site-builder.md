@@ -31,7 +31,8 @@ All of this is encoded as CSS custom properties in `src/styles/patterson.css`. A
 ## Constraints
 
 - Keep the theme upgrade-safe: remap variables in `src/styles/patterson.css`, never eject a Starlight component.
-- Do not add dependencies. `astro@7.1.5` and `@astrojs/starlight@0.41.5` are pinned without a caret, and the image pipeline deliberately uses `passthroughImageService` so nothing native compiles at install. Any new package must be supply-chain scored first, with anything under 90 surfaced to the user.
+- Do not add dependencies. `astro@7.1.5` and `@astrojs/starlight@0.41.5` are pinned without a caret. Any new package must be supply-chain scored first, with anything under 90 surfaced to the user.
+- The image pipeline deliberately uses `passthroughImageService()`. Astro still declares `sharp` as an *optional* dependency, so `sharp@0.35.3` sits in the lockfile and in `node_modules` but is never loaded. Do not add sharp directly, do not switch the image service back, and do not suggest `bun install --omit=optional` — it strips Rolldown's native binding along with sharp and breaks the build.
 - Never add emoji, off-palette colors, uppercase transforms, or sky text on a light background.
 
 When you finish, list the files you created or changed and how to preview them.

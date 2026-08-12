@@ -121,9 +121,16 @@ Sentence case everywhere, no uppercase transforms, no emoji.
 ## Dependencies
 
 `astro@7.1.5` and `@astrojs/starlight@0.41.5`, pinned without a caret, install-verified,
-lockfile committed. Astro's `passthroughImageService` replaces the default sharp-backed
-service, so no native image binary is compiled at install and no image library advisory
-applies. Adding a dependency to this template means supply-chain scoring it first.
+lockfile committed. They are the only two direct dependencies. Adding one means
+supply-chain scoring it first.
+
+**On `sharp`:** Astro declares it as an *optional* dependency, so `sharp@0.35.3` is in
+the lockfile and lands in `node_modules` on a default install. It is never loaded —
+`astro.config.mjs` configures `passthroughImageService()`, which copies images through
+untouched instead of calling sharp, and the build log confirms images come out the size
+they went in. Do not add sharp directly, and do not switch back to the default image
+service. `bun install --omit=optional` is *not* a fix: it also strips Rolldown's native
+binding and breaks the Astro 7 build. See the template README for the full note.
 
 Proxima Nova is served by Adobe Fonts kit `uth1qfm` via the `head` entry in
 `astro.config.mjs`. It is never self-hosted — Adobe's terms bar re-hosting Typekit

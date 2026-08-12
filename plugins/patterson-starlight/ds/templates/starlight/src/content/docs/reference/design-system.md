@@ -39,8 +39,14 @@ description: Where this starter fits in the Patterson design-system marketplace,
 | `@astrojs/starlight` | 0.41.5 | Matched to the Astro 7 line |
 
 Both are pinned without a caret. Adding a dependency to this template means scoring it
-first. The image pipeline deliberately uses Astro's passthrough service rather than an
-optimizing image library, so no native binary is compiled at install time.
+first.
+
+The image pipeline deliberately uses Astro's passthrough service rather than an
+optimizing image library. Astro still declares `sharp` as an *optional* dependency, so
+it appears in the lockfile and in `node_modules`, but it is never loaded — passthrough
+copies images through instead of calling it. Do not switch the image service back, and
+do not install with `--omit=optional`: that strips Rolldown's native binding along with
+sharp and the build fails.
 
 ## Components
 

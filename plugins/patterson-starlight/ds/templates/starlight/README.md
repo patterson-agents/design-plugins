@@ -78,8 +78,24 @@ sanctioned substitute when the kit is unreachable.
 
 ## Dependencies
 
-`astro@7.1.5` and `@astrojs/starlight@0.41.5`, pinned without a caret, are the only
-two. Astro's `passthroughImageService` is configured in `astro.config.mjs` in place of
-the default sharp-backed service, so nothing native is compiled at install time and no
-image library advisory applies. Adding any dependency to this template means
-supply-chain scoring it first.
+`astro@7.1.5` and `@astrojs/starlight@0.41.5`, pinned without a caret, are the only two
+direct dependencies. Adding one to this template means supply-chain scoring it first.
+
+### About sharp
+
+`astro@7.1.5` declares `sharp` as an **optional** dependency, and package managers
+install optional dependencies by default — so `sharp@0.35.3` does appear in `bun.lock`
+and in `node_modules` after `bun install`. It is never loaded. `astro.config.mjs`
+configures `passthroughImageService()`, which copies images through untouched instead of
+invoking sharp, and the build log confirms it: images come out byte-for-byte the size
+they went in.
+
+This is a deliberate, documented position, not an oversight. Do not add `sharp` as a
+direct dependency, and do not swap the image service back to the default. If you need
+resizing or format conversion, pre-process the assets before committing them.
+
+**Do not reach for `bun install --omit=optional` to drop it.** That flag does remove
+`sharp`, but it also removes Rolldown's native binding, which Astro 7 needs to bundle —
+the build then fails with `Cannot find native binding`. Verified on Bun 1.3.14. Leaving
+the optional dependencies installed and the image service on passthrough is the working
+configuration.
