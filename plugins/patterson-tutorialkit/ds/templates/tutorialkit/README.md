@@ -47,6 +47,43 @@ semantic set). A live, install-free preview of the themed shell lives at
 > Astro advisories first. The pin lifts — and Astro should be upgraded — once
 > TutorialKit ships an Astro-5+ compatible release.
 
+> [!WARNING]
+> **`package.json` and `bun.lock` currently disagree — do not run a plain
+> `bun install` here until this is resolved.** `package.json` asks for
+> `astro: ^7.1.3` and `@astrojs/react: ^6.0.1`; `bun.lock` resolves
+> `astro@4.16.19` and `@astrojs/react@3.6.3`. The lockfile is the half that
+> works — install from it and the template builds (19 pages). Resolve the
+> manifest instead and the build fails at config load:
+>
+> ```
+> Package subpath './jsx/renderer.js' is not defined by "exports" in
+> node_modules/astro/package.json imported from node_modules/@astrojs/mdx/dist/index.js
+> ```
+>
+> The divergence came from two Dependabot commits that bumped the manifest
+> without regenerating the lockfile (`6260f00` astro ^4.15.0 → ^7.1.3, and
+> `0bdc85d` @astrojs/react 3.6.2 → 6.0.1, both 2026-07, in the
+> `patterson-design-plugins` history this template was carried over from).
+>
+> The ceiling is a hard **dependency**, not a soft peer range —
+> `@tutorialkit/astro@1.6.0` depends on `@astrojs/mdx: ^3.1.1`, and
+> `@astrojs/mdx@3.x` imports `astro/jsx/renderer.js`, a subpath Astro removed
+> after v4. Verified 2026-08-12: astro **4.16.19 builds**, **5.18.2 fails**,
+> **7.2.1 fails**, all against `@tutorialkit/*@1.6.0`.
+>
+> Restoring the manifest to `astro@4.16.19` makes the template reproducible
+> again, but pins a version carrying a `[high]` CVE alert (Socket vulnerability
+> score 64; `bun audit` reports 16 advisories for `astro <5.15.9`, 4 of them
+> high). That trade-off is a maintainer decision and is why this is documented
+> rather than silently pinned. Whichever way it goes, add a Dependabot `ignore`
+> for `astro` and `@astrojs/react` on this path so the manifest cannot drift
+> ahead of what TutorialKit can actually resolve.
+>
+> Upstream status as of 2026-08-12: `@tutorialkit/astro` latest is **1.6.0**
+> (released 2025-09-01), last push to `stackblitz/tutorialkit` 2025-12-04, repo
+> not archived, and **no upstream issue tracks Astro 5+ support** — so there is
+> no tracking link to cite here.
+
 ## The curriculum
 
 | Part | Chapter | Lessons |
