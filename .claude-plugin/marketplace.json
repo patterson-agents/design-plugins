@@ -1,8 +1,8 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
   "name": "patterson-design",
-  "version": "1.1.0",
-  "description": "Patterson Companies design-system marketplace: brand core, deck/page/app/docs templates, and website/storefront/tutorial UI kits — each individually installable as a Claude Code plugin with skills, slash commands and subagents.",
+  "version": "1.2.0",
+  "description": "Patterson Companies design-system marketplace: brand core, deck/page/app/docs templates, runnable Starlight and VitePress site scaffolds, and website/storefront/tutorial UI kits — each individually installable as a Claude Code plugin with skills, slash commands and subagents.",
   "owner": {
     "name": "Patterson Companies Design System"
   },
@@ -50,6 +50,20 @@
       "source": "./plugins/patterson-docs",
       "description": "Patterson documentation-site package: a VitePress + Diátaxis styled docs UI kit (sidebar nav, content pages, collections) and a browser-openable docs page template.",
       "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-starlight",
+      "source": "./plugins/patterson-starlight",
+      "description": "Patterson-branded Starlight documentation site: a runnable Astro 7 starter with the Patterson Starlight theme, Diátaxis sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
+      "version": "0.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-vitepress",
+      "source": "./plugins/patterson-vitepress",
+      "description": "Patterson-branded VitePress documentation site: a runnable starter with the Patterson VitePress theme, Diátaxis nav and sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
+      "version": "0.1.0",
       "category": "templates"
     },
     {
