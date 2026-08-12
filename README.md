@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/banner.svg" width="100%" alt="Patterson Design — Patterson Companies">
+<img src="docs/assets/banner.webp" width="100%" alt="Patterson Design — Patterson Companies">
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="plugins/patterson-brand/ds/assets/brand/patterson-logo-white.svg">
