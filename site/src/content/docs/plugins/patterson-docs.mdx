@@ -1,0 +1,26 @@
+---
+title: Patterson docs
+description: A VitePress- and Diátaxis-styled documentation UI kit, plus a standalone docs page template you can open straight in a browser.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Template
+
+Patterson docs packages two things: a docs-site UI kit styled after VitePress and structured by Diátaxis, and a standalone docs page template for when a full site is overkill. The UI kit gives you sidebar nav, content pages, and page collections; the standalone template is a single browser-openable page for a one-off doc.
+
+Reach for it when the content is developer docs, a knowledge base, or a help center rather than marketing copy — anything organized as tutorials, how-to guides, reference, and explanation. The nav tree and page registry live in one file, `data.jsx`; adding a page there is enough to make it appear in the sidebar.
+
+The docs-designer agent applies the Diátaxis structure directly rather than treating it as a suggestion, so a new set of pages lands in the right of the four categories from the start instead of getting reorganized after the fact.
+
+<LinkButton href="/plugins/patterson-docs/ds/ui_kits/patterson-docs/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-docs.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `docs-site` | Build Patterson-branded documentation sites and doc pages — ships a VitePress/Diátaxis-styled React UI kit and a standalone docs page template. |
+| Command | `/patterson-docs:new-docs` | Scaffold a Patterson-branded documentation site or page. |
+| Agent | `docs-designer` | Patterson documentation designer — applies the Diátaxis structure (tutorials/how-to/reference/explanation) in the Patterson docs UI kit. |

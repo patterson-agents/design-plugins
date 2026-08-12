@@ -1,0 +1,28 @@
+---
+title: Patterson brand
+description: The design-system core — tokens, fonts, logos, a React component library, and framework adapters that every other Patterson plugin builds on.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Core
+
+Patterson brand is the foundation plugin. Install it first, and every other Patterson plugin snapshots from it. It ships the brand tokens (color, type, spacing, effects), the Proxima Nova font stack, logo lockups, brand imagery, a React component library, browser-openable guideline specimens, and adapters for Tailwind v3/v4, UnoCSS, Theme UI, and shadcn/ui.
+
+Reach for it whenever you're starting Patterson-branded work from nothing — a new interface, a page, a deck, a component, or a color and type decision that needs to be on-brand rather than approximated. It's also the plugin to reach for after the fact: its brand-reviewer agent audits existing UI and copy against the same tokens and rules the builder uses.
+
+What makes it distinctive is that nothing is hand-picked from memory. Colors, radii, control heights, and shadows all come from `tokens/*.css` and the bundled `theme.json`, so a Tailwind project, a UnoCSS project, and a plain-CSS page all render the identical navy, sky, and 5px radius language — never a re-typed hex.
+
+<LinkButton href="/plugins/patterson-brand/ds/guidelines/brand-palette.card.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-brand.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `patterson-design` | Design anything on-brand for Patterson Companies — UI, pages, mocks, decks, components, styling, colors, typography, or brand review. |
+| Command | `/patterson-brand:design` | Design something on-brand for Patterson Companies. |
+| Command | `/patterson-brand:wire-tokens` | Wire Patterson brand tokens into the current codebase (Tailwind, UnoCSS, Theme UI, shadcn/ui, or plain CSS). |
+| Agent | `patterson-designer` | Expert Patterson Companies brand designer, for building any Patterson-branded interface, page, mock, or asset from scratch. |
+| Agent | `brand-reviewer` | Patterson brand-compliance reviewer, for auditing existing UI, copy, or designs against the Patterson brand. |

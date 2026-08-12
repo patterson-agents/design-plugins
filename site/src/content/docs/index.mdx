@@ -1,0 +1,194 @@
+---
+title: Patterson Design
+description: The design-system plugin marketplace — 11 Claude Code plugins for building on-brand Patterson Companies interfaces, decks, docs sites and storefronts.
+template: splash
+hero:
+  tagline: The design-system plugin marketplace
+  image:
+    alt: Patterson Companies
+    dark: ../../assets/patterson-logo-white.svg
+    light: ../../assets/patterson-logo-navy.svg
+  actions:
+    - text: Browse the plugins
+      link: '#the-plugins'
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/patterson-agents/design-plugins
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Trusted expertise. Unrivaled support.
+
+Eleven self-contained Claude Code plugins carry the Patterson Companies design
+system into every kind of surface a team builds: marketing pages, decks, docs
+sites, internal tools, and storefronts. Install one, and Claude scaffolds
+on-brand — navy chrome, the 5px shape language, Proxima Nova, sentence case,
+no emoji — without you touching a hex code.
+
+Each plugin ships the same four parts: a **skill** Claude loads automatically
+for relevant work, **commands** for explicit scaffolding, an **agent** you can
+delegate to directly, and a `ds/` snapshot of every design-system file the
+plugin needs, so it never depends on another plugin being installed.
+
+## Install the marketplace
+
+Add the catalog once, then install only the plugins you need. `patterson-brand`
+is the foundation — install it first.
+
+```
+/plugin marketplace add patterson-agents/design-plugins
+/plugin install patterson-brand@patterson-design
+```
+
+## The plugins
+
+<ul className="plugin-grid">
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-brand/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-brand.png" alt="Patterson brand core preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Core</span>
+        <span className="plugin-card__title">Patterson brand</span>
+        <p className="plugin-card__desc">Tokens, fonts, logos, brand imagery and a component library — the foundation every other plugin builds on.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-deck/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-deck.png" alt="Patterson deck preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Template</span>
+        <span className="plugin-card__title">Patterson deck</span>
+        <p className="plugin-card__desc">A 16:9 presentation template — cover, stats, comparison, quote and closing slides, print-to-PDF ready.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-executive-deck/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-executive-deck.png" alt="Patterson executive deck preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Template</span>
+        <span className="plugin-card__title">Patterson executive deck</span>
+        <p className="plugin-card__desc">A denser, more formal briefing deck — takeaways, breakdown matrices and requirement tables for leadership readouts.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-corporate-page/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-corporate-page.png" alt="Patterson corporate page preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Template</span>
+        <span className="plugin-card__title">Patterson corporate page</span>
+        <p className="plugin-card__desc">A corporate web page shell — sticky nav, navy hero, content band and footer — the starting point for any on-brand page.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-file-manager/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-file-manager.png" alt="Patterson file manager preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Template</span>
+        <span className="plugin-card__title">Patterson file manager</span>
+        <p className="plugin-card__desc">The Skill Studio application shell — navy top bar, sidebar tree, content grid — for internal tools and dashboards.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-docs/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-docs.png" alt="Patterson docs preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Template</span>
+        <span className="plugin-card__title">Patterson docs</span>
+        <p className="plugin-card__desc">A VitePress and Diátaxis styled documentation UI kit — sidebar nav, content pages, and a browser-openable page template.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-starlight/">
+      <span className="plugin-card__media plugin-card__media--empty">Screenshot coming soon</span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Scaffolder</span>
+        <span className="plugin-card__title">Patterson starlight</span>
+        <p className="plugin-card__desc">A runnable Astro 7 and Starlight documentation starter, install-verified with a committed lockfile.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-vitepress/">
+      <span className="plugin-card__media plugin-card__media--empty">Screenshot coming soon</span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Scaffolder</span>
+        <span className="plugin-card__title">Patterson vitepress</span>
+        <p className="plugin-card__desc">A runnable VitePress documentation starter with the Patterson theme, Diátaxis nav, and starter content.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-tutorialkit/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-tutorialkit.png" alt="Patterson tutorialkit preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">Scaffolder</span>
+        <span className="plugin-card__title">Patterson tutorialkit</span>
+        <p className="plugin-card__desc">The Patterson theme for TutorialKit — a runnable starter with an 18-lesson agent-tooling curriculum.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-corporate-website/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-corporate-website.png" alt="Patterson corporate website preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">UI kit</span>
+        <span className="plugin-card__title">Patterson corporate website</span>
+        <p className="plugin-card__desc">An interactive recreation of pattersoncompanies.com — hero, stats, capability tabs, newsroom, header and footer.</p>
+      </span>
+    </a>
+  </li>
+  <li>
+    <a className="plugin-card" href="/plugins/patterson-storefront/">
+      <span className="plugin-card__media">
+        <img src="/docs/screenshots/patterson-storefront.png" alt="Patterson storefront preview" loading="lazy" />
+      </span>
+      <span className="plugin-card__body">
+        <span className="plugin-card__tag">UI kit</span>
+        <span className="plugin-card__title">Patterson storefront</span>
+        <p className="plugin-card__desc">An e-commerce storefront shell, switchable between Dental and Veterinary brands — nav, hero, products and rewards.</p>
+      </span>
+    </a>
+  </li>
+</ul>
+
+## Where to go next
+
+<CardGrid stagger>
+  <Card title="Foundations">
+    The brand guideline cards and design tokens every plugin builds from — see
+    [Foundations](/foundations/).
+  </Card>
+  <Card title="Architecture">
+    How the `ds/` snapshot contract works, ADR 0004, and the devcontainer — see
+    [Architecture](/architecture/).
+  </Card>
+  <Card title="Demo gallery">
+    Every plugin's terminal walkthrough, recorded with VHS — browse the
+    [demo gallery](/demos/).
+  </Card>
+</CardGrid>

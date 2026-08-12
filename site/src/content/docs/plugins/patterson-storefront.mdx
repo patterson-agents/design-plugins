@@ -1,0 +1,26 @@
+---
+title: Patterson storefront
+description: An e-commerce storefront shell, switchable between Dental and Veterinary brands, built on the pattern library v5.7.2 shape.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** UI kit
+
+Patterson storefront ships the full e-commerce shell in the Patterson Dental and Patterson Veterinary pattern: a utility bar, search, category nav with flyouts, hero, featured products, manufacturers, rewards, and footer. A single config file, `brands.js`, drives the toggle between the two brands — names, nav categories, and accent usage all switch from one source instead of being hardcoded per screen.
+
+Reach for it any time the deliverable is a shop, product, category, or cart screen for either brand. The chrome order is fixed on purpose — utility bar, then logo-and-search row, then category nav, then page content, then footer — so a new screen slots into the same shopping experience customers already know, and product cards follow the standard Card recipe: 10px radius, hairline border, hover lift.
+
+The storefront-builder agent composes screens from the shell and respects the brand toggle automatically, extending `brands.js` rather than writing brand-specific strings into a screen — so a Dental screen and a Veterinary screen built from the same brief stay structurally identical and differ only where the brand actually differs.
+
+<LinkButton href="/plugins/patterson-storefront/ds/ui_kits/storefront/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-storefront.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `storefront-kit` | Build Patterson e-commerce storefront screens (Dental / Veterinary) — ships the full storefront shell with a Dental/Vet brand toggle. |
+| Command | `/patterson-storefront:new-storefront` | Scaffold screens from the Patterson storefront UI kit (Dental or Veterinary). |
+| Agent | `storefront-builder` | Patterson storefront builder — composes storefront screens (search, nav flyouts, product grids) and respects the brand toggle. |

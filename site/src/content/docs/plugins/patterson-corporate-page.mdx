@@ -1,0 +1,26 @@
+---
+title: Patterson corporate page
+description: A corporate web page shell with sticky nav, navy hero, content band, and footer, built in React with no build step.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Template
+
+Patterson corporate page is the starting point for any on-brand marketing or informational page: a sticky nav with logo, a navy hero, a content band, and a footer, wired to brand tokens and components out of the box. It's React 18 UMD plus Babel, JSX inline — open the HTML file and it just runs, no bundler required.
+
+Reach for it whenever the ask is a single page rather than a whole site: a careers landing page, a program announcement, a feature explainer. New sections drop inside `<main>` between the hero and the footer, using the `pat-container` centered column and the `--space-*` tokens to keep the standard 64–128px section rhythm.
+
+The page-builder agent extends the shell with sections assembled from the design-system's own components — `Stat`, `Button`, and the rest — so a new page reads as part of the same family as the corporate website and storefront kits, not a one-off build.
+
+<LinkButton href="/plugins/patterson-corporate-page/ds/templates/corporate-page/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-corporate-page.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `corporate-page-template` | Build a Patterson-branded web page — scaffolds a React shell with sticky nav, navy hero, content band, and footer wired to brand tokens and components. |
+| Command | `/patterson-corporate-page:new-page` | Scaffold a Patterson-branded web page from the corporate page shell. |
+| Agent | `page-builder` | Patterson web page builder — extends the corporate shell with sections built from design-system components and tokens. |

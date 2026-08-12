@@ -1,0 +1,26 @@
+---
+title: Patterson deck
+description: A 16:9 presentation deck template with nine slide archetypes, on-brand and print-to-PDF ready.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Template
+
+Patterson deck scaffolds a full 16:9 company deck: cover, section divider, stats, comparison, quote, capabilities table, full-bleed photo band, and closing slides, all carrying the wave watermark and official brand imagery. It's static HTML — no build step, no framework — and it prints straight to PDF, one page per slide.
+
+Reach for it any time a request calls for a deck, a business review, or a company overview in front of an audience. The template is nine archetypes deep, so most decks are an exercise in duplicating a `<section>` and swapping copy, not designing from scratch.
+
+The rules stay visible in the markup itself: keep `data-label` on every section, white logo on navy slides and navy logo on light ones, big sky numbers for stats, a 24px text minimum, and sentence-case headings throughout. The deck-builder agent picks the right archetype for the content and keeps the copy on-voice as it writes.
+
+<LinkButton href="/plugins/patterson-deck/ds/templates/deck/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-deck.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `deck-template` | Build a Patterson Companies branded slide deck — scaffolds from the official template with cover, divider, stats, comparison, quote, table, photo-band, and closing archetypes. |
+| Command | `/patterson-deck:new-deck` | Scaffold a Patterson-branded 16:9 presentation deck from the official template. |
+| Agent | `deck-builder` | Patterson presentation specialist — picks the right slide archetypes, writes on-voice copy, keeps everything on tokens. |

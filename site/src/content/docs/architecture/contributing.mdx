@@ -1,0 +1,59 @@
+---
+title: Contributing and the devcontainer
+description: The two invariants nothing auto-enforces, the pre-PR checks, and the Agent Workbench devcontainer this repo ships.
+---
+
+This repo follows the same house conventions as `patterson-corp`: conventional
+commits, no emoji on brand surfaces, `[TBD: …]` instead of an invented answer,
+kebab-case naming.
+
+## The two invariants that don't auto-enforce
+
+`claude plugin validate .` checks manifests — names, versions, frontmatter —
+not snapshot hygiene. Nothing in CI catches either of these on its own:
+
+1. **Never flatten, rename, or move a file inside any `ds/`.** Each `ds/`
+   mirrors the design-system source tree; files reference each other with
+   relative paths that must resolve identically in this repo, in the plugin
+   cache, and after being copied into a consuming project. Ship a raster
+   asset only into the `ds/` of plugins whose templates actually reference
+   it — don't copy it in "just in case."
+2. **Dual version source of truth.** Any content change bumps `version` in
+   both `plugins/<name>/.claude-plugin/plugin.json` and the matching entry
+   in `.claude-plugin/marketplace.json`, kept equal.
+
+## Before opening a PR
+
+```sh
+claude plugin validate .   # manifests, skills, commands, agents
+sh tests/run-tests.sh      # the zero-dependency validation suite
+```
+
+## The devcontainer
+
+The repo ships a devcontainer named **Patterson Design — Agent Workbench**,
+built on `mcr.microsoft.com/devcontainers/javascript-node:24-bookworm` with
+the Git, GitHub CLI, and Claude Code devcontainer features layered in.
+`onCreateCommand` runs `.devcontainer/setup.sh`; `postAttachCommand` runs
+`.devcontainer/welcome.sh`. Port 3000 forwards automatically and opens a
+preview — that's the marketplace docs and demo gallery served with
+`npx --yes serve -l 3000 .`, no build step required for the repo's own static
+pages.
+
+Minimum host requirements are 2 CPUs and 4 GB of memory. VS Code
+customizations install the Claude Code, GitHub Copilot, and GitHub Actions
+extensions, plus Live Server and the YAML and EditorConfig extensions for
+editing manifests.
+
+## Local smoke test
+
+```sh
+claude
+/plugin marketplace add .
+/plugin install patterson-brand@patterson-design   # foundation first
+/plugin install patterson-deck@patterson-design
+/patterson-deck:new-deck Q3 dental equipment business review
+```
+
+The marketplace suffix is `@patterson-design`, taken from `marketplace.json`'s
+`name` field — independent of whatever the repo folder is called on disk.

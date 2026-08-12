@@ -1,0 +1,26 @@
+---
+title: Patterson executive deck
+description: An editorial executive-briefing deck template with takeaways, breakdown matrices, and requirement tables for leadership readouts.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Template
+
+Patterson executive deck is the formal register of the deck family: an editorial navy cover, key takeaways, a breakdown matrix, requirements, build outputs, and benefits slides. It's denser and more structured than the standard deck — built for boards, leadership teams, and formal readouts rather than general presentations.
+
+Reach for it when the audience is the ELT, a board, or a steering committee, and the content is a decision or a status that needs to be argued in one page per question. Every slide carries a running footer with a per-slide metadata row — arc, speaker, date — that stays live as the deck evolves, and `data-tweak` attributes mark the fields meant to be personalized per delivery.
+
+The editorial register is deliberate: terse, declarative, evidence-first, one question answered per slide. The executive-deck-builder agent distills a brief straight into that shape — takeaways, matrices, and requirement tables — rather than writing narrative slides that need to be cut down later.
+
+<LinkButton href="/plugins/patterson-executive-deck/ds/templates/executive-deck/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-executive-deck.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `executive-deck-template` | Build a Patterson Companies executive briefing deck — a denser, editorial layout for board-style presentations and formal readouts. |
+| Command | `/patterson-executive-deck:new-executive-deck` | Scaffold a Patterson executive-briefing deck from the official template. |
+| Agent | `executive-deck-builder` | Patterson executive-communications specialist — distills content into takeaways, matrices, and requirement tables. |

@@ -1,0 +1,33 @@
+---
+title: Foundations
+description: The brand guideline cards and design tokens every Patterson plugin is built from.
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+Every plugin in this marketplace draws from the same source: one token set, one
+component layer, one set of brand-compliant HTML specimens. Nothing here is
+plugin-specific — change a token once in `patterson-brand`, and it propagates
+to every `ds/` snapshot that carries it.
+
+<CardGrid stagger>
+  <Card title="Brand guidelines">
+    Eighteen browser-openable specimen cards — colors, type, logo, voice,
+    shape — each one a runnable brand reference. See
+    [Brand guidelines](/foundations/brand-guidelines/).
+  </Card>
+  <Card title="Design tokens">
+    The CSS custom properties behind every specimen: color, spacing,
+    typography, and effects, with the Patterson Companies Brand Guide page
+    each value cites. See [Design tokens](/foundations/tokens/).
+  </Card>
+</CardGrid>
+
+## Where the tokens live
+
+Every plugin except `patterson-starlight` and `patterson-vitepress` carries a
+byte-identical copy of `ds/tokens/*.css` and `ds/styles.css`. The canonical
+copy lives in `patterson-brand`; changing a shared value means re-copying it
+into every other plugin's `ds/` and re-verifying with md5 — there is no shared
+or symlinked source. That duplication is deliberate: each plugin installs and
+works on its own, with nothing to resolve across plugin boundaries.

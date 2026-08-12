@@ -1,0 +1,73 @@
+---
+title: Design tokens
+description: The CSS custom properties behind the Patterson brand — color, spacing, typography, and effects — and what each one cites.
+---
+
+Every value below lives in `ds/tokens/*.css`, byte-identical across every
+plugin that carries a token snapshot. Each token's source comment cites where
+it comes from: `[BG25 p.N]` is the 2025 Brand Guide, `[DS20 p.N]` is the 2020
+design-system deck, `[DPL]` is the production Digital Pattern Library
+stylesheet, and `[TBD]` marks a value Patterson has not published — nothing on
+this page is invented to fill a gap.
+
+## Color
+
+`ds/tokens/colors.css` carries the print palette, the WCAG-adjusted digital
+palette, a neutral ramp, status colors, and a layer of semantic aliases meant
+for product UI (`--text-strong`, `--surface-card`, `--border-brand`, and
+similar) so components reference roles rather than swatches directly.
+
+| Token | Value | Role |
+|---|---|---|
+| `--pat-navy` | `#003767` | Headlines, brand accents, dark grounds |
+| `--pat-sky` | `#00A8E1` | Default button and CTA color |
+| `--pat-gray` | `#58585B` | Body copy and divider graphics |
+| `--pat-blue` | `#147EC2` | Secondary — depth, never dominant |
+| `--pat-teal` | `#00817D` | Tertiary — also the shipped eyebrow color |
+| `--pat-danger` | `#D0021B` | Error and form-validation states |
+
+Two palettes exist side by side: the print palette above from the 2025 Brand
+Guide, and a WCAG-adjusted **digital** palette (`--pat-digital-sky`,
+`--pat-digital-link`, and others) from the 2020 design-system deck that
+Patterson's production web properties actually render. The 2025 guide doesn't
+acknowledge the digital palette, and the 2020 deck doesn't claim to override
+the guide — this system defaults to the 2025 values and keeps the digital
+ones available under their own names rather than silently substituting.
+
+## Spacing and shape
+
+`ds/tokens/spacing.css` exposes two scales: a sourced 5px grid
+(`--pat-grid-1` through `--pat-grid-16`, documented at `[DPL]` and
+`[BG25 p.57]`), and a `--space-0` through `--space-12` rem ladder the
+templates were actually built on. Radii center on one number —
+`--radius-sm` / `--radius-pat`, both `5px` `[BG25 p.57]` — confirmed as the
+dominant production value. Control height is `--control-h-md: 46px`
+`[BG25 p.57]`, with horizontal button padding `--control-px: 30px`.
+
+## Typography
+
+`ds/tokens/fonts.css` and `ds/tokens/typography.css` split the family
+declaration from the scale. Weight roles are explicit:
+`--fw-extra: 800` for titles and headlines, `--fw-semibold: 600` for subheads
+and button text, `--fw-regular: 400` / `--fw-light: 300` for body copy
+`[BG25 p.25]`. Tracking defaults to `--ls-snug: -0.01em` (tracking &minus;10)
+on headings; leading runs `--lh-body: 1.5` for body copy against the
+`[BG25 p.27]` 125&ndash;150% range.
+
+## Effects
+
+`ds/tokens/effects.css` is the one file that says plainly what it's guessing
+at: Patterson publishes no elevation scale and no motion tokens. The single
+documented shadow is an inset input state (`--shadow-input-inset`); the
+`--shadow-xs` through `--shadow-xl` ramp is presentation scaffolding, tinted
+to brand navy (`rgba(0, 55, 103, …)`) rather than an invented hue. The focus
+ring is real: `--ring-focus` is a 3px sky ring at 45% opacity, the brand's
+signature interaction.
+
+## Framework adapters
+
+`patterson-brand` ships integration cards for Tailwind v3, Tailwind v4,
+UnoCSS, Theme UI, and shadcn/ui — each one remaps these same tokens onto that
+framework's own variable surface, so a plugin stays on-brand no matter what
+the target project's toolchain is. See the
+[Integrations card](/plugins/patterson-brand/ds/guidelines/integrations.card.html).

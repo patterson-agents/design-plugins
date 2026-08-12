@@ -1,0 +1,26 @@
+---
+title: Patterson file manager
+description: A Skill Studio application shell — navy top bar, sidebar tree, content grid — for internal tools and dashboard prototypes.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** Template
+
+Patterson file manager ships the "Skill Studio" app shell: a navy top bar, a sidebar tree, and a content grid, built as a React prototype for internal tools and dashboard-style apps. It's the template to reach for when the deliverable isn't a marketing page but a working tool — an admin panel, a file browser, an approval workspace.
+
+The shell renders entirely from a data model in `app-data.js`, so the fastest path to a new prototype is swapping the sample workspaces and items for the real ones before touching layout. `studio.js` carries the interaction logic and `ds-base.js` loads the shared tokens and component CSS, so the shell inherits brand changes without local overrides.
+
+The app-prototyper agent adapts the same top-bar-sidebar-grid pattern to new tool concepts, keeping the navy chrome, 46px controls, and sky focus rings consistent with every other Patterson surface — so an internal tool still reads as unmistakably Patterson, not a generic admin template.
+
+<LinkButton href="/plugins/patterson-file-manager/ds/templates/file-manager/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-file-manager.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `file-manager-template` | Build a Patterson-branded application shell or internal tool prototype — scaffolds the Skill Studio shell with top bar, sidebar, and content area. |
+| Command | `/patterson-file-manager:new-app-shell` | Scaffold a Patterson-branded application shell from the Skill Studio file-manager template. |
+| Agent | `app-prototyper` | Patterson internal-tools prototyper — adapts the Skill Studio shell (top bar, sidebar, grid) to new tool concepts on brand tokens. |

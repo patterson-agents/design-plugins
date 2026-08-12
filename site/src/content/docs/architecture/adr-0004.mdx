@@ -1,0 +1,62 @@
+---
+title: 'ADR 0004: React/Babel via unpkg'
+description: Why patterson-docs and patterson-file-manager are the two plugins in this marketplace that load a CDN script at runtime.
+---
+
+:::note[Status: proposed]
+This is an architecture decision record, not a settled policy. The
+recommendation below is Daniel Bodnar's call to make — it's documented here so
+the trade-off is legible, not because it's been finalized.
+:::
+
+## The exception
+
+Every plugin's `ds/` snapshot is meant to be self-contained: no build step, no
+JavaScript runtime, no CDN — just a stylesheet link against the shared token
+layer. That holds for nine of the eleven plugins. Two break it on purpose:
+
+- **`patterson-docs`** — a full VitePress-style documentation site: routing, a
+  Diátaxis-organized sidebar, command-palette search, and light/dark theming.
+- **`patterson-file-manager`** — a complete file-browser application: list and
+  grid views, a preview pane, breadcrumbs, and bulk-action toolbars.
+
+Both load React 18, ReactDOM, and `@babel/standalone` from `unpkg.com` with
+subresource-integrity hashes pinned to exact versions
+(`react@18.3.1`, `react-dom@18.3.1`, `@babel/standalone@7.29.0`), then
+transpile in-browser via `<script type="text/babel">`. That's what makes them
+runnable by double-clicking the HTML file with zero tooling — and it's also a
+live, third-party network dependency baked into files this marketplace hands
+to consumers.
+
+## Why not just convert them to static CSS
+
+Because that would remove the reason these two templates exist. They aren't
+component specimens like the guideline cards elsewhere in this system — they
+are genuine, working application templates: the thing a consumer copies out
+and extends into their own docs site or file manager. A static rendering of
+"what page one looks like" is a screenshot with extra steps; if that's what
+someone wants, `patterson-corporate-page` already covers it.
+
+## The options weighed
+
+| Option | Verdict |
+|---|---|
+| **(a) Keep as-is, documented exception** | Recommended. SRI hashes already pin exact byte content, closing most of the realistic supply-chain gap — the residual risk is CDN *availability*, not integrity. |
+| **(b) Vendor React/Babel locally** | ~1-2 MB added across two plugins, plus a new patch-tracking obligation nothing else in this repo requires. Worth revisiting only if an air-gapped deployment target or a compliance requirement shows up. |
+| **(c) Convert to the static CSS layer** | Recommended against — destroys the interactivity that is the deliverable. |
+| **(d) Remove the two plugins** | Not recommended — both are functioning, in-demand plugin categories; no incident has occurred. |
+
+## Consequences
+
+If the exception stands: each plugin's `README.md` carries a one-line
+callout that it loads React and Babel from `unpkg.com` at runtime, and no CI
+change is needed — `tests/run-tests.sh` does not attempt to reach the network
+to validate CDN availability, and should not.
+
+If the marketplace later vendors the runtime instead: pin the exact same
+versions already loaded today, run them through the `socket` CLI supply-chain
+gate before vendoring (same as any other third-party artifact entering this
+repo), and add a refresh note to the maintenance loop in `CLAUDE.md`
+describing when and how to bump the vendored versions.
+
+Read the full record: [`docs/decisions/0004-unpkg-react-application-templates.md`](https://github.com/patterson-agents/design-plugins/blob/main/docs/decisions/0004-unpkg-react-application-templates.md).

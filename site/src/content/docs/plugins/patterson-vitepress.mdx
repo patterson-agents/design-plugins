@@ -1,0 +1,22 @@
+---
+title: Patterson vitepress
+description: A runnable, install-verified VitePress documentation starter, pinned exactly and branded end to end.
+---
+
+**Tag:** Scaffolder
+
+Patterson vitepress is a real, runnable VitePress site: `vitepress@1.6.4`, pinned without a caret, with a committed `bun.lock` so the install is verified rather than assumed. Copy the starter, `bun install`, `bun run docs:dev`, and it's serving locally with the navy nav bar, hero, and Diátaxis-organized sidebar already in place.
+
+Reach for it when the ask is "a docs site" or "a handbook for this repo" and VitePress is the framework of choice. The branding lives in one file, `docs/.vitepress/theme/custom.css`, which overrides every `--vp-*` variable with the Patterson token set. The default theme is extended, never forked, so the branding survives VitePress upgrades.
+
+The vitepress-site-builder agent scaffolds a fresh site or brands an existing VitePress project by copying just the stylesheet and the logo lockups in `public/`. The accent policy carries over from the rest of the brand: on a light canvas, navy carries strong text and link blue carries links, while sky stays chrome — the nav hairline, the focus ring — never text.
+
+This plugin scaffolds a full runnable project rather than a single static preview, so there's no live-demo link here — the deliverable is the site itself, running on your machine after `bun run docs:dev`. No terminal demo has been recorded for this plugin yet.
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `vitepress-site` | Scaffold a Patterson-branded VitePress documentation site, or brand an existing VitePress project. |
+| Command | `/patterson-vitepress:new-vitepress-site` | Scaffold a Patterson-branded VitePress documentation site and fill it with content. |
+| Agent | `vitepress-site-builder` | Patterson VitePress documentation builder — scaffolds the runnable starter, applies the Diátaxis structure, and writes on-voice Patterson content. |

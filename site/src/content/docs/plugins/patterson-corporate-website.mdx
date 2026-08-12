@@ -1,0 +1,26 @@
+---
+title: Patterson corporate website
+description: An interactive recreation of pattersoncompanies.com — home hero, stats, capability tabs, newsroom, header, and footer as separate React screens.
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+**Tag:** UI kit
+
+Patterson corporate website is a working recreation of pattersoncompanies.com, broken into separate React screens: the home hero, the "We are Patterson" stats band, capability tabs, What We Do, Newsroom, and a shared header and footer. Each screen is its own Babel JSX file, and navigation between them is client-side through a simple `onNavigate` prop.
+
+Reach for it when the request is a corporate-site page in the existing pattersoncompanies.com pattern — an investor-relations page, a new newsroom category, an About expansion — rather than a page built from a blank shell. Adding a screen means writing a new JSX file in the same pattern as the existing ones and registering it in the app switch.
+
+The site-builder agent composes the kit's header, footer, and screens, and writes in the corporate register the kit expects: proof-through-numbers, using the `Stat` component for the figures rather than describing them in prose.
+
+<LinkButton href="/plugins/patterson-corporate-website/ds/ui_kits/corporate-website/index.html" icon="right-arrow">Open live demo</LinkButton>
+
+[Watch the terminal demo](/demos/vhs/gif/patterson-corporate-website.gif)
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `corporate-website-kit` | Build screens in the style of the Patterson Companies corporate website — ships header, footer, home, what-we-do, and newsroom screens as React components. |
+| Command | `/patterson-corporate-website:new-corporate-site` | Scaffold pages from the Patterson corporate-website UI kit. |
+| Agent | `site-builder` | Patterson corporate-site builder — composes the kit's header/footer/screens and writes on-voice corporate copy. |

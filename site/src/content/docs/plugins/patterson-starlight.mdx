@@ -1,0 +1,22 @@
+---
+title: Patterson starlight
+description: A runnable, install-verified Astro 7 and Starlight documentation starter, pinned exactly and branded end to end.
+---
+
+**Tag:** Scaffolder
+
+Patterson starlight is a real, runnable Astro 7 site — not a preview page. It ships `astro@7.1.5` and `@astrojs/starlight@0.41.5`, pinned without a caret, with a committed `bun.lock` so the install is verified rather than assumed. Copy the starter, `bun install`, `bun run dev`, and it's serving locally with the navy header, hero, and a Diátaxis sidebar already wired up.
+
+Reach for it when the ask is "a docs site" or "documentation for this repo" rather than a single static page. The branding lives in one file, `src/styles/patterson.css`, which remaps every Starlight `--sl-*` token onto the Patterson `--pat-*` set — no component is ejected, so the theme survives Starlight upgrades instead of forking them.
+
+The starlight-site-builder agent can scaffold a fresh site or brand an existing Starlight project by copying just the stylesheet and the logo lockups in `public/`. Both paths respect the accent policy: sky is chrome and focus rings on light backgrounds, never body text, because sky text on white fails contrast.
+
+This plugin scaffolds a full runnable project rather than a single static preview, so there's no live-demo link here — the deliverable is the site itself, running on your machine after `bun run dev`. No terminal demo has been recorded for this plugin yet.
+
+## What's inside
+
+| Type | Name | What it does |
+|---|---|---|
+| Skill | `starlight-site` | Scaffold a Patterson-branded Starlight documentation site, or brand an existing Starlight project. |
+| Command | `/patterson-starlight:new-starlight-site` | Scaffold a Patterson-branded Starlight documentation site and fill it with content. |
+| Agent | `starlight-site-builder` | Patterson Starlight documentation builder — scaffolds the runnable starter, applies the Diátaxis structure, and writes on-voice Patterson content. |
