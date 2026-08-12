@@ -56,14 +56,14 @@
       "name": "patterson-starlight",
       "source": "./plugins/patterson-starlight",
       "description": "Patterson-branded Starlight documentation site: a runnable Astro 7 starter with the Patterson Starlight theme, Diátaxis sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "category": "templates"
     },
     {
       "name": "patterson-vitepress",
       "source": "./plugins/patterson-vitepress",
       "description": "Patterson-branded VitePress documentation site: a runnable starter with the Patterson VitePress theme, Diátaxis nav and sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
-      "version": "0.2.1",
+      "version": "0.2.2",
       "category": "templates"
     },
     {

@@ -1,6 +1,6 @@
 {
   "name": "patterson-vitepress",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Patterson-branded VitePress documentation site: a runnable starter with the Patterson VitePress theme, Diataxis nav and sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
   "author": {
     "name": "Patterson Companies Design System"
