@@ -37,7 +37,7 @@ name: Agentic Maintenance
 
 on:
   schedule:
-    - cron: "37 */12 * * *"  # Every 12 hours (based on minimum expires: 3 days)
+    - cron: "37 */6 * * *"  # Every 6 hours (based on minimum expires: 2 days)
   workflow_dispatch:
     inputs:
       operation:
