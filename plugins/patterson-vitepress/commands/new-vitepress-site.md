@@ -12,7 +12,8 @@ Follow the `vitepress-site` skill from the `patterson-vitepress` plugin.
 1. Scaffold the starter into the requested directory. Use
    `cp -R "${CLAUDE_PLUGIN_ROOT}/ds/templates/vitepress" <dir>` followed by
    `bun install`, or `bun create patterson-vitepress <dir>` if the template is
-   registered locally and the directory does not yet exist.
+   registered locally. Use `bun create` only against a directory that does not exist
+   yet — it replaces the contents of an existing one without prompting.
 2. Run `bun run docs:build` once before writing anything, to confirm a clean build.
 3. Set `title` and `description` in `docs/.vitepress/config.ts`. Uncomment `base` only
    if the user is deploying to a sub-path.

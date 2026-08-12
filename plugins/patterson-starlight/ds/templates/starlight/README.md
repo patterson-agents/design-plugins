@@ -11,12 +11,17 @@ cd my-docs
 bun run dev
 ```
 
-`bun create` copies this directory into the target and runs `bun install` for you. Two
-caveats worth knowing:
+`bun create` copies this directory into the target, runs `bun install`, and initializes
+a git repository there. Three caveats, verified against Bun 1.3:
 
-- The target directory must not already exist, or `bun create` refuses to write.
-- The template is resolved from `~/.bun-create/patterson-starlight`. If that copy is
-  missing, `bun create` falls back to looking the name up on npm, where it does not
+- **Point it at a new directory.** `bun create` does not refuse an existing one — it
+  replaces the contents, without a prompt. A file already sitting in the target is
+  gone afterward.
+- **The `name` field is rewritten** to the target directory name, so the scaffolded
+  project is `my-docs`, not `patterson-starlight-site`. Everything else is copied
+  verbatim, `.gitignore` included.
+- **The template is resolved from `~/.bun-create/patterson-starlight`.** If that copy
+  is missing, `bun create` falls back to looking the name up on npm, where it does not
   exist. Register it once with
   `cp -R <plugin>/ds/templates/starlight ~/.bun-create/patterson-starlight`.
 

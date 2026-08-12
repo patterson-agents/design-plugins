@@ -12,7 +12,8 @@ Follow the `starlight-site` skill from the `patterson-starlight` plugin.
 1. Scaffold the starter into the requested directory. Use
    `cp -R "${CLAUDE_PLUGIN_ROOT}/ds/templates/starlight" <dir>` followed by
    `bun install`, or `bun create patterson-starlight <dir>` if the template is
-   registered locally and the directory does not yet exist.
+   registered locally. Use `bun create` only against a directory that does not exist
+   yet — it replaces the contents of an existing one without prompting.
 2. Run `bun run build` once before writing anything, to confirm a clean `dist/`.
 3. Set `title`, `description`, and `tagline` in `astro.config.mjs`. Uncomment `site`
    only if the user gave you a deploy origin.

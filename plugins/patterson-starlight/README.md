@@ -54,10 +54,11 @@ bun create patterson-starlight my-docs      # if the template is registered loca
 cd my-docs && bun run dev
 ```
 
-`bun create` copies the template and runs `bun install`. It needs the target directory
-not to exist, and resolves the name from `~/.bun-create/patterson-starlight`. Without
-that copy it falls through to npm, where the name does not exist — so the portable path
-is a plain copy:
+`bun create` copies the template, runs `bun install`, and initializes a git repo. Point
+it at a **new** directory: it does not refuse an existing one, it replaces the contents
+without prompting. It also rewrites `package.json` `name` to the directory name, and
+resolves the template from `~/.bun-create/patterson-starlight` — without that copy it
+falls through to npm, where the name does not exist. The portable path is a plain copy:
 
 ```bash
 cp -R ds/templates/starlight my-docs

@@ -30,9 +30,12 @@ instead when the site needs Astro's content collections or MDX components, and
    cd my-docs && bun install
    ```
 
-   `bun create` requires the target directory not to exist, and resolves the template
-   from `~/.bun-create/patterson-vitepress`. If that copy is missing it falls through
-   to npm, where the name does not exist. The `cp -R` path has no such dependency.
+   Only point `bun create` at a **new** directory. It does not refuse an existing one —
+   it replaces the contents without prompting, so an occupied target loses its files.
+   It also rewrites `package.json` `name` to the directory name and initializes a git
+   repo there. It resolves the template from `~/.bun-create/patterson-vitepress`; if
+   that copy is missing it falls through to npm, where the name does not exist. The
+   `cp -R` path has none of these behaviors and is the safe default when you are unsure.
 
 2. Verify before writing content: `bun run docs:build` must complete cleanly into
    `docs/.vitepress/dist/`.
