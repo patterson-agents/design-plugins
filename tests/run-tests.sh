@@ -95,7 +95,7 @@ echo "PASS: every plugin.json parses and has name + version"
 # ---------------------------------------------------------------------------
 # 3. no `text-transform: uppercase` in plugins/**.css
 # ---------------------------------------------------------------------------
-UPPERCASE_HITS=$(find plugins -name "*.css" -print0 | xargs -0 grep -l "text-transform:[[:space:]]*uppercase" 2>/dev/null || true)
+UPPERCASE_HITS=$(find plugins -name node_modules -prune -o -name "*.css" -print0 | xargs -0 grep -l "text-transform:[[:space:]]*uppercase" 2>/dev/null || true)
 if [ -n "$UPPERCASE_HITS" ]; then
   fail "text-transform: uppercase found in: $UPPERCASE_HITS"
 fi
@@ -107,7 +107,7 @@ echo "PASS: no text-transform: uppercase in plugins/**.css"
 # ---------------------------------------------------------------------------
 FORBIDDEN="Figtree d98a00 c0392b rul6mjk"
 for term in $FORBIDDEN; do
-  HITS=$(grep -rl --exclude="*.md" --exclude-dir=.git --exclude-dir=tests "$term" . 2>/dev/null || true)
+  HITS=$(grep -rl --exclude="*.md" --exclude-dir=.git --exclude-dir=tests --exclude-dir=node_modules --exclude-dir=dist --exclude-dir=.astro --exclude="bun.lock" --exclude="*.lock" "$term" . 2>/dev/null || true)
   if [ -n "$HITS" ]; then
     fail "forbidden string '$term' found outside *.md in: $HITS"
   fi
@@ -118,7 +118,7 @@ echo "PASS: forbidden strings absent outside prose docs"
 # ---------------------------------------------------------------------------
 # 5. .pat-docs class is defined somewhere in plugins/**.css
 # ---------------------------------------------------------------------------
-PAT_DOCS_DEFINED=$(find plugins -name "*.css" -print0 | xargs -0 grep -l "\.pat-docs" 2>/dev/null || true)
+PAT_DOCS_DEFINED=$(find plugins -name node_modules -prune -o -name "*.css" -print0 | xargs -0 grep -l "\.pat-docs" 2>/dev/null || true)
 if [ -z "$PAT_DOCS_DEFINED" ]; then
   fail ".pat-docs class is not defined in any plugins/**.css file"
 fi
