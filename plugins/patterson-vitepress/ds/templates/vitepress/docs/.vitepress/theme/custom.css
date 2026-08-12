@@ -1,0 +1,309 @@
+/* ============================================================
+   Patterson Companies — VitePress theme
+   ------------------------------------------------------------
+   Remaps VitePress's `--vp-*` design tokens onto Patterson brand
+   tokens. Loaded from `.vitepress/theme/index.ts`, which extends
+   the default theme rather than forking it — so this file is the
+   only brand surface and the theme survives VitePress upgrades.
+
+   The `--vp-c-*` vocabulary maps almost one-to-one onto the
+   Patterson docs UI kit's `--c-*` block, so the two render the
+   same brand.
+
+   Accent policy (WCAG):
+     - Light canvas: navy #003767 for strong text, link blue
+       #147EC2 for links. Sky is NEVER text on white.
+     - Dark canvas: sky #00A8E1 and light blue #6DCFF6 carry the
+       accent, text included.
+     - Sky on light is allowed only as non-text chrome — the nav
+       hairline, focus rings, rules.
+
+   Brand rules: 5px radius [BG25 p.57] — the docs kit's 9px is a
+   kit convention, not the brand value. Sentence case everywhere,
+   no uppercase transforms [BG25 p.25]. No emoji, ever.
+   ============================================================ */
+
+/* ============================================================
+   1. Patterson primitives (theme-agnostic)
+   ============================================================ */
+:root {
+  /* Brand core [BG25 p.24] */
+  --pat-navy: #003767;
+  --pat-sky: #00a8e1;
+  --pat-blue: #147ec2;
+  --pat-blue-light: #6dcff6;
+  --pat-gray: #58585b;
+  --pat-white: #ffffff;
+
+  /* Navy tints */
+  --pat-navy-80: #335f85;
+  --pat-navy-20: #ccd7e1;
+  --pat-navy-10: #e5ebf0;
+
+  /* Sky tints */
+  --pat-sky-80: #33b9e7;
+  --pat-sky-40: #99dcf3;
+  --pat-sky-10: #e5f6fc;
+
+  /* Neutral ramp (cool grays) */
+  --pat-ink: #1d1d20;
+  --pat-gray-700: #46464a;
+  --pat-gray-600: #58585b;
+  --pat-gray-500: #7c7c80;
+  --pat-gray-300: #c9c9cc;
+  --pat-gray-100: #ececec;
+  --pat-gray-50: #f6f7f8;
+
+  /* Interaction states — the verified production values. Primary hover is
+     a LIGHTER NAVY, not sky. Do not substitute. */
+  --pat-primary-hover: #315d83;
+  --pat-primary-disabled: #93a9bc;
+  --pat-secondary-hover: #96dbf6;
+
+  /* Shape [BG25 p.57] */
+  --pat-radius: 5px;
+  --pat-radius-field: 2px;
+
+  /* Motion — production animates color and transform only, 100-200ms. */
+  --pat-transition: 0.2s ease-in-out;
+
+  /* Fonts — proxima-nova is the brand face [BG25 p.25], served by Adobe
+     Fonts kit uth1qfm (linked from the `head` entry in config.ts). Arial is
+     the sanctioned substitute [BG25 p.25]. Never self-host the face. */
+  --vp-font-family-base: 'proxima-nova', Arial, sans-serif;
+  --vp-font-family-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo,
+    Consolas, monospace;
+}
+
+/* ============================================================
+   2. Light theme — surfaces, text, brand tiers
+   ============================================================ */
+:root {
+  /* Surfaces */
+  --vp-c-bg: var(--pat-white);
+  --vp-c-bg-alt: #f8f8f8;
+  --vp-c-bg-soft: #f8f8f8;
+  --vp-c-bg-elv: var(--pat-white);
+
+  /* Text — headings are navy, body is Patterson gray */
+  --vp-c-text-1: var(--pat-navy);
+  --vp-c-text-2: var(--pat-gray-600);
+  --vp-c-text-3: #8a8a8e;
+
+  /* Rules */
+  --vp-c-divider: var(--pat-gray-100);
+  --vp-c-border: #e4e5e8;
+  --vp-c-gutter: #e4e5e8;
+
+  /* Brand tiers.
+     -1 is link and accent TEXT, so it must be link blue on white.
+     -2 is the hover state, which darkens toward navy.
+     -3 is the solid fill behind white text, so it is navy. */
+  --vp-c-brand-1: var(--pat-blue);
+  --vp-c-brand-2: var(--pat-navy);
+  --vp-c-brand-3: var(--pat-navy);
+  --vp-c-brand-soft: rgba(0, 168, 225, 0.1);
+
+  /* Buttons — navy fill, lighter navy on hover, never sky. */
+  --vp-button-brand-bg: var(--pat-navy);
+  --vp-button-brand-text: var(--pat-white);
+  --vp-button-brand-border: transparent;
+  --vp-button-brand-hover-bg: var(--pat-primary-hover);
+  --vp-button-brand-hover-text: var(--pat-white);
+  --vp-button-brand-hover-border: transparent;
+  --vp-button-brand-active-bg: var(--pat-primary-hover);
+  --vp-button-brand-active-text: var(--pat-white);
+  --vp-button-brand-active-border: transparent;
+
+  /* Home hero — flat navy, no gradient. The brand does not use gradients. */
+  --vp-home-hero-name-color: var(--pat-navy);
+  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-filter: none;
+
+  /* Code */
+  --vp-code-bg: #f8f8f8;
+  --vp-code-block-bg: #1b2432;
+
+  /* Custom blocks (tip/info/warning) pick up the brand soft tint. */
+  --vp-custom-block-tip-border: var(--pat-sky);
+  --vp-custom-block-tip-text: var(--pat-navy);
+  --vp-custom-block-tip-bg: var(--pat-sky-10);
+}
+
+/* ============================================================
+   3. Dark theme — sky forward
+   ============================================================ */
+.dark {
+  --vp-c-bg: #15181e;
+  --vp-c-bg-alt: #1b1f27;
+  --vp-c-bg-soft: #20252e;
+  --vp-c-bg-elv: #1b1f27;
+
+  --vp-c-text-1: #f1f3f5;
+  --vp-c-text-2: #b4bac4;
+  --vp-c-text-3: #828a96;
+
+  --vp-c-divider: #262b34;
+  --vp-c-border: #2a2f39;
+  --vp-c-gutter: #2a2f39;
+
+  /* On a dark canvas sky and light blue carry the accent, text included. */
+  --vp-c-brand-1: var(--pat-blue-light);
+  --vp-c-brand-2: var(--pat-sky-40);
+  --vp-c-brand-3: var(--pat-sky);
+  --vp-c-brand-soft: rgba(0, 168, 225, 0.14);
+
+  /* Sky fill with navy text — white on sky fails contrast. */
+  --vp-button-brand-bg: var(--pat-sky);
+  --vp-button-brand-text: var(--pat-navy);
+  --vp-button-brand-hover-bg: var(--pat-sky-80);
+  --vp-button-brand-hover-text: var(--pat-navy);
+  --vp-button-brand-active-bg: var(--pat-sky-80);
+  --vp-button-brand-active-text: var(--pat-navy);
+
+  --vp-home-hero-name-color: var(--pat-blue-light);
+
+  --vp-code-bg: #20252e;
+  --vp-code-block-bg: #0f141c;
+
+  --vp-custom-block-tip-text: var(--pat-sky-40);
+  --vp-custom-block-tip-bg: rgba(0, 168, 225, 0.14);
+}
+
+/* ============================================================
+   4. Brand chrome — the navy top bar
+   The nav is navy in BOTH themes with a sky hairline and white
+   foreground. Sky here is non-text chrome, so it is safe on light.
+   ============================================================ */
+:root {
+  --vp-nav-bg-color: var(--pat-navy);
+}
+
+.VPNavBar,
+.VPNavBar.has-sidebar .content-body,
+.VPNavBar .divider-line {
+  background-color: var(--pat-navy);
+}
+.VPNavBar,
+.VPNavBar.has-sidebar .divider-line {
+  border-bottom: 1px solid var(--pat-sky);
+}
+.VPNavBar .divider {
+  background-color: transparent;
+}
+
+/* Foreground on navy */
+.VPNavBar .VPNavBarTitle .title {
+  color: var(--pat-white);
+  border-bottom-color: transparent;
+}
+.VPNavBarMenuLink,
+.VPNavBarMenuGroup .VPFlyout .button,
+.VPNavBarHamburger .middle,
+.VPNavBarHamburger .top,
+.VPNavBarHamburger .bottom,
+.VPNavBarAppearance .VPSwitch,
+.VPNavBarExtra .button {
+  color: rgba(255, 255, 255, 0.85);
+}
+.VPNavBarMenuLink:hover,
+.VPNavBarMenuLink.active,
+.VPNavBarMenuGroup .VPFlyout .button:hover {
+  color: var(--pat-white);
+}
+.VPNavBarHamburger .top,
+.VPNavBarHamburger .middle,
+.VPNavBarHamburger .bottom {
+  background-color: var(--pat-white);
+}
+
+/* Search affordance legible on navy. */
+.VPNavBarSearch .DocSearch-Button {
+  background-color: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--pat-radius);
+  color: rgba(255, 255, 255, 0.85);
+}
+.VPNavBarSearch .DocSearch-Button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.VPNavBarSearch .DocSearch-Search-Icon {
+  color: rgba(255, 255, 255, 0.85);
+}
+.VPNavBarSearch .DocSearch-Button-Keys .DocSearch-Button-Key {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  box-shadow: none;
+}
+
+/* Sky focus ring everywhere — the brand's signature interaction. */
+:focus-visible {
+  outline: 2px solid var(--pat-sky);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   5. Shape — 5px, not the docs kit's 9px [BG25 p.57]
+   VitePress hard-codes several radii, so they are overridden by
+   selector rather than by variable.
+   ============================================================ */
+.VPButton {
+  border-radius: var(--pat-radius);
+  font-weight: 600;
+  transition:
+    background-color var(--pat-transition),
+    border-color var(--pat-transition),
+    color var(--pat-transition);
+}
+.VPFeature,
+.custom-block,
+.vp-doc div[class*='language-'],
+.VPTeamMembersItem,
+.VPLocalSearchBox .result {
+  border-radius: var(--pat-radius);
+}
+.vp-doc table tr,
+.vp-doc th,
+.vp-doc td {
+  border-radius: 0;
+}
+.vp-doc input,
+.vp-doc select,
+.vp-doc textarea,
+.VPLocalSearchBox .search-input {
+  border-radius: var(--pat-radius-field);
+}
+
+/* Feature cards get a brand hairline on hover rather than a shadow lift. */
+.VPFeature {
+  transition: border-color var(--pat-transition);
+}
+.VPFeature:hover {
+  border-color: var(--pat-sky);
+}
+
+/* ============================================================
+   6. Content details
+   ============================================================ */
+/* Headings are navy on light and stay on the theme ink on dark. */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  color: var(--vp-c-text-1);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* The sidebar section labels are sentence case by authorship; make sure no
+   stylesheet turns them into all caps [BG25 p.25]. */
+.VPSidebarItem.level-0 > .item > .text {
+  text-transform: none;
+  font-weight: 700;
+}
+
+/* Footer sits on the subtle surface with a sky hairline. */
+.VPFooter {
+  border-top: 1px solid var(--pat-sky);
+  background-color: var(--vp-c-bg-alt);
+}
