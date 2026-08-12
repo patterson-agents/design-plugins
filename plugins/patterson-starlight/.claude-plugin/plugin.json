@@ -1,6 +1,6 @@
 {
   "name": "patterson-starlight",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Patterson-branded Starlight documentation site: a runnable Astro 7 starter with the Patterson Starlight theme, Diataxis sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
   "author": {
     "name": "Patterson Companies Design System"
