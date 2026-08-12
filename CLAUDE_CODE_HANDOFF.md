@@ -101,9 +101,9 @@ design-system/                       # → github.com/patterson-agents/design-sy
 └── CLAUDE_CODE_HANDOFF.md           # you are here
 ```
 
-The 9 plugins: `patterson-brand` (core), `patterson-deck`, `patterson-executive-deck`,
-`patterson-corporate-page`, `patterson-file-manager`, `patterson-docs`, `patterson-tutorialkit`
-(templates), `patterson-corporate-website`, `patterson-storefront` (UI kits).
+The 10 plugins: `patterson-brand` (core), `patterson-deck`, `patterson-executive-deck`,
+`patterson-corporate-page`, `patterson-file-manager`, `patterson-docs`, `patterson-starlight`,
+`patterson-vitepress` (templates), `patterson-corporate-website`, `patterson-storefront` (UI kits).
 
 ## Task 1 — Publish to GitHub
 

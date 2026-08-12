@@ -256,9 +256,7 @@ Patterson brand and were deliberately not imported.
 - `integrations/` — framework adapters: `theme-ui.js`, `tailwind.css`, `tailwind.config.js`, `uno.config.js`, `shadcn-theme.css`, `README.md`.
 
 **`tokens/`** — `fonts.css`, `colors.css`, `typography.css`, `spacing.css`, `effects.css`, `base.css`.
-Byte-identical across **all nine** plugins. `patterson-tutorialkit` previously shipped an
-**empty** `ds/tokens/` (md5 of the concatenated CSS was `d41d8cd9` — the md5 of nothing);
-it is now populated like every other plugin.
+Byte-identical across **all eight** plugins that carry a full `ds/` snapshot.
 
 **`guidelines/`** — foundation specimen cards (Design System tab): colors (primary,
 secondary, tertiary, tints, neutral, semantic), type (family, display, body, weights,

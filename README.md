@@ -10,9 +10,9 @@
 # Patterson Design — Claude Code Marketplace
 
 **Trusted Expertise. Unrivaled Support.** — the Patterson Companies design system,
-packaged as nine individually installable [Claude Code plugins](https://code.claude.com/docs/en/plugin-marketplaces).
+packaged as ten individually installable [Claude Code plugins](https://code.claude.com/docs/en/plugin-marketplaces).
 
-![plugins](https://img.shields.io/badge/plugins-9-00A8E1?labelColor=001B34)
+![plugins](https://img.shields.io/badge/plugins-10-00A8E1?labelColor=001B34)
 ![components](https://img.shields.io/badge/each_plugin-skill_·_commands_·_agent_·_ds%2F-003767?labelColor=001B34)
 ![devcontainer](https://img.shields.io/badge/devcontainer-node%3A24_·_prebuild_ready-147EC2?labelColor=001B34)
 ![runtime](https://img.shields.io/badge/plugin_layer-no_build_step-00817D?labelColor=001B34)
@@ -40,7 +40,7 @@ packaged as nine individually installable [Claude Code plugins](https://code.cla
 ## Live site
 
 **[design.patterson.sh](https://design.patterson.sh)** — the design-system plugin marketplace:
-11 Claude Code plugins for building on-brand Patterson Companies interfaces, decks, docs sites
+10 Claude Code plugins for building on-brand Patterson Companies interfaces, decks, docs sites
 and storefronts.
 
 <img src="docs/screenshots/site-home.webp" width="100%" alt="design-plugins documentation site home page">
@@ -95,7 +95,6 @@ Then use it three ways:
 | <a href="plugins/patterson-corporate-page/"><img src="docs/screenshots/patterson-corporate-page.png" width="220" alt="patterson-corporate-page preview"></a> | **[`patterson-corporate-page`](plugins/patterson-corporate-page/)**<br>Template | Web page shell — sticky nav, navy hero, content band, footer. React, no build step. | `/patterson-corporate-page:new-page` |
 | <a href="plugins/patterson-file-manager/"><img src="docs/screenshots/patterson-file-manager.png" width="220" alt="patterson-file-manager preview"></a> | **[`patterson-file-manager`](plugins/patterson-file-manager/)**<br>Template | "Skill Studio" app shell for internal tools — top bar, sidebar tree, content grid. | `/patterson-file-manager:new-app-shell` |
 | <a href="plugins/patterson-docs/"><img src="docs/screenshots/patterson-docs.png" width="220" alt="patterson-docs preview"></a> | **[`patterson-docs`](plugins/patterson-docs/)**<br>Template | Docs-site UI kit (VitePress + Diátaxis style) plus a standalone docs page template. | `/patterson-docs:new-docs` |
-| <a href="plugins/patterson-tutorialkit/"><img src="docs/screenshots/patterson-tutorialkit.png" width="220" alt="patterson-tutorialkit preview"></a> | **[`patterson-tutorialkit`](plugins/patterson-tutorialkit/)**<br>Template | Runnable TutorialKit (Astro) starter with the canonical Patterson theme.css. | `/patterson-tutorialkit:brand-tutorialkit` |
 | <a href="plugins/patterson-corporate-website/"><img src="docs/screenshots/patterson-corporate-website.png" width="220" alt="patterson-corporate-website preview"></a> | **[`patterson-corporate-website`](plugins/patterson-corporate-website/)**<br>UI kit | Corporate-site screens — home hero, stats, capability tabs, newsroom, header, footer. | `/patterson-corporate-website:new-corporate-site` |
 | <a href="plugins/patterson-storefront/"><img src="docs/screenshots/patterson-storefront.png" width="220" alt="patterson-storefront preview"></a> | **[`patterson-storefront`](plugins/patterson-storefront/)**<br>UI kit | E-commerce shell with a Dental ↔ Veterinary brand toggle — search, flyout nav, products, rewards. | `/patterson-storefront:new-storefront` |
 
@@ -108,11 +107,11 @@ Each plugin has its own README with a file tree, usage examples, and a terminal 
 > [ADR 0004](docs/decisions/0004-unpkg-react-application-templates.md).
 
 <details>
-<summary>Why nine separate plugins instead of one?</summary>
+<summary>Why ten separate plugins instead of one?</summary>
 
 Each plugin installs independently so a consumer only pays for what they use — a team building
 one internal tool shouldn't have to install the storefront UI kit to get the file-manager shell.
-`patterson-brand` is the one dependency the other eight lean on conceptually (tokens, fonts,
+`patterson-brand` is the one dependency the other nine lean on conceptually (tokens, fonts,
 logos), though every plugin's `ds/` snapshot is fully self-contained on disk.
 
 </details>
@@ -226,10 +225,10 @@ claude plugin validate .
 sh tests/run-tests.sh
 ```
 
-Rules that keep it working: only `plugin.json` lives inside `.claude-plugin/`; never flatten or move files inside `ds/`; keep `ds/tokens/`, `ds/styles.css` and `ds/components/` byte-identical across all nine plugins.
+Rules that keep it working: only `plugin.json` lives inside `.claude-plugin/`; never flatten or move files inside `ds/`; keep `ds/tokens/`, `ds/styles.css` and `ds/components/` byte-identical across all eight plugins that carry them.
 
 > [!WARNING]
-> `ds/` snapshots are intentionally duplicated across all nine plugins so each plugin stays
+> `ds/` snapshots are intentionally duplicated across the plugins that carry them so each plugin stays
 > self-contained. A shared file changes once, then gets re-copied into every plugin that
 > references it — there is no symlinked source.
 

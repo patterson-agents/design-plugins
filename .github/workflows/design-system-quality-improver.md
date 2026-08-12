@@ -64,12 +64,12 @@ concrete tasks. Rotate focus areas so the same aspect isn't reviewed two days ru
 - **Repository**: ${{ github.repository }}
 - **Run date**: $(date +%Y-%m-%d)
 - **Cache location**: `/tmp/gh-aw/cache-memory-focus-areas/`
-- **Eleven plugins**: patterson-brand, patterson-deck, patterson-executive-deck,
-  patterson-corporate-page, patterson-file-manager, patterson-docs, patterson-tutorialkit,
+- **Ten plugins**: patterson-brand, patterson-deck, patterson-executive-deck,
+  patterson-corporate-page, patterson-file-manager, patterson-docs,
   patterson-starlight, patterson-vitepress, patterson-corporate-website, patterson-storefront
-- **Nine of the eleven** carry a full `ds/` snapshot (`tokens/`, `styles.css`, `components/`).
+- **Eight of the ten** carry a full `ds/` snapshot (`tokens/`, `styles.css`, `components/`).
   `patterson-starlight` and `patterson-vitepress` ship only `ds/templates/<framework>/`, so the
-  byte-identical-snapshot invariant applies to the nine, not to all eleven.
+  byte-identical-snapshot invariant applies to the eight, not to all ten.
 
 ## Phase 0: Load Focus Area History
 

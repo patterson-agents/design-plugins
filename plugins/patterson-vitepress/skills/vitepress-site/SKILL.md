@@ -12,8 +12,7 @@ brand. VitePress 1.6.4, pinned exactly, with a committed `bun.lock`.
 Reach for this when the user says "docs site", "documentation site for this repo",
 "VitePress", "handbook", or "guides and reference site", and especially when the team
 already writes Vue or wants a single Vite dependency. Pick `patterson-starlight`
-instead when the site needs Astro's content collections or MDX components, and
-`patterson-tutorialkit` when they want in-browser interactive lessons rather than pages.
+instead when the site needs Astro's content collections or MDX components.
 
 ## Scaffolding workflow
 

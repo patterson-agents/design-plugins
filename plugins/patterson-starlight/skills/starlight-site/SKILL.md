@@ -13,8 +13,7 @@ Companies brand. Astro 7.1.5 and Starlight 0.41.5, pinned exactly, with a commit
 Reach for this when the user says "docs site", "documentation site for this repo",
 "Starlight", "knowledge base", or "guides and reference site". Pick
 `patterson-vitepress` instead when the user wants VitePress or a Vue-flavored
-toolchain, and `patterson-tutorialkit` when they want in-browser interactive lessons
-rather than pages.
+toolchain.
 
 ## Scaffolding workflow
 

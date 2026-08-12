@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repository is
 
-A **Claude Code plugin marketplace** for the Patterson Companies design system — not an application. There is no bundler, no test suite, no server to run. The repo is a catalog (`.claude-plugin/marketplace.json`) plus **11 self-contained plugins** under `plugins/`. Each plugin packages the same four parts:
+A **Claude Code plugin marketplace** for the Patterson Companies design system — not an application. There is no bundler, no test suite, no server to run. The repo is a catalog (`.claude-plugin/marketplace.json`) plus **10 self-contained plugins** under `plugins/`. Each plugin packages the same four parts:
 
 - `skills/<name>/SKILL.md` — auto-invoked knowledge Claude loads on relevant work
 - `commands/*.md` — explicit slash-command scaffold workflows
 - `agents/*.md` — a subagent specialist Claude can delegate to
 - `ds/` — a self-contained snapshot of every design-system file that plugin needs (tokens, the CSS component layer `components/components.css`, fonts, logos, and the plugin's own HTML/JSX artifact)
 
-The plugins: `patterson-brand` (core — install first), `patterson-deck`, `patterson-executive-deck`, `patterson-corporate-page`, `patterson-file-manager`, `patterson-docs`, `patterson-tutorialkit`, `patterson-starlight`, `patterson-vitepress` (templates), `patterson-corporate-website`, `patterson-storefront` (UI kits).
+The plugins: `patterson-brand` (core — install first), `patterson-deck`, `patterson-executive-deck`, `patterson-corporate-page`, `patterson-file-manager`, `patterson-docs`, `patterson-starlight`, `patterson-vitepress` (templates), `patterson-corporate-website`, `patterson-storefront` (UI kits).
 
 `patterson-starlight` and `patterson-vitepress` are the exception to the `ds/` shape below: they ship **only** `ds/templates/<framework>/`, a runnable site with a pinned `package.json` and a committed `bun.lock`, and no token/component snapshot. Their brand surface is a single stylesheet that remaps the framework's own theme variables onto Patterson tokens.
 
@@ -48,10 +48,10 @@ The marketplace suffix is `@patterson-design` (from `marketplace.json` `name`), 
 - **`ds/` snapshots are intentionally duplicated** across plugins so each plugin is self-contained. A change to a shared brand-core file (a token, font, or logo) must be **re-copied into every plugin's `ds/`** that references it — there is no shared/symlinked source.
 - **Ship only the assets a plugin actually references.** Because every `ds/` is duplicated, an unused file costs its size once per plugin. The SVG logo lockups and Proxima Nova woff2 subsets are small and live in every `ds/assets/`; the raster brand imagery (`wave-bg-navy.webp`, `photo-markets.webp`, `value-prop.webp`, `color-palette.webp`) is heavy and is snapshotted **only** into the plugins whose files reference it — currently `patterson-brand` (all four) and `patterson-deck` (wave background + photo band). Do not copy raster art into a plugin "just in case"; add it when a template starts using it.
 - **Keep raster art web-sized.** Brand imagery is stored as web-optimized `.webp`, downscaled to its largest on-screen use (≤ 1920 px wide). Any PNG re-copied from upstream gets downscaled and converted to `.webp` (via `pngquant`/`optipng` then `cwebp`, or equivalent), not committed at full resolution.
-- **`ds/tokens/`, `ds/styles.css` and `ds/components/` are byte-identical across all nine plugins that carry them.** (`patterson-starlight` and `patterson-vitepress` carry none of the three — they ship only `ds/templates/`.) Change one, re-copy to the other eight, and verify with md5. There is no compiled component bundle any more — `components/components.css` is hand-authored and every rule carries a provenance citation.
+- **`ds/tokens/`, `ds/styles.css` and `ds/components/` are byte-identical across all eight plugins that carry them.** (`patterson-starlight` and `patterson-vitepress` carry none of the three — they ship only `ds/templates/`.) Change one, re-copy to the other seven, and verify with md5. There is no compiled component bundle any more — `components/components.css` is hand-authored and every rule carries a provenance citation.
 - **`.claude-plugin/` holds only manifests** — `marketplace.json` at the repo-root `.claude-plugin/`, `plugin.json` at each plugin's `.claude-plugin/`. Skills, commands, and agents live *outside* `.claude-plugin/`, at the plugin root.
 - **Dual version source of truth:** for any content change, bump `version` in **both** `plugins/<name>/.claude-plugin/plugin.json` **and** the matching entry in `.claude-plugin/marketplace.json`, and keep them equal.
-- **One-to-one:** every folder under `plugins/` has exactly one entry in `marketplace.json`, and vice versa (currently 11 each).
+- **One-to-one:** every folder under `plugins/` has exactly one entry in `marketplace.json`, and vice versa (currently 10 each).
 - **Frontmatter (YAML) per component type:** commands need `description` (+ optional `argument-hint`); agents need `name` and `description`; skills need `name`, `description`, `user-invocable`.
 - Agent/command files reference plugin files via `${CLAUDE_PLUGIN_ROOT}/ds/…` so they resolve wherever the plugin is installed.
 

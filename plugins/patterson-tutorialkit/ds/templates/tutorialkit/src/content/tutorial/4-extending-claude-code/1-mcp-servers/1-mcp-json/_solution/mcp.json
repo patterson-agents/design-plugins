@@ -1,9 +1,0 @@
-{
-  "mcpServers": {
-    "patterson-assets": {
-      "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/servers/assets.mjs"],
-      "env": { "ASSET_INDEX": "${CLAUDE_PLUGIN_ROOT}/data/index.json" }
-    }
-  }
-}
