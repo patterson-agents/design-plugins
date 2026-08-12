@@ -1138,3 +1138,47 @@ textarea.pat-input {
     transition: none;
   }
 }
+
+/* ------------------------------------------------------------
+   13. DOCS SHELL  — .pat-docs
+   ------------------------------------------------------------
+   Page-shell theme tokens for the patterson-docs plugin's
+   VitePress-style scaffold (ds/templates/patterson-docs/PattersonDocs.dc.html).
+   Mirrored verbatim from that template's own inline <style> block so the
+   class resolves from the shared CSS layer as well as the self-contained
+   card. Keep both copies in sync if the docs shell theme changes. */
+.pat-docs {
+  --doc-bg: #ffffff;
+  --doc-surface: #F8F8F8;
+  --doc-surface-2: #ffffff;
+  --doc-ink: #003767;
+  --doc-muted: #58585B;
+  --doc-faint: #828284;
+  --doc-border: #D5D5D6;
+  --doc-border-soft: #ececec;
+  --doc-nav-bg: rgba(255, 255, 255, .85);
+  --doc-accent: #147EC2;
+  --doc-accent-strong: #003767;
+  --doc-shell-max: 1440px;
+  --doc-article-max: 720px;
+}
+.pat-docs[data-theme="dark"] {
+  --doc-bg: #15181e;
+  --doc-surface: #20252e;
+  --doc-surface-2: #1b1f27;
+  --doc-ink: #f1f3f5;
+  --doc-muted: #b4bac4;
+  --doc-faint: #828a96;
+  --doc-border: #2a2f39;
+  --doc-border-soft: #262b34;
+  --doc-nav-bg: rgba(21, 24, 30, .86);
+  --doc-accent: #4aa8e6;
+  --doc-accent-strong: #0d4f86;
+}
+.pat-docs[data-accent="teal"] { --doc-accent: #00A8E1; --doc-accent-strong: #0a6a99; }
+.pat-docs[data-accent="green"] { --doc-accent: #2FA36B; --doc-accent-strong: #22794f; }
+.pat-docs[data-accent="violet"] { --doc-accent: #7B6AF0; --doc-accent-strong: #4a3bb5; }
+.pat-docs[data-theme="dark"][data-accent="teal"] { --doc-accent: #3dc3f5; --doc-accent-strong: #0a6a99; }
+.pat-docs[data-theme="dark"][data-accent="green"] { --doc-accent: #4fc98c; --doc-accent-strong: #22794f; }
+.pat-docs[data-theme="dark"][data-accent="violet"] { --doc-accent: #9d8ffb; --doc-accent-strong: #4a3bb5; }
+.pat-docs[data-width="wide"] { --doc-shell-max: 1680px; --doc-article-max: 860px; }
