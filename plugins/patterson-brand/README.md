@@ -61,7 +61,7 @@ ds/
 ├── integrations/           # tailwind.css (v4) · tailwind.config.js (v3) · uno.config.js
 │                           # theme-ui.js · shadcn-theme.css · README.md
 ├── guidelines/             # browser-openable specimen cards (colors, type, spacing…)
-├── assets/brand/           # logo lockups · wave bg · photo band · value-prop art
+├── assets/brand/           # logo lockups · wave bg · photo band · value-prop art · palette page
 ├── assets/fonts/           # Proxima Nova woff2 (400/700/italic)
 └── readme.md               # the full design guide — the authoritative source
 ```

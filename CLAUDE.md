@@ -44,6 +44,8 @@ The marketplace suffix is `@patterson-design` (from `marketplace.json` `name`), 
 
 - **`ds/` is a mirror of the source tree.** Files reference each other with relative paths (`../../styles.css`, `../../components/components.css`, `../../assets/brand/…`) that must resolve identically in this repo, in the plugin cache, and after being copied into a consuming project. **Never flatten, rename, or move files inside any `ds/`.**
 - **`ds/` snapshots are intentionally duplicated** across plugins so each plugin is self-contained. A change to a shared brand-core file (a token, font, or logo) must be **re-copied into every plugin's `ds/`** that references it — there is no shared/symlinked source.
+- **Ship only the assets a plugin actually references.** Because every `ds/` is duplicated, an unused file costs its size once per plugin. The SVG logo lockups and Proxima Nova woff2 subsets are small and live in every `ds/assets/`; the raster brand imagery (`wave-bg-navy.webp`, `photo-markets.webp`, `value-prop.webp`, `color-palette.webp`) is heavy and is snapshotted **only** into the plugins whose files reference it — currently `patterson-brand` (all four) and `patterson-deck` (wave background + photo band). Do not copy raster art into a plugin "just in case"; add it when a template starts using it.
+- **Keep raster art web-sized.** Brand imagery is stored as web-optimized `.webp`, downscaled to its largest on-screen use (≤ 1920 px wide). Any PNG re-copied from upstream gets downscaled and converted to `.webp` (via `pngquant`/`optipng` then `cwebp`, or equivalent), not committed at full resolution.
 - **`ds/tokens/`, `ds/styles.css` and `ds/components/` are byte-identical across all nine plugins.** Change one, re-copy to the other eight, and verify with md5. There is no compiled component bundle any more — `components/components.css` is hand-authored and every rule carries a provenance citation.
 - **`.claude-plugin/` holds only manifests** — `marketplace.json` at the repo-root `.claude-plugin/`, `plugin.json` at each plugin's `.claude-plugin/`. Skills, commands, and agents live *outside* `.claude-plugin/`, at the plugin root.
 - **Dual version source of truth:** for any content change, bump `version` in **both** `plugins/<name>/.claude-plugin/plugin.json` **and** the matching entry in `.claude-plugin/marketplace.json`, and keep them equal.
@@ -62,6 +64,8 @@ The marketplace suffix is `@patterson-design` (from `marketplace.json` `name`), 
 ## Maintenance loop (source → snapshots)
 
 This marketplace is *generated from* the upstream design-system project. When the source changes: (1) re-copy the changed files into every affected plugin `ds/` (plain copies, identical paths), (2) bump the paired versions, (3) `claude plugin validate .`, then commit.
+
+Raster assets get one extra step before (2): downscale to the largest size they are actually displayed at (≤ 1920 px wide), convert to `.webp` (via `pngquant`/`optipng` then `cwebp`, or equivalent), and copy the optimized file only into the plugins that reference it. Install size is the metric that matters — every megabyte in a `ds/` is paid again by each plugin that carries it.
 
 ## Reference docs
 
