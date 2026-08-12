@@ -1,6 +1,6 @@
 {
   "name": "Patterson Design — Agent Workbench",
-  "image": "mcr.microsoft.com/devcontainers/base:alpine",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
   "features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "true",

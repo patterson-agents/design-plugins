@@ -1,6 +1,6 @@
 # Dev Container Template — patterson-agents
 
-Spec-compliant [Dev Container Template](https://containers.dev/implementors/templates/) mirroring this repo's `.devcontainer/` (Node 22 + Claude Code + OpenCode + Copilot CLI + gh).
+Spec-compliant [Dev Container Template](https://containers.dev/implementors/templates/) mirroring this repo's `.devcontainer/` (Node 24 + Claude Code + OpenCode + Copilot CLI + gh).
 
 - **Publish:** the `publish-devcontainer-template.yml` workflow pushes it to GHCR via `devcontainers/action` on changes under this folder.
 - **Consume:** `devcontainer templates apply --workspace-folder . -t ghcr.io/patterson-agents/design-system/patterson-agents:latest`, or pick it in VS Code / Codespaces UI once indexed.

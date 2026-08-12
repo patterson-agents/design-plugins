@@ -1,6 +1,6 @@
 # .devcontainer/
 
-Node 22 (bookworm) dev container with the full agent toolchain.
+Node 24 (bookworm) dev container with the full agent toolchain.
 
 | File | Role |
 |---|---|

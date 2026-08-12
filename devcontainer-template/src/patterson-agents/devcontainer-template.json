@@ -2,7 +2,7 @@
   "id": "patterson-agents",
   "version": "1.0.0",
   "name": "Patterson Design — Agent Workbench",
-  "description": "Node 22 dev container with Claude Code, OpenCode, GitHub Copilot CLI and the gh CLI preinstalled, tuned for working on the Patterson Design Claude Code plugin marketplace (or any repo consuming it).",
+  "description": "Node 24 dev container with Claude Code, OpenCode, GitHub Copilot CLI and the gh CLI preinstalled, tuned for working on the Patterson Design Claude Code plugin marketplace (or any repo consuming it).",
   "documentationURL": "https://github.com/patterson-agents/design-system",
   "publisher": "Patterson Companies Design System",
   "keywords": [
