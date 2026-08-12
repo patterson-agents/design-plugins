@@ -1,0 +1,7 @@
+{
+  "name": "patterson-design",
+  "plugins": [
+    { "name": "patterson-brand", "source": "./plugins/patterson-brand" },
+    { "name": "patterson-deck" }
+  ]
+}

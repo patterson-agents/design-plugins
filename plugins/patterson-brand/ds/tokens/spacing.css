@@ -1,0 +1,89 @@
+/* ============================================================
+   Patterson Companies — Spacing, Radii, Layout Tokens
+   ------------------------------------------------------------
+   PROVENANCE KEYS
+     [BG25 p.N]  Brand Guide 2025 (VERSION 3.2025), page N
+     [DS20 p.N]  DesignSystem_042120.pdf, slide N
+     [DPL]       Patterson Digital Pattern Library v5.7.2 production CSS
+     [TBD]       Patterson publishes no value; nothing has been invented
+   ============================================================ */
+
+:root {
+  /* --- Spacing scale ---------------------------------------
+     [TBD: Patterson publishes no named spacing scale in BG25 or DS20.
+      The documented reality is a 5px grid: [DPL] padding steps are
+      5 / 10 / 15 / 20 / 25 / 30 / 50 / 60 / 80px, and [BG25 p.57]
+      specifies 30px button padding. The ladder below is the layout
+      convenience the templates were built on; the sourced 5px steps
+      are exposed separately as --pat-grid-* underneath.] */
+  --space-0:   0;
+  --space-1:   0.25rem;  /* 4  */
+  --space-2:   0.5rem;   /* 8  */
+  --space-3:   0.75rem;  /* 12 */
+  --space-4:   1rem;     /* 16 */
+  --space-5:   1.5rem;   /* 24 */
+  --space-6:   2rem;     /* 32 */
+  --space-7:   2.5rem;   /* 40 */
+  --space-8:   3rem;     /* 48 */
+  --space-9:   4rem;     /* 64 */
+  --space-10:  5rem;     /* 80 */
+  --space-11:  6rem;     /* 96 */
+  --space-12:  8rem;     /* 128 */
+
+  /* --- Sourced 5px grid [DPL; BG25 p.57] ------------------- */
+  --pat-grid-base: 5px;
+  --pat-grid-1:    5px;
+  --pat-grid-2:   10px;
+  --pat-grid-3:   15px;
+  --pat-grid-4:   20px;
+  --pat-grid-5:   25px;
+  --pat-grid-6:   30px; /* [BG25 p.57] button horizontal padding */
+  --pat-grid-10:  50px;
+  --pat-grid-12:  60px;
+  --pat-grid-16:  80px;
+
+  /* --- Radii -----------------------------------------------
+     [BG25 p.57] "Rounded corners: 5px radius" — confirmed as the
+     dominant [DPL] value (20 occurrences). 5px is THE brand radius.
+     [TBD: no other radius step is published. Only 5px (default),
+      30px (pill / toggle track, [DPL]) and 50% (circle, [DPL]) are
+      documented; the xs/md/lg/xl/2xl steps below are unsourced and
+      kept only so existing markup keeps resolving.] */
+  --radius-xs:   2px;   /* [TBD] */
+  --radius-sm:   5px;   /* [BG25 p.57] the Patterson radius */
+  --radius-md:   6px;   /* [TBD] */
+  --radius-lg:   10px;  /* [TBD] */
+  --radius-xl:   16px;  /* [TBD] */
+  --radius-2xl:  24px;  /* [TBD] */
+  --radius-pill: 999px; /* [DPL] ships 30px on the toggle track [TBD for other controls] */
+  --radius-pat:  5px;   /* [BG25 p.57] alias — prefer this in new work */
+  --radius-circle: 50%; /* [DPL] */
+
+  /* --- Layout widths ---------------------------------------
+     [DPL] page wrapper max-width is 1300px. */
+  --container-max:  1300px; /* [DPL] */
+  --container-text: 720px;  /* [TBD: no measure is published] */
+  --gutter:         clamp(1.25rem, 0.5rem + 3vw, 4rem); /* [TBD] @kind spacing */
+
+  /* --- Breakpoints [DPL] ----------------------------------- */
+  --bp-mobile:  600px;  /* [DPL] max-width media query */
+  --bp-tablet:  900px;  /* [DPL] max-width media query */
+  --bp-desktop: 1300px; /* [DPL] min-width media query */
+
+  /* --- Control sizing --------------------------------------
+     [BG25 p.57] button height is 46px. [DPL] .button ships
+     min-height 45px; the 2025 Brand Guide is authoritative. */
+  --control-h-sm: 34px;  /* [TBD: no small control height is published] */
+  --control-h-md: 46px;  /* [BG25 p.57] */
+  --control-h-lg: 54px;  /* [TBD: no large control height is published] */
+  --control-h-dpl: 45px; /* [DPL] .button, .quantity-input__button */
+  --control-px:   30px;  /* [BG25 p.57] width = type width + 30px padding L and R */
+  --control-min-w: 100px; /* [DPL] */
+  --control-max-w: 600px; /* [DPL] */
+  --icon-size:    80px;  /* [DS20 p.18/35/38; IMG20 p.2] SVG icons 80x80 */
+
+  /* --- Borders ---------------------------------------------
+     [DPL] ships 1px rules and a 1px navy secondary-button outline. */
+  --border-w:       1px; /* [DPL] */
+  --border-w-thick: 2px; /* [TBD: no 2px border is published] */
+}

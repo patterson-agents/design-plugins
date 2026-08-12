@@ -1,0 +1,310 @@
+{
+  "$schema": "https://theme-ui.com/theme-spec",
+  "$meta": {
+    "name": "Patterson Companies Design System",
+    "version": "2.0.0",
+    "brand": "Patterson Companies, Inc.",
+    "promise": "Trusted Expertise. Unrivaled Support.",
+    "namespace": "PattersonCompaniesDesignSystem_1f7cbe",
+    "description": "Canonical, machine-readable record of the Patterson theme. Mirrors the CSS custom properties in tokens/*.css and is the single source the framework adapters in integrations/ are generated from. Shaped to the Theme UI theme spec (https://theme-ui.com/theme-spec) so it can be consumed directly by Theme UI, and mapped verbatim by the Tailwind v4, UnoCSS and shadcn/ui adapters.",
+    "note": "Edit tokens/*.css and this file together so they never drift — every adapter reads from these values. Colors are the exact Patterson brand hexes; do not re-derive or replace them.",
+    "authoritativeSource": "Patterson Companies Brand Guide, VERSION 3.2025 (2025-04-08)",
+    "provenanceKeys": { "BG25": "Brand Guide 2025", "DS20": "DesignSystem_042120.pdf", "DPL": "Patterson Digital Pattern Library v5.7.2 production CSS", "TBD": "Patterson publishes no value — nothing has been invented" },
+    "caseRule": "Sentence case is mandatory (BG25 p.25, p.59). All caps are barred from digital channels. This reverses the 2022 guide."
+  },
+
+  "useCustomProperties": true,
+  "useBorderBox": true,
+
+  "colors": {
+    "text": "#58585B",
+    "background": "#FFFFFF",
+    "primary": "#003767",
+    "secondary": "#00A8E1",
+    "accent": "#00A8E1",
+    "highlight": "#BFE9F8",
+    "muted": "#ECECEC",
+    "heading": "#003767",
+    "textStrong": "#003767",
+    "textMuted": "#828284",
+    "textInverse": "#FFFFFF",
+    "link": "#147CBD",
+    "linkHover": "#003767",
+
+    "navy": "#003767",
+    "sky": "#00A8E1",
+    "grayBrand": "#58585B",
+    "white": "#FFFFFF",
+    "blue": "#147EC2",
+    "blueLight": "#6DCFF6",
+    "grayLight": "#ECECEC",
+    "green": "#7BC24D",
+    "teal": "#00817D",
+    "purple": "#522E91",
+
+    "_tintNote": "BG25 p.24 prints an unlabelled tint ramp; sampling the vector swatches gives a uniform 75/50/25 over white for every palette colour. There is no 10/20/40/60/80 ramp in any Patterson source. [TBD: the step percentages themselves are not printed.]",
+    "navyTints":      { "75": "#40698D", "50": "#809BB3", "25": "#BFCDD9" },
+    "skyTints":       { "75": "#40BEE8", "50": "#80D4F0", "25": "#BFE9F8" },
+    "grayTints":      { "75": "#828284", "50": "#ACACAD", "25": "#D5D5D6" },
+    "blueTints":      { "75": "#4F9ED1", "50": "#8ABEE0", "25": "#C4DFF0" },
+    "blueLightTints": { "75": "#92DBF8", "50": "#B6E7FA", "25": "#DAF3FD" },
+    "greenTints":     { "75": "#9CD17A", "50": "#BDE0A6", "25": "#DEF0D2" },
+    "tealTints":      { "75": "#40A09E", "50": "#80C0BE", "25": "#BFE0DE" },
+    "purpleTints":    { "75": "#7D62AC", "50": "#A896C8", "25": "#D4CBE4" },
+
+    "digitalSky": "#269BCB",
+    "digitalLink": "#147CBD",
+    "digitalGreen": "#0CA50F",
+    "digitalTeal": "#008E8B",
+    "digitalPurple": "#512E91",
+    "digitalPurpleOnDark": "#9660F3",
+    "greyMedium": "#9B9B9B",
+    "greyLight": "#F8F8F8",
+    "navyDeep": "#001C34",
+    "rule": "#D8D8D8",
+    "fieldBorder": "#A8A9AC",
+    "disabledBg": "#F0F0F0",
+
+    "gray": {
+      "ink": "#003767",
+      "700": "#58585B",
+      "600": "#58585B",
+      "500": "#828284",
+      "400": "#9B9B9B",
+      "300": "#ACACAD",
+      "200": "#D5D5D6",
+      "100": "#ECECEC",
+      "50":  "#F8F8F8"
+    },
+
+    "_statusNote": "DS20 p.37 names four message-box states but publishes no hexes; these are the shipped DPL values. [TBD: no status colours appear in BG25, and no per-status background tint is published anywhere — the *Bg entries point at the one documented digital background neutral #F8F8F8 (DS20 p.7) rather than at invented pastels.]",
+    "success": "#0CA50F", "successBg": "#F8F8F8",
+    "info":    "#147EC2", "infoBg":    "#F8F8F8",
+    "warning": "#F5A623", "warningBg": "#F8F8F8",
+    "danger":  "#D0021B", "dangerBg":  "#F8F8F8",
+    "urgent":  "#003767",
+
+    "border": "#ECECEC",
+    "borderDefault": "#D8D8D8",
+    "borderStrong": "#A8A9AC",
+    "borderBrand": "#00A8E1",
+
+    "surfacePage": "#FFFFFF",
+    "surfaceSubtle": "#F8F8F8",
+    "surfaceMuted": "#ECECEC",
+    "surfaceBrand": "#003767",
+    "surfaceBrandAlt": "#00A8E1"
+  },
+
+  "fonts": {
+    "body": "'proxima-nova', Arial, sans-serif",
+    "heading": "'proxima-nova', Arial, sans-serif",
+    "display": "'proxima-nova', Arial, sans-serif",
+    "monospace": "'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace"
+  },
+
+  "fontWeights": {
+    "light": 300,
+    "body": 400,
+    "regular": 400,
+    "medium": 500,
+    "semibold": 600,
+    "bold": 700,
+    "heading": 700,
+    "extra": 800,
+    "black": 900
+  },
+
+  "fontSizes": {
+    "_note": "dpl* entries are the sourced shipped web scale [DPL]. The clamp() entries are a layout convenience: [TBD] Patterson publishes no fluid type scale (BG25 p.27 specifies leading/tracking relationally, not absolute steps).",
+    "dplH1": "36px",
+    "dplH1Mobile": "24px",
+    "dplH2": "24px",
+    "dplH3": "18px",
+    "dplBody": "18px",
+    "eyebrow": "15px",
+    "cta": "15px",
+    "dplSmall": "13px",
+    "xs": "0.75rem",
+    "sm": "0.875rem",
+    "body": "1rem",
+    "h5": "1.0625rem",
+    "lead": "1.25rem",
+    "h4": "1.25rem",
+    "h3": "clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem)",
+    "h2": "clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem)",
+    "h1": "clamp(2.25rem, 1.5rem + 2.6vw, 3.25rem)",
+    "display": "clamp(2.75rem, 1.6rem + 4.2vw, 4.5rem)",
+    "stat": "clamp(2.5rem, 1.4rem + 4vw, 4rem)"
+  },
+
+  "lineHeights": {
+    "printHeadline": 0.75,
+    "tight": 1.15,
+    "snug": 1.25,
+    "heading": 1.3,
+    "bodyMin": 1.25,
+    "body": 1.5,
+    "relaxed": 1.5,
+    "eyebrow": "19px",
+    "cta": 1.15
+  },
+
+  "letterSpacings": {
+    "tight": "-0.025em",
+    "snug": "-0.01em",
+    "normal": "0",
+    "wide": "0.04em",
+    "caps": "0.08em"
+  },
+
+  "space": {
+    "0": "0",
+    "1": "0.25rem",
+    "2": "0.5rem",
+    "3": "0.75rem",
+    "4": "1rem",
+    "5": "1.5rem",
+    "6": "2rem",
+    "7": "2.5rem",
+    "8": "3rem",
+    "9": "4rem",
+    "10": "5rem",
+    "11": "6rem",
+    "12": "8rem"
+  },
+
+  "sizes": {
+    "containerMax": "1300px",
+    "containerText": "720px",
+    "controlSm": "34px",
+    "controlMd": "46px",
+    "controlLg": "54px"
+  },
+
+  "radii": {
+    "xs": "2px",
+    "sm": "5px",
+    "md": "6px",
+    "lg": "10px",
+    "xl": "16px",
+    "2xl": "24px",
+    "pill": "999px"
+  },
+
+  "borderWidths": {
+    "hairline": "1px",
+    "thick": "2px"
+  },
+
+  "shadows": {
+    "xs": "0 1px 2px rgba(0, 55, 103, 0.06)",
+    "sm": "0 1px 3px rgba(0, 55, 103, 0.08), 0 1px 2px rgba(0, 55, 103, 0.06)",
+    "md": "0 4px 12px rgba(0, 55, 103, 0.10), 0 2px 4px rgba(0, 55, 103, 0.06)",
+    "lg": "0 12px 28px rgba(0, 55, 103, 0.12), 0 4px 10px rgba(0, 55, 103, 0.07)",
+    "xl": "0 24px 48px rgba(0, 55, 103, 0.16)",
+    "focus": "0 0 0 3px rgba(0, 168, 225, 0.45)",
+    "error": "0 0 0 3px rgba(208, 2, 27, 0.35)"
+  },
+
+  "transitions": {
+    "fast": "120ms",
+    "base": "200ms",
+    "slow": "320ms",
+    "easeStandard": "cubic-bezier(0.2, 0, 0.2, 1)",
+    "easeOut": "cubic-bezier(0.16, 1, 0.3, 1)"
+  },
+
+  "text": {
+    "display": { "fontFamily": "display", "fontSize": "display", "fontWeight": "bold", "lineHeight": "tight", "letterSpacing": "tight", "color": "heading" },
+    "heading": { "fontFamily": "heading", "fontWeight": "bold", "lineHeight": "heading", "letterSpacing": "snug", "color": "heading" },
+    "lead": { "fontSize": "lead", "lineHeight": "relaxed", "color": "text" },
+    "body": { "fontSize": "body", "lineHeight": "body", "color": "text" },
+    "muted": { "color": "textMuted" },
+    "eyebrow": { "fontSize": "eyebrow", "fontWeight": "bold", "lineHeight": "eyebrow", "letterSpacing": "normal", "textTransform": "none", "color": "teal" },
+    "stat": { "fontFamily": "display", "fontSize": "stat", "fontWeight": "bold", "lineHeight": "tight", "letterSpacing": "tight", "color": "sky" }
+  },
+
+  "buttons": {
+    "primary": {
+      "color": "white", "bg": "navy", "border": "2px solid", "borderColor": "navy",
+      "borderRadius": "pill", "fontFamily": "body", "fontWeight": "semibold",
+      "cursor": "pointer", "transition": "background 120ms, color 120ms, border-color 120ms",
+      "&:hover": { "bg": "sky", "borderColor": "sky" }
+    },
+    "sky": {
+      "color": "white", "bg": "sky", "border": "2px solid", "borderColor": "sky",
+      "borderRadius": "pill", "fontFamily": "body", "fontWeight": "semibold", "cursor": "pointer",
+      "&:hover": { "bg": "navy", "borderColor": "navy" }
+    },
+    "outline": {
+      "color": "navy", "bg": "transparent", "border": "2px solid", "borderColor": "navy",
+      "borderRadius": "pill", "fontFamily": "body", "fontWeight": "semibold", "cursor": "pointer",
+      "&:hover": { "bg": "navy", "color": "white" }
+    },
+    "ghost": {
+      "color": "navy", "bg": "transparent", "border": "2px solid", "borderColor": "transparent",
+      "borderRadius": "pill", "fontFamily": "body", "fontWeight": "semibold", "cursor": "pointer",
+      "&:hover": { "bg": "navyTints.25" }
+    },
+    "onDark": {
+      "color": "navy", "bg": "white", "border": "2px solid", "borderColor": "white",
+      "borderRadius": "pill", "fontFamily": "body", "fontWeight": "semibold", "cursor": "pointer",
+      "&:hover": { "bg": "sky", "color": "white", "borderColor": "sky" }
+    }
+  },
+
+  "cards": {
+    "default": {
+      "bg": "background", "border": "1px solid", "borderColor": "border",
+      "borderRadius": "lg", "boxShadow": "sm", "padding": 5
+    },
+    "interactive": {
+      "bg": "background", "border": "1px solid", "borderColor": "border",
+      "borderRadius": "lg", "boxShadow": "sm", "padding": 5,
+      "transition": "transform 200ms, box-shadow 200ms",
+      "&:hover": { "transform": "translateY(-3px)", "boxShadow": "lg" }
+    }
+  },
+
+  "badges": {
+    "navy":   { "color": "white", "bg": "navy", "borderRadius": "pill" },
+    "sky":    { "color": "white", "bg": "sky", "borderRadius": "pill" },
+    "subtle": { "color": "navy", "bg": "navyTints.25", "borderRadius": "pill" },
+    "success":{ "color": "success", "bg": "successBg", "borderRadius": "pill" },
+    "info":   { "color": "info", "bg": "infoBg", "borderRadius": "pill" },
+    "warning":{ "color": "warning", "bg": "warningBg", "borderRadius": "pill" },
+    "danger": { "color": "danger", "bg": "dangerBg", "borderRadius": "pill" }
+  },
+
+  "forms": {
+    "input": {
+      "fontFamily": "body", "fontSize": "body", "color": "text",
+      "bg": "background", "borderColor": "borderDefault", "borderRadius": "md",
+      "&:focus": { "borderColor": "sky", "boxShadow": "focus", "outline": "none" }
+    },
+    "label": { "fontSize": "sm", "fontWeight": "semibold", "color": "heading" },
+    "select": { "fontFamily": "body", "borderColor": "borderDefault", "borderRadius": "md" },
+    "textarea": { "fontFamily": "body", "borderColor": "borderDefault", "borderRadius": "md" }
+  },
+
+  "links": {
+    "default": { "color": "link", "textDecoration": "none", "&:hover": { "color": "linkHover" } },
+    "nav": { "color": "heading", "fontWeight": "semibold", "textDecoration": "none", "&:hover": { "color": "sky" } }
+  },
+
+  "styles": {
+    "root": {
+      "fontFamily": "body", "fontSize": "body", "lineHeight": "body",
+      "color": "text", "bg": "background",
+      "WebkitFontSmoothing": "antialiased", "textRendering": "optimizeLegibility"
+    },
+    "h1": { "variant": "text.heading", "fontSize": "h1" },
+    "h2": { "variant": "text.heading", "fontSize": "h2" },
+    "h3": { "variant": "text.heading", "fontSize": "h3" },
+    "h4": { "variant": "text.heading", "fontSize": "h4" },
+    "h5": { "variant": "text.heading", "fontSize": "h5" },
+    "p": { "marginTop": 0, "marginBottom": 4, "textWrap": "pretty" },
+    "a": { "variant": "links.default" }
+  }
+}

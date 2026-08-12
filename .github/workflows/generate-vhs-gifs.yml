@@ -1,0 +1,37 @@
+name: Generate VHS GIFs
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "demos/vhs/*.tape"
+      - ".github/workflows/generate-vhs-gifs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-gifs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Render all tapes
+        run: |
+          set -euo pipefail
+          mkdir -p demos/vhs/gif
+          for tape in demos/vhs/*.tape; do
+            docker run --rm \
+              -v "$PWD:/vhs" \
+              -w /vhs \
+              ghcr.io/charmbracelet/vhs:latest \
+              "$tape"
+          done
+
+      - name: Commit generated GIFs
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "chore: regenerate VHS GIF demos"
+          file_pattern: demos/vhs/gif/*.gif

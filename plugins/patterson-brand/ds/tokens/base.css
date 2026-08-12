@@ -1,0 +1,94 @@
+/* ============================================================
+   Patterson Companies — Base element defaults & helpers
+   Applied globally once tokens are loaded.
+   ------------------------------------------------------------
+   PROVENANCE KEYS
+     [BG25 p.N]  Brand Guide 2025 (VERSION 3.2025), page N
+     [DS20 p.N]  DesignSystem_042120.pdf, slide N
+     [DPL]       Patterson Digital Pattern Library v5.7.2 production CSS
+
+   SENTENCE CASE IS MANDATORY. [BG25 p.25]: "All caps are to be
+   avoided in any digital channel since this is regarded as
+   shouting." [BG25 p.59]: titles, headlines, subheads, text and
+   captions are all sentence case. This is a hard reversal of the
+   2022 all-caps guidance — do not reintroduce all-caps text
+   transforms anywhere.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);          /* [DPL] body 1.5; [BG25 p.27] 125-150% */
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em;
+  font-family: var(--font-display);
+  color: var(--text-heading);           /* [DPL] .rtf h1/h2/h3 color:#003767 */
+  line-height: var(--lh-heading);       /* [DPL] h2/h3 1.3 */
+  font-weight: var(--fw-bold);          /* [DPL] h2/h3 700 */
+  letter-spacing: var(--ls-snug);       /* [BG25 p.27] tracking -10 */
+  text-transform: none;                 /* [BG25 p.25/p.59] sentence case */
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); font-weight: var(--fw-extra); } /* [BG25 p.25] Extrabold */
+h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); }
+h3 { font-size: var(--fs-h3); line-height: var(--lh-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+
+@media (max-width: 600px) {             /* [DPL] mobile breakpoint */
+  h1 { line-height: var(--lh-h1-mobile); }
+}
+
+p { margin: 0 0 1em; text-wrap: pretty; }
+
+a {
+  color: var(--text-link);              /* [DS20 p.8] link blue #147CBD; [DPL] a{} */
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-standard);
+}
+a:hover { color: var(--text-link-hover); }
+
+strong, b { font-weight: var(--fw-bold); }
+
+/* --- Eyebrow / overline ----------------------------------
+   [DS20 p.16] Eyebrows are small type on Parent patterns, kept short,
+   and "currently all eyebrows are teal". [DPL] .eyebrow ships
+   15px / 19px, weight 700, colour #00817D.
+   Eyebrows are SENTENCE CASE, not uppercase [DS20 p.10, p.16;
+   BG25 p.25]. The previous sky-blue uppercase treatment was wrong on
+   both colour and case. */
+.pat-eyebrow {
+  display: block;
+  font-size: var(--fs-dpl-eyebrow);     /* [DPL] 15px */
+  font-weight: var(--fw-bold);          /* [DPL] 700 */
+  line-height: var(--lh-eyebrow);       /* [DPL] 19px */
+  letter-spacing: var(--ls-normal);     /* [BG25 p.27] */
+  text-transform: none;                 /* [DS20 p.16] sentence case */
+  color: var(--pat-teal);               /* [DPL] .eyebrow #00817D */
+}
+
+/* --- Utility: readable container ------------------------- */
+.pat-container {
+  width: 100%;
+  max-width: var(--container-max);      /* [DPL] 1300px */
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--ring-focus);
+  border-radius: var(--radius-sm);      /* [BG25 p.57] 5px */
+}

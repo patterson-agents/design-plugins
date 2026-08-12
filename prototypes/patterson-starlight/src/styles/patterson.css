@@ -1,0 +1,120 @@
+/* ============================================================
+   Patterson Companies — Starlight theme
+   Remaps Starlight's `--sl-*` design tokens to Patterson brand
+   tokens. Loaded via `customCss` in astro.config.mjs.
+
+   Strategy: override ACCENT tiers + fonts + brand chrome only,
+   and leave Starlight's tuned neutral gray ramp intact — this
+   maximizes brand signal while avoiding contrast regressions.
+   Brand rule: no emoji anywhere; navy #003767, sky #00A8E1.
+   ============================================================ */
+
+/* --- Patterson primitives (theme-agnostic) ---------------- */
+:root {
+  --pat-navy: #003767;
+  --pat-sky: #00a8e1;
+  --pat-blue: #147ec2;
+  --pat-gray: #58585b;
+  --pat-white: #ffffff;
+  --pat-ink: #003767;
+
+  /* Tints — published 75/50/25 ramp over white [BG25 p.24].
+     There is no 10/20/40/60/80 ramp in any Patterson source. */
+  --pat-navy-25: #BFCDD9;
+  --pat-sky-25: #BFE9F8;
+  --pat-sky-50: #80D4F0;
+
+  /* Fonts — proxima-nova is the brand face [BG25 p.25], served by Adobe
+     Fonts kit uth1qfm (add the kit in a Head partial to render it). Arial
+     is the sanctioned substitute [BG25 p.25]. Never self-host. */
+  --pat-font-sans: 'proxima-nova', Arial, sans-serif;   /* [BG25 p.25] */
+  --pat-font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas,
+    monospace;
+
+  /* Type + chrome */
+  --sl-font: var(--pat-font-sans);
+  --sl-font-mono: var(--pat-font-mono);
+  --pat-radius-card: 5px; /* [BG25 p.57] "Rounded corners: 5px radius" */
+}
+
+/* --- DARK theme (Starlight default = :root) --------------- */
+/* Accent tuned for a dark canvas: bright sky reads as link text. */
+:root {
+  --sl-color-accent-low: #012d4d;
+  --sl-color-accent: #0a84b8;
+  --sl-color-accent-high: #9bdcf4;
+}
+
+/* --- LIGHT theme ------------------------------------------ */
+/* Accent tuned for a white canvas: navy reads as strong link text. */
+:root[data-theme='light'] {
+  --sl-color-accent-low: #d8eefb;
+  --sl-color-accent: var(--pat-blue);
+  --sl-color-accent-high: var(--pat-navy);
+
+  /* Nudge headings toward brand ink/navy and body to Patterson gray. */
+  --sl-color-white: var(--pat-ink);
+  --sl-color-text: var(--pat-gray);
+}
+
+/* ============================================================
+   Brand chrome — the signature Patterson surfaces
+   ============================================================ */
+
+/* Navy top bar with a sky hairline, in BOTH themes, white foreground. */
+.header {
+  background-color: var(--pat-navy);
+  border-bottom: 1px solid var(--pat-sky);
+}
+.header a,
+.header button,
+.header .site-title,
+starlight-menu-button button {
+  color: var(--pat-white);
+}
+/* Search affordance legible on navy. */
+site-search button {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--pat-white);
+}
+site-search button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Sky focus ring everywhere — the brand's signature interaction. */
+:focus-visible {
+  outline: 2px solid var(--pat-sky);
+  outline-offset: 2px;
+}
+
+/* Hero call-to-action links → Patterson pill buttons. */
+.sl-link-button {
+  border-radius: 999px;
+  font-weight: 600;
+}
+.sl-link-button.primary {
+  background-color: var(--pat-navy);
+  border-color: var(--pat-navy);
+  color: var(--pat-white);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+.sl-link-button.primary:hover {
+  background-color: var(--pat-sky); /* navy → sky on hover */
+  border-color: var(--pat-sky);
+}
+
+/* Cards and callouts → 10px radius, brand accent edge. */
+.card,
+.starlight-aside {
+  border-radius: var(--pat-radius-card);
+}
+.card {
+  border-color: var(--sl-color-hairline);
+}
+
+/* Eyebrow-style tagline under the hero title reads in sky. */
+.hero .tagline {
+  color: var(--pat-sky);
+  font-weight: 600;
+}

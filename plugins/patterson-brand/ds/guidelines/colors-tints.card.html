@@ -1,0 +1,94 @@
+<!-- @dsCard group="Colors" viewport="700x340" name="Tints — the published 75/50/25 ramp" subtitle="BG25 p.24 — &quot;Tints of the Patterson color palette are an option if used sparingly.&quot;" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 20px; background: var(--surface-page); }
+  .ramp { display: flex; flex-direction: column; gap: 12px; }
+  .line { display: flex; align-items: center; gap: 14px; }
+  .label { width: 52px; font-size: var(--fs-xs); font-weight: var(--fw-bold); color: var(--text-muted); letter-spacing: var(--ls-wide); }
+  .swatches { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; flex: 1; }
+  .s { height: 44px; border-radius: var(--radius-sm); display: flex; align-items: flex-end; padding: 5px; }
+  .t { font-family: var(--font-mono); font-size: 9px; color: rgba(255,255,255,0.85); }
+  .t.dark { color: rgba(0,0,0,0.45); }
+</style>
+</head>
+<body>
+  <div class="ramp">
+    <div class="line">
+      <div class="label">Navy</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-navy)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-navy-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-navy-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-navy-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Sky</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-sky)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-sky-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-sky-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-sky-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Gray</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-gray)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-gray-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-gray-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-gray-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Blue</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-blue)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-blue-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-blue-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-blue-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Light blue</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-blue-light)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-blue-light-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-blue-light-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-blue-light-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Green</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-green)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-green-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-green-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-green-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Teal</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-teal)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-teal-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-teal-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-teal-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+    <div class="line">
+      <div class="label">Purple</div>
+      <div class="swatches">
+        <div class="s" style="background:var(--pat-purple)"><span class="t">100</span></div>
+        <div class="s" style="background:var(--pat-purple-75)"><span class="t">75</span></div>
+        <div class="s" style="background:var(--pat-purple-50)"><span class="t dark">50</span></div>
+        <div class="s" style="background:var(--pat-purple-25)"><span class="t dark">25</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

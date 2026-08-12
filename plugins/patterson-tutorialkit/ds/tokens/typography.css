@@ -1,0 +1,97 @@
+/* ============================================================
+   Patterson Companies — Typography Tokens
+   ------------------------------------------------------------
+   Primary family: proxima-nova [BG25 p.25]. The family, the weight
+   roles and the Adobe Fonts kit all live in fonts.css — this file
+   never redefines them.
+
+   PROVENANCE KEYS
+     [BG25 p.N]  Brand Guide 2025 (VERSION 3.2025), page N
+     [DS20 p.N]  DesignSystem_042120.pdf, slide N
+     [DPL]       Patterson Digital Pattern Library v5.7.2 production CSS
+     [TBD]       Patterson publishes no value; nothing has been invented
+
+   CASE IS A HARD RULE IN 2025. [BG25 p.25]: "All caps are to be
+   avoided in any digital channel since this is regarded as shouting."
+   [BG25 p.59]: titles, headlines, subheads, text and captions are all
+   SENTENCE CASE. This reverses the 2022 guide. Do not add an all-caps
+   text transform anywhere in this system.
+   ============================================================ */
+
+:root {
+  /* --- Families -------------------------------------------- */
+  /* --font-sans, --font-office, --font-mono and the weight scale are
+     defined once in fonts.css. Only the display alias lives here so the
+     two files can never drift. */
+  --font-display: var(--font-sans);
+
+  /* --- Weights [BG25 p.25, p.27] --------------------------- */
+  --fw-light:    300; /* [BG25 p.25] body copy alternative */
+  --fw-regular:  400; /* [BG25 p.25] body copy, long-form supporting copy */
+  --fw-medium:   500; /* [TBD: no role for Medium is published; kit weight only] */
+  --fw-semibold: 600; /* [BG25 p.25, p.57] subheads, button/CTA text */
+  --fw-bold:     700; /* [BG25 p.27] CTA; [DPL] h2/h3 and .eyebrow */
+  --fw-extra:    800; /* [BG25 p.25, p.27] titles and headlines */
+  --fw-black:    900; /* [TBD: 900 is not a role in BG25 p.25] */
+
+  /* --- Shipped type scale [DPL] ---------------------------- */
+  /* The web scale Patterson actually renders. Use these when you need
+     the real, sourced sizes. */
+  --fs-dpl-h1:        36px; /* [DPL] .rtf h1 desktop */
+  --fs-dpl-h1-mobile: 24px; /* [DPL] .rtf h1 @max-width:600px */
+  --fs-dpl-h2:        24px; /* [DPL] .rtf h2 */
+  --fs-dpl-h3:        18px; /* [DPL] .rtf h3 */
+  --fs-dpl-body:      18px; /* [DPL] body{} */
+  --fs-dpl-eyebrow:   15px; /* [DPL] .eyebrow */
+  --fs-dpl-cta:       15px; /* [BG25 p.57] "Proxima Nova Semibold, 15px (larger if needed)" */
+  --fs-dpl-small:     13px; /* [DPL] */
+
+  /* --- Fluid presentation scale ---------------------------- */
+  /* [TBD: Patterson publishes no fluid/clamp type scale. BG25 p.27
+     specifies type RELATIONALLY (leading and tracking as a percentage
+     of size), not as absolute steps. The ramp below is a layout
+     convenience for the deck/page templates; when a sourced size is
+     required use the --fs-dpl-* scale above.] */
+  --fs-display:  clamp(2.75rem, 1.6rem + 4.2vw, 4.5rem);
+  --fs-h1:       clamp(2.25rem, 1.5rem + 2.6vw, 3.25rem);
+  --fs-h2:       clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  --fs-h3:       clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  --fs-h4:       1.25rem;   /* 20px */
+  --fs-h5:       1.0625rem; /* 17px */
+  --fs-lead:     1.25rem;   /* 20px */
+  --fs-body:     1rem;      /* 16px */
+  --fs-sm:       0.875rem;  /* 14px */
+  --fs-xs:       0.75rem;   /* 12px */
+  --fs-stat:     clamp(2.5rem, 1.4rem + 4vw, 4rem);
+
+  /* --- Line heights / leading ------------------------------
+     [BG25 p.27] leading is specified as a percentage of type size:
+       headline / subhead / secondary subhead / CTA / titles = 75%
+       body copy                                             = 125-150%
+     [DPL] ships the web equivalents recorded below. The previous
+     values (--lh-heading 1.15, --lh-body 1.6) matched neither. */
+  --lh-print-headline: 0.75; /* [BG25 p.27] 75% of size — print/InDesign leading */
+  --lh-tight:    1.15; /* [DPL] .rtf h1 @600px; [DPL] .button */
+  --lh-snug:     1.25; /* [DPL] .rtf h1 desktop */
+  --lh-heading:  1.3;  /* [DPL] .rtf h2 and h3 */
+  --lh-body-min: 1.25; /* [BG25 p.27] body leading floor (125%) */
+  --lh-body:     1.5;  /* [DPL] body{}; top of the [BG25 p.27] 125-150% range */
+  --lh-relaxed:  1.5;  /* [BG25 p.27] 150% is the published maximum for body copy */
+
+  /* Per-level shipped line heights [DPL] */
+  --lh-h1:        1.25;
+  --lh-h1-mobile: 1.15;
+  --lh-h2:        1.3;
+  --lh-h3:        1.3;
+  --lh-cta:       1.15;
+  --lh-eyebrow:   19px; /* [DPL] .eyebrow 15px/19px */
+
+  /* --- Letter spacing / tracking [BG25 p.27] ---------------
+     InDesign tracking units are 1/1000 em. Optical setting throughout. */
+  --ls-tight:    -0.025em; /* tracking -25 — acceptable at large scale only */
+  --ls-snug:     -0.01em;  /* tracking -10 — default for headings, subheads, CTA */
+  --ls-normal:   0;        /* body copy upper bound; CTA buttons [BG25 p.57] */
+  --ls-wide:     0.04em;   /* [TBD: no positive tracking is published in BG25 p.27] */
+  --ls-caps:     0.08em;   /* [TBD: no all-caps tracking is published; all caps are
+                              barred from digital channels — BG25 p.25] */
+}

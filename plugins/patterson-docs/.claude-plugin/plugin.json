@@ -1,0 +1,15 @@
+{
+  "name": "patterson-docs",
+  "version": "1.1.0",
+  "description": "Patterson documentation-site package: a VitePress + Diátaxis styled docs UI kit (sidebar nav, content pages, collections) and a browser-openable docs page template.",
+  "author": {
+    "name": "Patterson Companies Design System"
+  },
+  "license": "Proprietary — Patterson Companies brand assets; internal use",
+  "keywords": [
+    "patterson",
+    "design-system",
+    "brand",
+    "templates"
+  ]
+}

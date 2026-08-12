@@ -1,0 +1,56 @@
+---
+title: Patterson Docs
+description: Documentation, guides, and reference for teams building on the Patterson Companies design system — on modern, patched Astro.
+template: splash
+hero:
+  tagline: Trusted Expertise. Unrivaled Support.
+  image:
+    alt: Patterson Companies
+    dark: ../../assets/patterson-logo-white.svg
+    light: ../../assets/patterson-logo-navy.svg
+  actions:
+    - text: Get started
+      link: /getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: Brand tokens
+      link: /guides/brand-tokens/
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## A modern docs foundation, in the Patterson brand
+
+This starter pairs [Starlight](https://starlight.astro.build) — Astro's official
+documentation framework — with the Patterson Companies design system. You write
+Markdown; the navy chrome, sky accents, Proxima Nova type, pill buttons, and the
+sky focus ring come for free.
+
+<CardGrid stagger>
+  <Card title="On-brand by default">
+    Patterson tokens are mapped onto Starlight's theme variables in one file
+    (`src/styles/patterson.css`). No component ejection — it stays upgrade-safe.
+  </Card>
+  <Card title="Modern, patched Astro">
+    Built on Astro 7 with zero open Astro advisories — the forward path off the
+    Astro-4-pinned TutorialKit starter.
+  </Card>
+  <Card title="Diátaxis structure">
+    Start here, Guides, and Reference sections are wired into the sidebar, ready
+    for tutorials, how-tos, and reference content.
+  </Card>
+  <Card title="Light and dark">
+    Both themes are tuned: navy-forward on light, sky-forward on dark, with the
+    Patterson palette driving accents in each.
+  </Card>
+</CardGrid>
+
+## Run it
+
+```sh
+bun install
+bun run dev        # http://localhost:4321
+```
+
+Other scripts: `bun run build`, `bun run preview`, `bun run check` (`astro check`).

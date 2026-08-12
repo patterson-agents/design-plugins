@@ -1,0 +1,30 @@
+# Publishes the Dev Container Template under devcontainer-template/src/ to GHCR
+# following the containers.dev distribution spec, so other repos can apply it with:
+#   devcontainer templates apply -t ghcr.io/patterson-agents/design-system/patterson-agents:latest
+name: Publish dev container template
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "devcontainer-template/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Publish templates
+        uses: devcontainers/action@v1
+        with:
+          publish-templates: "true"
+          base-path-to-templates: "./devcontainer-template/src"
+          generate-docs: "true"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

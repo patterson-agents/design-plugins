@@ -1,0 +1,5 @@
+{
+  "name": "patterson-deck",
+  "version": "1.0.0",
+  "description": "Patterson 16:9 deck template with skills, a /new-deck command, and a review agent."
+}

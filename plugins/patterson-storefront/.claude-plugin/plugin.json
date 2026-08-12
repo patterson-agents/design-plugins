@@ -1,0 +1,15 @@
+{
+  "name": "patterson-storefront",
+  "version": "1.1.0",
+  "description": "Patterson e-commerce storefront UI kit (pattern library v5.7.2 shell), switchable between Dental and Veterinary brands: utility bar, search, category nav + flyouts, hero, featured products, manufacturers, rewards, footer.",
+  "author": {
+    "name": "Patterson Companies Design System"
+  },
+  "license": "Proprietary — Patterson Companies brand assets; internal use",
+  "keywords": [
+    "patterson",
+    "design-system",
+    "brand",
+    "ui-kits"
+  ]
+}

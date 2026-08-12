@@ -1,0 +1,299 @@
+<!-- @dsCard group="Corporate Website" viewport="1280x880" name="Corporate site — Home" subtitle="Interactive recreation of pattersoncompanies.com" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterson Companies — Corporate Website (UI Kit)</title>
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  /* Page chrome for this kit only. Component styling lives in
+     ../../components/components.css; everything here resolves through
+     ../../tokens/*.css. No literal colours. */
+  html, body { margin: 0; background: var(--surface-page); }
+
+  .site-header { position: sticky; top: 0; z-index: 50; background: var(--surface-card); border-bottom: 1px solid var(--border-subtle); }
+  .switch-bar { background: var(--pat-navy); color: var(--text-inverse); }
+  .switch-bar .pat-container { display: flex; justify-content: flex-end; gap: 26px; height: 40px; align-items: center; }
+  .switch-bar a { color: color-mix(in srgb, var(--pat-white) 85%, transparent); font-size: var(--fs-dpl-small); font-weight: var(--fw-semibold); display: inline-flex; align-items: center; gap: 5px; }
+  .switch-bar a:hover { color: var(--pat-white); }
+
+  .main-bar { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .main-bar nav { display: flex; align-items: center; gap: 4px; }
+  .main-bar nav a { font-size: var(--fs-dpl-small); font-weight: var(--fw-semibold); color: var(--text-body); padding: 8px 12px; border-radius: var(--radius-pat); border-bottom: 2px solid transparent; }
+  .main-bar nav a:hover { color: var(--pat-navy); }
+  .main-bar nav a[aria-current="page"] { color: var(--pat-navy); font-weight: var(--fw-bold); border-bottom-color: var(--pat-sky); }
+  .nav-rule { width: 1px; height: 24px; background: var(--border-default); margin: 0 8px; }
+
+  .hero { background: var(--pat-navy); color: var(--text-inverse); position: relative; overflow: hidden; }
+  .hero__glow { position: absolute; inset: 0; background: radial-gradient(120% 120% at 85% 10%, color-mix(in srgb, var(--pat-sky) 35%, transparent), transparent 55%); }
+  .hero .pat-container { position: relative; padding-top: var(--space-11); padding-bottom: var(--space-11); max-width: 900px; }
+  .hero h1 { color: var(--text-inverse); font-size: var(--fs-display); margin: 14px 0 18px; max-width: 14ch; line-height: 1.04; }
+  .hero h1 em { color: var(--pat-sky); font-style: normal; }
+  .hero p { font-size: var(--fs-lead); color: color-mix(in srgb, var(--pat-white) 82%, transparent); max-width: 620px; }
+  .hero__actions { display: flex; gap: 14px; margin-top: 28px; flex-wrap: wrap; }
+
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-9); align-items: center; }
+
+  .pillar { display: flex; flex-direction: column; gap: 12px; }
+  .pillar__icon { width: 48px; height: 48px; border-radius: var(--radius-pat); background: var(--pat-navy-25); display: inline-flex; align-items: center; justify-content: center; }
+  .pillar__icon--sky { color: var(--pat-sky); }
+  .pillar__icon--teal { color: var(--pat-teal); }
+  .pillar__icon--navy { color: var(--pat-navy); }
+  .pillar__icon--green { color: var(--pat-green); }
+  .pillar h3 { margin: 0; font-size: var(--fs-h4); }
+  .pillar p { margin: 0; font-size: var(--fs-dpl-small); flex: 1; }
+
+  .inline-link { font-weight: var(--fw-semibold); font-size: var(--fs-dpl-small); display: inline-flex; align-items: center; gap: 6px; }
+
+  .band { background: var(--surface-subtle); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
+  .stat-row { display: flex; gap: var(--space-7); margin-top: var(--space-6); }
+
+  .brand-panel { aspect-ratio: 5 / 6; border-radius: var(--radius-pat); background: linear-gradient(160deg, var(--pat-navy), var(--pat-blue)); position: relative; overflow: hidden; }
+  .brand-panel > div { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: var(--space-6); }
+  .brand-panel b { display: block; font-size: var(--fs-h3); font-weight: var(--fw-bold); color: var(--pat-white); }
+  .brand-panel span { font-size: var(--fs-xs); margin-top: 10px; display: block; color: color-mix(in srgb, var(--pat-white) 70%, transparent); font-family: var(--font-mono); }
+
+  .centered { max-width: 720px; margin-inline: auto; text-align: center; }
+  .news-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: var(--space-6); }
+  .news-card { display: flex; flex-direction: column; gap: 12px; }
+  .news-card__meta { display: flex; align-items: center; gap: 10px; }
+  .news-card__date { font-size: var(--fs-xs); color: var(--text-muted); }
+  .news-card h3 { margin: 0; font-size: var(--fs-h4); line-height: 1.25; }
+  .news-card .inline-link { margin-top: auto; }
+
+  .cta-band .pat-container { padding-top: var(--space-9); padding-bottom: var(--space-9); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .cta-band h2 { margin: 0 0 6px; }
+  .cta-band p { margin: 0; max-width: 560px; color: var(--pat-navy); }
+
+  .site-footer { background: var(--pat-navy); color: var(--text-inverse); }
+  .site-footer .pat-container.cols { padding-top: var(--space-9); padding-bottom: var(--space-7); display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: var(--space-8); }
+  .site-footer .pat-eyebrow { color: var(--pat-sky); }
+  .footer-links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 14px; max-width: 460px; }
+  .footer-links--stack { flex-direction: column; gap: 8px; }
+  .site-footer a { color: color-mix(in srgb, var(--pat-white) 78%, transparent); font-size: var(--fs-dpl-small); display: inline-flex; align-items: center; gap: 5px; }
+  .site-footer a:hover { color: var(--pat-white); }
+  .footer-contact { margin-top: 14px; font-size: var(--fs-dpl-small); line-height: 1.7; color: color-mix(in srgb, var(--pat-white) 85%, transparent); }
+  .footer-contact b { color: var(--pat-white); }
+  .footer-legal { border-top: 1px solid color-mix(in srgb, var(--pat-white) 14%, transparent); }
+  .footer-legal .pat-container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; padding-top: 20px; padding-bottom: 20px; }
+  .footer-legal .links { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+  .footer-legal a, .footer-legal .copy { font-size: var(--fs-xs); color: color-mix(in srgb, var(--pat-white) 70%, transparent); }
+
+  @media (max-width: 900px) {
+    .grid-4, .grid-3 { grid-template-columns: 1fr 1fr; }
+    .grid-2, .site-footer .pat-container.cols { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="switch-bar">
+    <div class="pat-container">
+      <a href="#">Patterson Dental<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+      <a href="#">Patterson Veterinary<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+      <a href="#">Animal Health International<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+      <a href="#">Patterson Logistics<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+    </div>
+  </div>
+  <div class="pat-container main-bar">
+    <a href="#"><img src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson" style="height:26px; width:auto; display:block"></a>
+    <nav>
+      <a href="#">Our Company</a>
+      <a href="#">What We Do</a>
+      <a href="#">How We Do It</a>
+      <a href="#">Community Strong</a>
+      <a href="#">Join Us</a>
+      <a href="#">Newsroom</a>
+      <span class="nav-rule"></span>
+      <button type="button" class="pat-icon-btn pat-icon-btn--ghost" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" data-pat-surface="navy">
+    <div class="hero__glow"></div>
+    <div class="pat-container">
+      <div class="pat-eyebrow">Trusted Expertise · Unrivaled Support</div>
+      <h1>We strengthen the people who keep us and our animals <em>healthy</em>.</h1>
+      <p>Bold solutions and a personal touch for the oral and animal health industries — supporting practices and operations since 1877.</p>
+      <div class="hero__actions">
+        <a class="pat-btn pat-btn--primary pat-btn--lg" href="#">What we do
+          <span class="pat-btn__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+        </a>
+        <a class="pat-btn pat-btn--on-dark pat-btn--lg" href="#">Our company</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="pat-container" style="padding-top:var(--space-9); padding-bottom:var(--space-9)">
+    <div class="grid-4">
+
+      <div class="pat-card pat-card--accent-sky pat-card--interactive pillar">
+        <span class="pillar__icon pillar__icon--sky"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5C10.5 4 8.5 3.5 7 4.2 5.2 5 4.5 7 5 9.5c.3 1.5.4 2 .5 3.5.2 2 .3 4.5 1.5 6 .9 1.1 1.8.4 2.2-1 .4-1.3.5-3 1.8-3s1.4 1.7 1.8 3c.4 1.4 1.3 2.1 2.2 1 1.2-1.5 1.3-4 1.5-6 .1-1.5.2-2 .5-3.5.5-2.5-.2-4.5-2-5.3-1.5-.7-3.5-.2-5 1.3Z"/></svg></span>
+        <h3>Dental</h3>
+        <p>Across North America, we supply dentists with everyday essentials and software to run their business.</p>
+        <a class="inline-link" href="#">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="pat-card pat-card--accent-sky pat-card--interactive pillar">
+        <span class="pillar__icon pillar__icon--teal"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="6.5" r="1.8"/><circle cx="14" cy="6.5" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/><path d="M8 15.5c0-2 1.8-3.5 4-3.5s4 1.5 4 3.5c0 1.7-1.3 3-3 3.2-.7.1-1.3.1-2 0-1.7-.2-3-1.5-3-3.2Z"/></svg></span>
+        <h3>Animal Health</h3>
+        <p>Internationally, we supply veterinarians and producers with the essentials and software to run their operations.</p>
+        <a class="inline-link" href="#">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="pat-card pat-card--accent-sky pat-card--interactive pillar">
+        <span class="pillar__icon pillar__icon--navy"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 7h-9a1 1 0 0 0-1 1v8h10V7Z"/><path d="M14 11h4l3 3v2h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>
+        <h3>Logistics</h3>
+        <p>We reach 98% of customers with 1-to-2-day shipping from 60 state-of-the-art fulfillment centers.</p>
+        <a class="inline-link" href="#">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="pat-card pat-card--accent-sky pat-card--interactive pillar">
+        <span class="pillar__icon pillar__icon--green"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-4 3-8 8-9 1 5-1 9-5 11"/><path d="M4 20c3-3 6-4 9-4"/></svg></span>
+        <h3>Sustainability</h3>
+        <p>Solar-powered fulfillment centers fuel our delivery system and minimize our footprint.</p>
+        <a class="inline-link" href="#">Learn more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WE ARE PATTERSON — stats -->
+  <section class="band">
+    <div class="pat-container grid-2" style="padding-top:var(--space-10); padding-bottom:var(--space-10)">
+      <div>
+        <div class="pat-eyebrow">We are Patterson</div>
+        <h2 style="margin:10px 0 14px">Much more than a distributor — an indispensable partner.</h2>
+        <p>Patterson strengthens the oral and animal health markets in North America and the United Kingdom. From small private practices to large group networks and production operations, we guide our customers with bold solutions and a personal touch.</p>
+        <div class="stat-row">
+          <div class="pat-stat pat-stat--sky"><span class="pat-stat__value">86M</span><span class="pat-stat__label">U.S. households have pets</span></div>
+          <div class="pat-stat pat-stat--navy"><span class="pat-stat__value">90%</span><span class="pat-stat__label">of adults value keeping their mouth healthy</span></div>
+          <div class="pat-stat pat-stat--teal"><span class="pat-stat__value">250M</span><span class="pat-stat__label">tons of protein needed by 2050</span></div>
+        </div>
+      </div>
+      <div class="brand-panel">
+        <div><div><b>Trusted Expertise.<br>Unrivaled Support.</b><span>[ brand photography placeholder ]</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="pat-container" style="padding-top:var(--space-10); padding-bottom:var(--space-10)">
+    <div class="centered">
+      <div class="pat-eyebrow">What we do</div>
+      <h2 style="margin:10px 0 22px">We deliver every day across three capabilities</h2>
+    </div>
+    <div class="pat-tabs centered">
+      <input class="pat-tabs__radio" type="radio" name="cap" id="cap-service" checked>
+      <input class="pat-tabs__radio" type="radio" name="cap" id="cap-logistics">
+      <input class="pat-tabs__radio" type="radio" name="cap" id="cap-products">
+      <div class="pat-tabs__list pat-tabs__list--center">
+        <label class="pat-tabs__trigger" for="cap-service">Service</label>
+        <label class="pat-tabs__trigger" for="cap-logistics">Logistics</label>
+        <label class="pat-tabs__trigger" for="cap-products">Products</label>
+      </div>
+      <div class="pat-tabs__panels">
+        <div class="pat-tabs__panel"><p style="font-size:var(--fs-lead); margin-top:var(--space-6)">Generations of quality customer service define our business operations and our personal interactions. We are an indispensable partner — not just a distributor.</p></div>
+        <div class="pat-tabs__panel"><p style="font-size:var(--fs-lead); margin-top:var(--space-6)">We reach 98% of our customers with 1-to-2-day shipping from 60 state-of-the-art fulfillment centers strategically located internationally.</p></div>
+        <div class="pat-tabs__panel"><p style="font-size:var(--fs-lead); margin-top:var(--space-6)">From everyday essentials to advanced technology and practice-management software, we provide everything practices need to run productively.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="band" style="border-bottom:none">
+    <div class="pat-container" style="padding-top:var(--space-9); padding-bottom:var(--space-9)">
+      <div class="news-head">
+        <h2 style="margin:0">In the news</h2>
+        <a class="pat-btn pat-btn--outline pat-btn--sm" href="#">More content</a>
+      </div>
+      <div class="grid-3">
+
+        <div class="pat-card pat-card--interactive news-card">
+          <div class="news-card__meta"><span class="pat-badge pat-badge--purple">Leadership</span><span class="news-card__date">Jan 20, 2026</span></div>
+          <h3>Patterson announces Senior Vice President of Dental Software</h3>
+          <a class="inline-link" href="#">Read more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="pat-card pat-card--interactive news-card">
+          <div class="news-card__meta"><span class="pat-badge pat-badge--navy">Corporate</span><span class="news-card__date">Jan 12, 2026</span></div>
+          <h3>Patterson Companies completes acquisition by Patient Square Capital</h3>
+          <a class="inline-link" href="#">Read more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+
+        <div class="pat-card pat-card--interactive news-card">
+          <div class="news-card__meta"><span class="pat-badge pat-badge--teal">Veterinary</span><span class="news-card__date">Dec 18, 2025</span></div>
+          <h3>Patterson Veterinary and dvmGRO join forces to support independent practices</h3>
+          <a class="inline-link" href="#">Read more <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-band" data-pat-surface="sky">
+    <div class="pat-container">
+      <div>
+        <h2>Work with us</h2>
+        <p>Together, we are transforming the way care is delivered to people and animals.</p>
+      </div>
+      <a class="pat-btn pat-btn--navy pat-btn--lg" href="#">Join us
+        <span class="pat-btn__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" data-pat-surface="navy">
+  <div class="pat-container cols">
+    <div>
+      <div class="pat-eyebrow">Visit our websites</div>
+      <div class="footer-links">
+        <a href="#">Patterson Dental<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">Patterson Veterinary<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">Animal Health International<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">Kane Veterinary Supplies<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">NVS Group<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">Patterson Foundation<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+        <a href="#">Investor Relations<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 5h5v5"/><path d="M19 5l-8 8"/><path d="M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="pat-eyebrow">Connect with us</div>
+      <div class="footer-links footer-links--stack">
+        <a href="#">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div>
+      <div class="pat-eyebrow">Contact us</div>
+      <div class="footer-contact">
+        <div style="display:flex; gap:6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.5 7-11a7 7 0 0 0-14 0c0 5.5 7 11 7 11Z"/><circle cx="12" cy="10" r="2.5"/></svg><span><b>1031 Mendota Heights Road</b><br>Saint Paul, MN 55120</span></div>
+        <div style="margin-top:10px">1.800.328.5536<br>info@pattersoncompanies.com</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <div class="pat-container">
+      <div class="links">
+        <a href="#">Home</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Cookies Policy</a><a href="#">Site Map</a><a href="#">ACA Notice</a><a href="#">Careers</a>
+      </div>
+      <div class="copy">© 2026 Patterson Companies, Inc. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

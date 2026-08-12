@@ -1,0 +1,171 @@
+/* ============================================================
+   Patterson Companies — Tailwind CSS v4 theme
+   ------------------------------------------------------------
+   Tailwind v4 is CSS-first: this file IS the config. Import it as
+   your stylesheet entry (or @import it from yours):
+
+       @import "tailwindcss";
+       @import "@patterson/design-system/integrations/tailwind.css";
+
+   Every value below maps 1:1 to tokens/*.css and theme.json. Utilities
+   are then generated automatically, e.g.
+       bg-navy  text-sky  border-border  rounded-lg  shadow-md
+       font-sans  text-display  tracking-tight  leading-body
+       max-w-container  ease-standard
+
+   NOTE ON SPACING: Tailwind's default spacing unit is 0.25rem (4px), which
+   is exactly Patterson's 4px base grid — so p-4 = 1rem = --space-4, p-6 =
+   1.5rem = --space-5's value, etc. We intentionally do NOT override the
+   spacing scale; the defaults already match the brand grid.
+
+   To also expose the raw Patterson custom properties (var(--pat-navy) …)
+   inside a Tailwind project, additionally link ../styles.css.
+   ============================================================ */
+
+@import "tailwindcss";
+
+@theme {
+  /* --- Fonts --------------------------------------------- */
+  --font-sans: 'proxima-nova', Arial, sans-serif;
+  --font-display: 'proxima-nova', Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* --- Brand colors -------------------------------------- */
+  --color-navy: #003767;
+  --color-sky: #00A8E1;
+  --color-gray-brand: #58585B;
+  --color-blue: #147EC2;
+  --color-blue-light: #6DCFF6;
+  --color-green: #7BC24D;
+  --color-teal: #00817D;
+  --color-purple: #522E91;
+
+  /* Tints — published 75/50/25 ramp over white [BG25 p.24].
+     There is no 10/20/40/60/80 ramp in any Patterson source. */
+  --color-navy-75: #40698D;
+  --color-navy-50: #809BB3;
+  --color-navy-25: #BFCDD9;
+  --color-sky-75: #40BEE8;
+  --color-sky-50: #80D4F0;
+  --color-sky-25: #BFE9F8;
+  --color-blue-75: #4F9ED1;
+  --color-blue-50: #8ABEE0;
+  --color-blue-25: #C4DFF0;
+  --color-green-75: #9CD17A;
+  --color-green-50: #BDE0A6;
+  --color-green-25: #DEF0D2;
+  --color-teal-75: #40A09E;
+  --color-teal-50: #80C0BE;
+  --color-teal-25: #BFE0DE;
+  --color-purple-75: #7D62AC;
+  --color-purple-50: #A896C8;
+  --color-purple-25: #D4CBE4;
+
+  /* Digital (WCAG-adjusted) palette [DS20 p.7-8], shipped in [DPL] */
+  --color-digital-sky: #269BCB;
+  --color-digital-link: #147CBD;
+  --color-digital-green: #0CA50F;
+  --color-digital-teal: #008E8B;
+  --color-digital-purple: #512E91;
+  --color-navy-deep: #001C34;
+  --color-rule: #D8D8D8;
+  --color-field-border: #A8A9AC;
+  --color-disabled-bg: #F0F0F0;
+
+  /* cool-gray neutral ramp */
+  --color-ink: #003767;
+  --color-gray-700: #58585B;
+  --color-gray-600: #58585B;
+  --color-gray-500: #828284;
+  --color-gray-400: #9B9B9B;
+  --color-gray-300: #ACACAD;
+  --color-gray-200: #D5D5D6;
+  --color-gray-100: #ECECEC;
+  --color-gray-50: #F8F8F8;
+
+  /* semantic */
+  --color-success: #0CA50F;   /* [DPL] .message-box--success */
+  --color-success-bg: #F8F8F8;
+  --color-info: #147EC2;
+  --color-info-bg: #F8F8F8;
+  --color-warning: #F5A623;
+  --color-warning-bg: #F8F8F8;
+  --color-danger: #D0021B;
+  --color-danger-bg: #F8F8F8;
+
+  /* semantic aliases (name the role, not the hue) */
+  --color-heading: #003767;
+  --color-body: #58585B;
+  --color-muted: #9B9B9B;    /* [DS20 p.7] */
+  --color-link: #147CBD;     /* [DS20 p.8] link blue */
+  --color-border: #ECECEC;   /* [BG25 p.24] */
+  --color-border-strong: #A8A9AC;  /* [DPL] field border */
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F8F8F8;
+
+  /* --- Type scale (fluid where the brand is fluid) ------- */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-body: 1rem;
+  --text-h5: 1.0625rem;
+  --text-lead: 1.25rem;
+  --text-h4: 1.25rem;
+  --text-h3: clamp(1.375rem, 1.15rem + 0.8vw, 1.75rem);
+  --text-h2: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  --text-h1: clamp(2.25rem, 1.5rem + 2.6vw, 3.25rem);
+  --text-display: clamp(2.75rem, 1.6rem + 4.2vw, 4.5rem);
+  --text-stat: clamp(2.5rem, 1.4rem + 4vw, 4rem);
+
+  /* --- Weights (brand aliases; standard ones still work) - */
+  --font-weight-light: 300;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra: 800;
+  --font-weight-black: 900;
+
+  /* --- Line heights & tracking --------------------------- */
+  /* [BG25 p.27] headline leading 75% of size; body copy 125-150%.
+     [DPL] ships the web equivalents below. */
+  --leading-print-headline: 0.75;
+  --leading-tight: 1.15;
+  --leading-snug: 1.25;
+  --leading-heading: 1.3;
+  --leading-body: 1.5;
+  --leading-relaxed: 1.5;
+
+  --tracking-tight: -0.025em;   /* [BG25 p.27] tracking -25, large scale only */
+  --tracking-snug: -0.01em;
+  --tracking-wide: 0.04em;
+  --tracking-caps: 0.08em;
+
+  /* --- Radii --------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 5px;    /* [BG25 p.57] "Rounded corners: 5px radius" */
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-pill: 999px;
+
+  /* --- Shadows (navy-tinted elevation) ------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 55, 103, 0.06);
+  --shadow-sm: 0 1px 3px rgba(0, 55, 103, 0.08), 0 1px 2px rgba(0, 55, 103, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 55, 103, 0.10), 0 2px 4px rgba(0, 55, 103, 0.06);
+  --shadow-lg: 0 12px 28px rgba(0, 55, 103, 0.12), 0 4px 10px rgba(0, 55, 103, 0.07);
+  --shadow-xl: 0 24px 48px rgba(0, 55, 103, 0.16);
+
+  /* --- Containers / measure ------------------------------ */
+  --container-container: 1300px;   /* [DPL] page wrapper */
+  --container-text: 720px;
+
+  /* --- Motion -------------------------------------------- */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Brand focus ring — Tailwind's ring color, matched to the sky token so
+   `focus-visible:ring` reads as Patterson sky without extra config. */
+@theme {
+  --color-ring: #00A8E1;
+}

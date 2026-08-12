@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "patterson-assets": {
+      "command": "node /Users/me/servers/assets.mjs",
+      "env": { "ASSET_INDEX": "/Users/me/data/index.json" },
+    }
+  }
+}

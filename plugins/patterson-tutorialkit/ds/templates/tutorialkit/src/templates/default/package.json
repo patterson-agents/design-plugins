@@ -1,0 +1,9 @@
+{
+  "name": "patterson-tutorial-workspace",
+  "type": "module",
+  "private": true,
+  "description": "Base WebContainer workspace for Patterson TutorialKit lessons. Lesson _files/ are layered on top of this.",
+  "scripts": {
+    "validate": "node validate.mjs"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "patterson-corporate-page",
+  "version": "1.1.0",
+  "description": "Patterson corporate web page shell: sticky nav with logo, navy hero, content band, and footer — a React starting point for any on-brand marketing or informational page.",
+  "author": {
+    "name": "Patterson Companies Design System"
+  },
+  "license": "Proprietary — Patterson Companies brand assets; internal use",
+  "keywords": [
+    "patterson",
+    "design-system",
+    "brand",
+    "templates"
+  ]
+}

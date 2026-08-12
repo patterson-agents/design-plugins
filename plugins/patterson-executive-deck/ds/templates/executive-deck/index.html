@@ -1,0 +1,523 @@
+<!-- @template name="Executive Deck" description="Patterson executive-briefing deck — navy cover, editorial content slides (takeaways, matrix, requirements, build, benefits) on brand tokens." -->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterson — Executive Deck</title>
+<script src="./ds-base.js"></script>
+<style>
+  deck-stage:not(:defined){visibility:hidden}
+  /* =========================================================
+     Patterson Executive Deck — tokens mapped to the design system
+     ========================================================= */
+  :root{
+    --font-display: var(--font-sans);
+    --font-body:    var(--font-sans);
+
+    --type-scale: 1;
+    --type-display:  calc(6rem    * var(--type-scale));
+    --type-title:    calc(3.75rem * var(--type-scale));
+    --type-h2:       calc(2.75rem * var(--type-scale));
+    --type-subtitle: calc(1.875rem* var(--type-scale));
+    --type-body:     calc(1.5rem  * var(--type-scale));
+    --type-small:    calc(1.25rem * var(--type-scale));
+    --type-eyebrow:  calc(1.125rem* var(--type-scale));
+    --type-mono-lg:  calc(1.375rem* var(--type-scale));
+    --type-mono:     calc(1.125rem* var(--type-scale));
+
+    --pad-top: 72px; --pad-bottom: 56px; --pad-x: 110px; --gap-item: 28px; --rule-w: 1.5px;
+
+    /* Light (default) — white paper, navy ink, sky accent */
+    --paper:    #ffffff;
+    --paper-2:  var(--pat-gray-50, #F8F8F8);
+    --paper-3:  var(--pat-gray-100, #ECECEC);
+    --ink:      var(--pat-navy, #003767);
+    --ink-2:    var(--pat-gray-700, #58585B);
+    --ink-dim:  var(--pat-gray-600, #58585B);
+    --ink-faint:var(--pat-gray-400, #9B9B9B);
+    --rule:     var(--pat-gray-200, #D5D5D6);
+    --rule-2:   var(--pat-gray-300, #ACACAD);
+    --accent:   var(--pat-sky, #00A8E1);
+    --accent-2: var(--pat-blue, #147EC2);
+    --stage-bg: #071a30;
+  }
+
+  /* Navy slides (cover / dividers) */
+  .slide-navy{
+    --paper:    var(--pat-navy, #003767);
+    --paper-2:  #0a2d52;
+    --paper-3:  #0e3358;
+    --ink:      #ffffff;
+    --ink-2:    rgba(255,255,255,0.84);
+    --ink-dim:  rgba(255,255,255,0.62);
+    --ink-faint:rgba(255,255,255,0.45);
+    --rule:     rgba(255,255,255,0.18);
+    --rule-2:   rgba(255,255,255,0.30);
+    --accent:   var(--pat-sky, #00A8E1);
+    --accent-2: var(--pat-blue-light, #6DCFF6);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body); font-size: var(--type-body); line-height:1.45;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  }
+  deck-stage{ background: var(--stage-bg); }
+  deck-stage section{
+    background: var(--paper); color: var(--ink);
+    font-family: var(--font-body); position:relative; overflow:hidden;
+  }
+  deck-stage section > *{ position:relative; z-index:1; }
+
+  /* slide chrome */
+  .frame{ position:absolute; inset:0; padding: var(--pad-top) var(--pad-x) var(--pad-bottom); display:flex; flex-direction:column; }
+  .head{ display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.14em; color:var(--ink-dim); padding-bottom:22px; border-bottom:var(--rule-w) solid var(--rule); }
+  .head .crumb{ display:flex; gap:28px; align-items:baseline; }
+  .head .crumb .dot{ width:7px; height:7px; background:var(--accent); border-radius:50%; display:inline-block; transform:translateY(-3px); }
+  .head .pg{ color:var(--ink-faint); }
+  .foot{ margin-top:auto; padding-top:22px; border-top:var(--rule-w) solid var(--rule); display:flex; justify-content:space-between; align-items:center; font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.14em; color:var(--ink-dim); }
+  .foot .row{ display:flex; gap:32px; align-items:baseline; }
+  .foot .col-label{ color:var(--ink-faint); margin-right:10px; }
+  .foot-logo{ height:24px; width:auto; display:block; }
+  .body{ flex:1 1 auto; display:flex; flex-direction:column; justify-content:flex-start; padding:40px 0 28px; min-height:0; overflow:hidden; }
+
+  /* type primitives */
+  .eyebrow{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--accent); }
+  .title{ font-family:var(--font-display); font-weight:800; font-size:var(--type-title); line-height:1.04; letter-spacing:-0.02em; color:var(--ink); }
+  .title em{ font-style:normal; color:var(--accent); font-weight:800; }
+  .subtitle{ font-family:var(--font-display); font-weight:400; font-style:normal; font-size:var(--type-subtitle); line-height:1.2; color:var(--ink-2); max-width:1400px; }
+  .body-copy{ font-size:var(--type-body); line-height:1.5; color:var(--ink-2); max-width:1400px; }
+  .body-copy + .body-copy{ margin-top:24px; }
+  .small{ font-size:var(--type-small); color:var(--ink-dim); }
+  .mono{ font-family:var(--font-mono); }
+  .accent{ color:var(--accent); }
+  .title-rule{ width:110px; height:6px; margin-top:28px; background:var(--accent); border-radius:999px; }
+
+  /* cover */
+  .cover-head{ display:flex; justify-content:space-between; align-items:center; padding-bottom:22px; border-bottom:var(--rule-w) solid var(--rule); font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.14em; color:var(--ink-dim); }
+  .cover-logo{ height:36px; width:auto; display:block; }
+  .cover-head .stamp{ display:inline-block; padding:8px 14px 6px; letter-spacing:.2em; }
+  .cover-body{ flex:1 1 auto; display:grid; grid-template-columns:1fr auto; align-items:end; padding:50px 0 32px; min-height:0; }
+  .cover-title{ font-family:var(--font-display); font-weight:800; font-size:170px; line-height:0.96; letter-spacing:-0.03em; color:var(--ink); }
+  .cover-title .accent{ font-weight:800; color:var(--accent); }
+  .cover-sub{ font-family:var(--font-display); font-style:normal; font-weight:500; font-size:36px; color:var(--ink-2); margin-top:30px; max-width:1150px; line-height:1.25; }
+  .cover-foot{ display:grid; grid-template-columns:repeat(4,1fr); gap:36px; padding-top:22px; border-top:var(--rule-w) solid var(--rule); font-family:var(--font-mono); font-size:var(--type-mono); color:var(--ink); }
+  .cover-foot .field{ display:flex; flex-direction:column; gap:6px; }
+  .cover-foot .lbl{ font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--ink-faint); }
+  .cover-foot .val{ color:var(--ink); }
+
+  /* module divider */
+  .divider .body{ justify-content:center; align-items:flex-start; padding:20px 0; }
+  .divider-grid{ display:grid; grid-template-columns:440px 1fr; gap:70px; align-items:center; width:100%; }
+  .module-numeral{ font-family:var(--font-display); font-size:340px; line-height:0.85; letter-spacing:-0.04em; color:var(--ink); font-weight:800; }
+  .module-numeral .accent{ font-weight:800; color:var(--accent); }
+  .divider .title{ font-size:108px; letter-spacing:-0.02em; }
+  .divider .subtitle{ margin-top:28px; max-width:1000px; }
+
+  /* layout helpers */
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; }
+  .two-col.narrow-left{ grid-template-columns:7fr 9fr; }
+  .two-col.narrow-right{ grid-template-columns:9fr 7fr; }
+  .card-grid{ display:grid; gap:24px; }
+  .card-grid.cols-2{ grid-template-columns:1fr 1fr; }
+  .card-grid.cols-3{ grid-template-columns:repeat(3,1fr); }
+  .card-grid.cols-5{ grid-template-columns:repeat(5,1fr); }
+  .card{ border:1.5px solid var(--rule); border-top:4px solid var(--accent); border-radius:10px; padding:28px 28px 26px; background:var(--paper-2); display:flex; flex-direction:column; gap:18px; min-height:0; }
+  .card .num{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--accent); }
+  .card .name{ font-family:var(--font-display); font-weight:800; font-size:44px; line-height:1.02; letter-spacing:-0.01em; color:var(--ink); }
+  .card .desc{ font-size:var(--type-small); line-height:1.4; color:var(--ink-2); }
+  .card .bd-list{ list-style:none; margin:4px 0 0; padding:0; display:flex; flex-direction:column; gap:14px; }
+  .card .bd-list li{ position:relative; padding-left:26px; font-size:var(--type-small); line-height:1.35; color:var(--ink-2); }
+  .card .bd-list li::before{ content:""; position:absolute; left:2px; top:0.55em; width:9px; height:9px; background:var(--accent); border-radius:50%; }
+  .card .pill{ font-family:var(--font-mono); font-size:24px; letter-spacing:.08em; color:var(--ink-dim); border-top:1px solid var(--rule); padding-top:12px; margin-top:auto; }
+
+  /* matrix table */
+  .matrix{ width:100%; border-collapse:collapse; font-size:var(--type-small); }
+  .matrix th,.matrix td{ text-align:left; vertical-align:top; padding:16px 22px; border-bottom:1px solid var(--rule); }
+  .matrix thead th{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.14em; color:var(--ink-faint); border-bottom:2px solid var(--rule-2); padding-bottom:14px; padding-top:0; }
+  .matrix tbody tr:last-child td{ border-bottom:none; }
+  .matrix .task{ font-family:var(--font-display); font-weight:700; font-size:33px; line-height:1.05; color:var(--ink); }
+  .matrix .surface{ font-family:var(--font-mono); color:var(--accent); font-size:23px; letter-spacing:.02em; }
+  .matrix .why{ color:var(--ink-2); }
+  .matrix .mono{ font-size:22px; }
+
+  /* pullquote */
+  .pullquote{ font-family:var(--font-display); font-size:88px; font-style:normal; font-weight:800; line-height:1.08; color:var(--ink); letter-spacing:-0.02em; max-width:1560px; }
+  .pullquote .accent{ color:var(--accent); }
+
+  /* code block */
+  .codeblock{ background:var(--paper-3); border:1.5px solid var(--rule); border-radius:10px; padding:26px 32px 24px; font-family:var(--font-mono); font-size:23px; line-height:1.5; color:var(--ink); white-space:pre; overflow:hidden; }
+  .codeblock .c{ color:var(--ink-faint); }
+  .codeblock .k{ color:var(--accent); }
+  .codeblock .s{ color:var(--accent-2); }
+  .codeblock .h{ display:block; font-size:var(--type-eyebrow); letter-spacing:.14em; color:var(--ink-faint); border-bottom:1px solid var(--rule); padding-bottom:10px; margin-bottom:16px; white-space:normal; }
+
+  /* numbered list rows */
+  .list{ display:flex; flex-direction:column; gap:var(--gap-item); }
+  .list-item{ display:grid; grid-template-columns:190px 1fr; gap:32px; align-items:baseline; }
+  .list-item .n{ font-family:var(--font-mono); color:var(--accent); font-size:var(--type-eyebrow); letter-spacing:.14em; padding-top:8px; }
+  .list-item .t{ font-family:var(--font-display); font-weight:700; font-size:40px; line-height:1.05; color:var(--ink); }
+  .list-item .d{ color:var(--ink-2); margin-top:10px; font-size:var(--type-small); line-height:1.4; }
+
+  /* layer cards */
+  .layers{ display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+  .layer-card{ border:1.5px solid var(--rule); border-radius:10px; padding:32px; background:var(--paper-2); display:flex; flex-direction:column; gap:20px; }
+  .layer-card .lbl{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--accent); }
+  .layer-card .nm{ font-family:var(--font-display); font-weight:800; font-size:52px; line-height:1; color:var(--ink); }
+  .layer-card .desc{ font-size:var(--type-small); line-height:1.45; color:var(--ink-2); }
+
+  .sigil{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--accent); display:inline-flex; align-items:center; gap:12px; }
+  .sigil::before{ content:""; width:28px; height:1.5px; background:var(--accent); display:inline-block; }
+  .kbd{ font-family:var(--font-mono); font-size:24px; border:1px solid var(--rule-2); border-radius:5px; padding:4px 10px 3px; color:var(--ink); background:var(--paper-2); }
+  .checkpoint{ border:1.5px solid var(--rule-2); border-radius:10px; background:var(--paper-2); padding:26px 32px; display:flex; gap:28px; align-items:baseline; }
+  .checkpoint .ck{ font-family:var(--font-mono); font-size:var(--type-eyebrow); letter-spacing:.18em; color:var(--accent); white-space:nowrap; }
+  .checkpoint .tx{ font-size:var(--type-small); color:var(--ink-2); line-height:1.45; }
+
+  /* entrance: base is visible; animate only when active + motion allowed */
+  .body > *, .cover-body > *{ }
+  @media print{ body{ background:white; } }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080" thumbnails="true">
+<!-- ====================================================
+     EX / 01 · Title, description, audience
+     ==================================================== -->
+<section data-label="01 Title" data-screen-label="01 Title" class="cover slide-navy" data-speaker-notes="Speaker notes for the title slide.
+
+What this session is about:
+· One- or two-line summary of the topic.
+· The core idea or framework being introduced.
+· Why this matters now.
+
+Who the session is for:
+· Primary audience group.
+· Secondary audience group.
+· Tertiary audience group.
+
+Why it matters:
+· Problem this addresses.
+· What changes after this session.
+· How it connects to broader goals.">
+  <div class="frame">
+    <div class="cover-head">
+      <div class="left" style="display:flex; align-items:center; gap:22px;">
+        <img class="cover-logo" src="../../assets/brand/patterson-logo-white.svg" alt="Patterson">
+        <span class="stamp">Executive Briefing</span>
+      </div>
+      <div class="right">EX / 01</div>
+    </div>
+
+    <div class="cover-body" style="grid-template-columns: 1fr; align-items: start; align-content: space-between;">
+      <div>
+        <h1 class="cover-title" style="font-size: 124px;">Presentation Title:
+<span class="accent">Subtitle Phrase</span></h1>
+        <p class="cover-sub">A short, descriptive one-line tagline goes here</p>
+      </div>
+      <div class="two-col narrow-left" style="gap: 100px; margin-top: 56px; width: 100%;">
+        <div>
+          <p class="eyebrow">Overview</p>
+          <p class="body-copy" style="margin-top: 18px;">Two to three sentences describing what this presentation covers and the value it delivers. State the central premise plainly and set expectations for what the audience will take away.</p>
+          <p class="body-copy" style="margin-top: 20px; font-family: var(--font-display); font-style: italic; font-size: 28px; color: var(--ink);">A memorable one-sentence thesis or guiding principle for the whole deck.</p>
+        </div>
+        <div>
+          <p class="eyebrow">Audience</p>
+          <p class="body-copy" style="margin-top: 18px;">Primary, Secondary, and Tertiary audience groups</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-foot">
+      <div class="field">
+        <span class="lbl">Presenter</span>
+        <span class="val" data-tweak="speaker">Your Name</span>
+      </div>
+      <div class="field">
+        <span class="lbl">Format</span>
+        <span class="val">Format · structure</span>
+      </div>
+      <div class="field">
+        <span class="lbl">Runtime</span>
+        <span class="val">00–00 min · break included</span>
+      </div>
+      <div class="field">
+        <span class="lbl">Materials</span>
+        <span class="val">Material One · Material Two · Material Three</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     EX / 02 · Takeaways
+     ==================================================== -->
+<section data-label="02 Takeaways" data-screen-label="02 Takeaways" data-speaker-notes="Speaker notes for the takeaways slide.
+
+Takeaway one:
+· Supporting point.
+· Supporting point.
+
+Takeaway two:
+· Supporting point.
+· Supporting point.
+
+Takeaway three:
+· Supporting point.
+· Supporting point.
+
+Takeaway four:
+· Supporting point.
+· Supporting point.">
+  <div class="frame">
+    <div class="head">
+      <div class="crumb"><span class="dot"></span><span>Deck Name · Section</span><span>Key Takeaways</span></div>
+      <div class="pg">EX / 02</div>
+    </div>
+    <div class="body">
+      <h2 class="title">Key <em>Takeaways</em></h2>
+      <div class="title-rule"></div>
+      <p class="body-copy" style="margin-top: 32px;">By the end of this session, attendees will:</p>
+      <div class="card-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 36px;">
+        <div class="card">
+          <span class="num">01</span>
+          <span class="name" style="font-size: 40px;">Takeaway One</span>
+          <p class="desc">Short description of the first key takeaway.</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <span class="name" style="font-size: 40px;">Takeaway Two</span>
+          <p class="desc">Short description of the second key takeaway.</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <span class="name" style="font-size: 40px;">Takeaway Three</span>
+          <p class="desc">Short description of the third key takeaway.</p>
+        </div>
+        <div class="card">
+          <span class="num">04</span>
+          <span class="name" style="font-size: 40px;">Takeaway Four</span>
+          <p class="desc">Short description of the fourth key takeaway.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="row"><span><span class="col-label">Core question</span>the recurring question this deck answers</span></div>
+      <img class="foot-logo" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     EX / 03 · Module / agenda breakdown
+     ==================================================== -->
+<section data-label="03 Breakdown" data-screen-label="03 Breakdown" data-speaker-notes="Speaker notes for the breakdown slide.
+
+Describe how the items below form a deliberate sequence or progression:
+1. Item one — what it covers and why it comes first.
+2. Item two — what it adds.
+3. Item three — what it adds.
+4. Item four — what it adds.
+5. Item five — where it lands.
+
+Tie the arc together with a single sentence the audience should remember.">
+  <div class="frame">
+    <div class="head">
+      <div class="crumb"><span class="dot"></span><span>Deck Name · Section</span><span>Breakdown</span></div>
+      <div class="pg">EX / 03</div>
+    </div>
+    <div class="body">
+      <h2 class="title">Progressive <em>Learning Path</em></h2>
+      <div class="title-rule"></div>
+      <table class="matrix" style="margin-top: 40px;">
+        <thead>
+          <tr><th style="width: 200px;">Item</th><th style="width: 420px;">Focus</th><th>Outcome</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="surface">1</td><td class="task">Module One</td><td class="why">What attendees will be able to do after this module.</td></tr>
+          <tr><td class="surface">2</td><td class="task">Module Two</td><td class="why">What attendees will be able to do after this module.</td></tr>
+          <tr><td class="surface">3</td><td class="task">Module Three</td><td class="why">What attendees will be able to do after this module.</td></tr>
+          <tr><td class="surface">4</td><td class="task">Module Four</td><td class="why">What attendees will be able to do after this module.</td></tr>
+          <tr><td class="surface">5</td><td class="task">Module Five</td><td class="why">What attendees will be able to do after this module.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="foot">
+      <div class="row"><span><span class="col-label">Arc</span>step one → step two → step three → step four → step five</span></div>
+      <img class="foot-logo" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     EX / 04 · Requirements and environment
+     ==================================================== -->
+<section data-label="04 Requirements" data-screen-label="04 Requirements" data-speaker-notes="Speaker notes for the requirements slide.
+
+Summarize what is needed for this to run and why. List the asks plainly so leadership can approve them.
+
+Restate the key point for leadership in one sentence.">
+  <div class="frame">
+    <div class="head">
+      <div class="crumb"><span class="dot"></span><span>Deck Name · Section</span><span>Requirements &amp; Environment</span></div>
+      <div class="pg">EX / 04</div>
+    </div>
+    <div class="body">
+      <div class="two-col" style="gap: 90px;">
+        <div>
+          <p class="eyebrow">The asks</p>
+          <h2 class="title" style="font-size: 56px; margin-top: 14px;">What this<br><em>needs to run</em></h2>
+          <div class="title-rule"></div>
+          <ul class="list" style="margin-top: 36px; gap: 20px;">
+            <li class="list-item" style="grid-template-columns: 190px 1fr; gap: 26px;">
+              <span class="n">Requirement</span>
+              <div><div class="d" style="margin-top: 0;">Short description of the first requirement.</div></div>
+            </li>
+            <li class="list-item" style="grid-template-columns: 190px 1fr; gap: 26px;">
+              <span class="n">Requirement</span>
+              <div><div class="d" style="margin-top: 0;">A longer description of a requirement, including any sub-items, accounts, licenses, or access needed for attendees to participate fully.</div></div>
+            </li>
+            <li class="list-item" style="grid-template-columns: 190px 1fr; gap: 26px;">
+              <span class="n">Requirement</span>
+              <div><div class="d" style="margin-top: 0;">Short description of the third requirement.</div></div>
+            </li>
+            <li class="list-item" style="grid-template-columns: 190px 1fr; gap: 26px;">
+              <span class="n">Requirement</span>
+              <div><div class="d" style="margin-top: 0;">Short description of the fourth requirement.</div></div>
+            </li>
+            <li class="list-item" style="grid-template-columns: 190px 1fr; gap: 26px;">
+              <span class="n">Requirement</span>
+              <div><div class="d" style="margin-top: 0;">Short description of the fifth requirement.</div></div>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p class="eyebrow" style="margin-bottom: 22px;">Applications &amp; tools</p>
+          <div class="codeblock" style="font-size: 25px; line-height: 1.75;">tool one
+tool two
+tool three
+tool four
+tool five
+tool six
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="row"><span><span class="col-label">Format</span>format · checkpoints · break included</span></div>
+      <img class="foot-logo" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    </div>
+  </div>
+</div></section>
+
+<!-- ====================================================
+     EX / 05 · What we're building
+     ==================================================== -->
+<section data-label="05 What We're Building" data-screen-label="05 What We're Building" data-speaker-notes="Speaker notes for the build slide.
+
+Walk through the three areas below and what each contains. Make the point that these are concrete, reusable outputs — not abstract concepts.">
+  <div class="frame">
+    <div class="head">
+      <div class="crumb"><span class="dot"></span><span>Deck Name · Section</span><span>What We're Building</span></div>
+      <div class="pg">EX / 05</div>
+    </div>
+    <div class="body">
+      <h2 class="title">Outputs: <em>what we're building</em></h2>
+      <div class="title-rule"></div>
+      <div class="card-grid cols-3" style="margin-top: 40px; gap: 22px;">
+        <div class="card">
+          <span class="num">01 / Category</span>
+          <span class="name" style="font-size: 38px;">Area One<br>Subtitle</span>
+          <ul class="bd-list">
+            <li>Item one</li>
+            <li>Item two</li>
+            <li>Item three</li>
+            <li>Item four</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="num">02 / Category</span>
+          <span class="name" style="font-size: 38px;">Area Two<br>Subtitle</span>
+          <ul class="bd-list">
+            <li>Item one</li>
+            <li>Item two</li>
+            <li>Item three</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="num">03 / Category</span>
+          <span class="name" style="font-size: 38px;">Area Three<br>Subtitle</span>
+          <ul class="bd-list">
+            <li>Item one</li>
+            <li>Item two</li>
+            <li>Item three</li>
+            <li>Item four</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="row"><span><span class="col-label">Build areas</span>area one → area two → area three</span></div>
+      <img class="foot-logo" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================
+     EX / 06 · Organizational benefits, vision, Q&A
+     ==================================================== -->
+<section data-label="06 Benefits" data-screen-label="06 Benefits" data-speaker-notes="Speaker notes for the benefits slide.
+
+Cover each benefit and why it matters to the organization. Close by inviting questions.">
+  <div class="frame">
+    <div class="head">
+      <div class="crumb"><span class="dot"></span><span>Deck Name · Section</span><span>Organizational Benefits</span></div>
+      <div class="pg">EX / 06</div>
+    </div>
+    <div class="body">
+      <h2 class="title">Organizational <em>Benefits</em></h2>
+      <div class="title-rule"></div>
+      <div class="card-grid cols-3" style="margin-top: 40px; gap: 20px;">
+        <div class="card">
+          <span class="num">01</span>
+          <span class="name" style="font-size: 38px;">Benefit One</span>
+          <p class="desc">Short description of the first organizational benefit.</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <span class="name" style="font-size: 38px;">Benefit Two</span>
+          <p class="desc">Short description of the second organizational benefit.</p>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <span class="name" style="font-size: 38px;">Benefit Three</span>
+          <p class="desc">Short description of the third organizational benefit.</p>
+        </div>
+        <div class="card">
+          <span class="num">04</span>
+          <span class="name" style="font-size: 38px;">Benefit Four</span>
+          <p class="desc">Short description of the fourth organizational benefit.</p>
+        </div>
+        <div class="card">
+          <span class="num">05</span>
+          <span class="name" style="font-size: 38px;">Benefit Five</span>
+          <p class="desc">Short description of the fifth organizational benefit.</p>
+        </div>
+        <div class="card">
+          <span class="num">06</span>
+          <span class="name" style="font-size: 38px;">Questions</span>
+          <p class="desc">Invite questions on scheduling, tailoring, or what it takes to run this for your organization.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="row"><span><span class="col-label accent">Q&amp;A</span><span data-tweak="speaker">Your Name</span></span></div>
+      <img class="foot-logo" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    </div>
+  </div>
+</section>
+
+</deck-stage>
+<script src="./deck-stage.js"></script>
+</body></html>

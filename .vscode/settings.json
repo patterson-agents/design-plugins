@@ -1,0 +1,23 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.associations": {
+    "SKILL.md": "markdown",
+    "*.card.html": "html",
+    "*.dc.html": "html"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": [
+        ".claude-plugin/marketplace.json"
+      ],
+      "url": "https://json.schemastore.org/claude-code-marketplace.json"
+    }
+  ],
+  "markdown.validate.enabled": true,
+  "livePreview.defaultPreviewPath": "/docs/index.html",
+  "livePreview.portNumber": 3000,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true
+}

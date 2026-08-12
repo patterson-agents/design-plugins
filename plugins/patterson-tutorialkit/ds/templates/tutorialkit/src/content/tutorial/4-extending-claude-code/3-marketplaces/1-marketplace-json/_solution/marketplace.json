@@ -1,0 +1,8 @@
+{
+  "name": "patterson-design",
+  "owner": { "name": "Patterson Companies Design System" },
+  "plugins": [
+    { "name": "patterson-brand", "source": "./plugins/patterson-brand" },
+    { "name": "patterson-deck", "source": "./plugins/patterson-deck" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Validate plugins (claude plugin validate)",
+      "type": "shell",
+      "command": "claude plugin validate .",
+      "problemMatcher": [],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Serve docs preview",
+      "type": "shell",
+      "command": "npx --yes serve -l 3000 .",
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "List installed Claude Code plugins",
+      "type": "shell",
+      "command": "claude plugin list",
+      "problemMatcher": []
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+:root {
+  /* Patterson brand primitives */
+  --pat-navy: #003767;
+  --pat-sky: #00A8E1;
+  --pat-gray: #58585B;
+
+  /* Semantic aliases — reference the primitives above */
+  --accent: var(--pat-sky);
+}

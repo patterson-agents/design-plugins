@@ -1,0 +1,254 @@
+<!-- @template name="Presentation Deck" description="Patterson 16:9 slide deck — cover, section dividers, stats, comparison, quote, table and closing, on brand tokens." -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patterson Companies — Presentation Deck</title>
+<script src="./ds-base.js"></script>
+<style>
+  deck-stage:not(:defined) { visibility: hidden; }
+  html, body { margin: 0; background: #11151a; }
+
+  :root {
+    /* type scale (1920×1080) */
+    --type-display: 120px;
+    --type-section: 132px;
+    --type-title: 72px;
+    --type-subtitle: 40px;
+    --type-lead: 38px;
+    --type-body: 32px;
+    --type-small: 24px;
+    --type-eyebrow: 22px;
+    --type-stat: 128px;
+    /* spacing */
+    --pad-x: 120px;
+    --pad-y: 96px;
+    --gap-title: 36px;
+    --gap-item: 28px;
+  }
+
+  /* ---- slide base ---- */
+  .slide {
+    font-family: var(--font-sans);
+    color: var(--text-body);
+    background: var(--surface-page);
+    overflow: hidden;
+  }
+  .slide.light { background: var(--surface-page); }
+  .slide.navy  { background: var(--pat-navy); color: rgba(255,255,255,0.88); }
+  .slide.navy.wave { background-image: url('../../assets/brand/wave-bg-navy.webp'); background-size: cover; background-position: center; }
+  .pad { box-sizing: border-box; width: 100%; height: 100%; padding: var(--pad-y) var(--pad-x); display: flex; flex-direction: column; }
+
+  .eyebrow {
+    font-size: var(--type-eyebrow); font-weight: 700; letter-spacing: 0.16em;
+ color: var(--pat-sky); margin: 0;
+  }
+  .navy .eyebrow { color: var(--pat-blue-light); }
+
+  h1.title, h2.title {
+    font-family: var(--font-display); font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.04; color: var(--text-heading); margin: 0;
+    font-size: var(--type-title);
+  }
+  .navy h1.title, .navy h2.title { color: #fff; }
+  .lead { font-size: var(--type-lead); line-height: 1.45; margin: 0; color: var(--text-body); }
+  .navy .lead { color: rgba(255,255,255,0.82); }
+  .body { font-size: var(--type-body); line-height: 1.5; margin: 0; }
+
+  /* ---- footer chrome (added per slide) ---- */
+  .foot { position: absolute; left: var(--pad-x); bottom: 56px; height: 30px; width: auto; display: block; }
+  .pageno { position: absolute; right: var(--pad-x); bottom: 56px; font-size: var(--type-small); font-weight: 600; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .navy .pageno { color: rgba(255,255,255,0.55); }
+  .rule { width: 96px; height: 6px; background: var(--pat-sky); border-radius: 999px; }
+
+  /* ---- entrance: base state is the VISIBLE end-state; animate only when the
+         slide is active AND motion is allowed. No backwards fill, so if the
+         animation clock never starts the content simply shows at full opacity. */
+  .anim { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    [data-deck-active] .anim { animation: rise 0.55s var(--ease-out, cubic-bezier(0.16,1,0.3,1)) forwards; }
+    [data-deck-active] .anim.d1 { animation-delay: 0.06s; }
+    [data-deck-active] .anim.d2 { animation-delay: 0.14s; }
+    [data-deck-active] .anim.d3 { animation-delay: 0.22s; }
+    [data-deck-active] .anim.d4 { animation-delay: 0.30s; }
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- 1 · COVER ------------------------------------------------------------ -->
+  <section data-label="Cover" class="slide navy wave">
+    <div class="pad" style="justify-content: space-between;">
+      <div style="display:flex; align-items:center;" class="anim">
+        <img src="../../assets/brand/patterson-logo-white.svg" alt="Patterson" style="height:60px; width:auto; display:block;">
+      </div>
+      <div style="max-width: 1400px;">
+        <p class="eyebrow anim d1" style="margin-bottom: 36px;">Company Overview · 2026</p>
+        <h1 class="anim d2" style="font-family:var(--font-display); font-weight:800; font-size:var(--type-display); line-height:1.0; letter-spacing:-0.03em; color:#fff; margin:0;">Strengthening the people who keep us<br><span style="color:var(--pat-sky);">healthy</span>.</h1>
+      </div>
+      <div class="anim d3" style="display:flex; align-items:center; gap:24px;">
+        <span class="rule"></span>
+        <span style="font-size:var(--type-subtitle); font-weight:600; color:#fff;">Trusted Expertise. Unrivaled Support.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · SECTION DIVIDER --------------------------------------------------- -->
+  <section data-label="Who We Are" class="slide navy wave">
+    <div class="pad" style="justify-content: center;">
+      <p class="eyebrow anim" style="margin-bottom: 24px;">Section 01</p>
+      <h2 class="title anim d1" style="font-size: var(--type-section); line-height: 1.0;">Who We Are</h2>
+      <p class="lead anim d2" style="margin-top: 40px; max-width: 1100px;">An international distributor of products, technology, services and business solutions for the oral and animal health markets — since 1877.</p>
+    </div>
+    <img class="foot" src="../../assets/brand/patterson-logo-white.svg" alt="Patterson">
+    <span class="pageno">02</span>
+  </section>
+
+  <!-- 3 · CONTENT (intro + facts) ------------------------------------------ -->
+  <section data-label="Company at a Glance" class="slide light">
+    <div class="pad">
+      <p class="eyebrow anim">Overview</p>
+      <h2 class="title anim d1" style="margin-top: var(--gap-title); max-width: 1400px;">More than a distributor — an indispensable partner</h2>
+      <div style="display:grid; grid-template-columns: 1.1fr 1fr; gap: 90px; margin-top: 64px; align-items: start;">
+        <p class="body anim d2" style="color: var(--text-body);">Patterson connects the dental and animal health communities with the products, technology and expertise they rely on every day. We pair bold solutions with a personal touch — guiding practices of every size, from independent clinics to large group networks and production operations across North America and the United Kingdom.</p>
+        <div class="anim d3" style="display:flex; flex-direction:column; gap: var(--gap-item);">
+          <div style="display:flex; justify-content:space-between; gap:24px; padding-bottom:22px; border-bottom:1px solid var(--border-subtle);"><span class="body" style="color:var(--text-muted);">Founded</span><span class="body" style="font-weight:700; color:var(--text-heading);">1877</span></div>
+          <div style="display:flex; justify-content:space-between; gap:24px; padding-bottom:22px; border-bottom:1px solid var(--border-subtle);"><span class="body" style="color:var(--text-muted);">Headquarters</span><span class="body" style="font-weight:700; color:var(--text-heading);">Saint Paul, MN</span></div>
+          <div style="display:flex; justify-content:space-between; gap:24px; padding-bottom:22px; border-bottom:1px solid var(--border-subtle);"><span class="body" style="color:var(--text-muted);">Markets</span><span class="body" style="font-weight:700; color:var(--text-heading);">Dental · Animal Health</span></div>
+          <div style="display:flex; justify-content:space-between; gap:24px;"><span class="body" style="color:var(--text-muted);">Footprint</span><span class="body" style="font-weight:700; color:var(--text-heading);">North America · UK</span></div>
+        </div>
+      </div>
+    </div>
+    <img class="foot" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    <span class="pageno">03</span>
+  </section>
+
+  <!-- 4 · BIG STATS -------------------------------------------------------- -->
+  <section data-label="By the Numbers" class="slide light">
+    <div class="pad">
+      <p class="eyebrow anim">By the Numbers</p>
+      <h2 class="title anim d1" style="margin-top: var(--gap-title);">The scale behind the service</h2>
+      <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 56px; margin-top: auto; margin-bottom: 40px;">
+        <div class="anim d1">
+          <div style="font-family:var(--font-display); font-weight:800; font-size:var(--type-stat); line-height:0.95; letter-spacing:-0.03em; color:var(--pat-navy);">1877</div>
+          <div class="body" style="margin-top:18px; color:var(--text-muted); max-width: 16ch;">Serving customers since</div>
+        </div>
+        <div class="anim d2">
+          <div style="font-family:var(--font-display); font-weight:800; font-size:var(--type-stat); line-height:0.95; letter-spacing:-0.03em; color:var(--pat-sky);">86M</div>
+          <div class="body" style="margin-top:18px; color:var(--text-muted); max-width: 16ch;">U.S. households have pets</div>
+        </div>
+        <div class="anim d3">
+          <div style="font-family:var(--font-display); font-weight:800; font-size:var(--type-stat); line-height:0.95; letter-spacing:-0.03em; color:var(--pat-sky);">98%</div>
+          <div class="body" style="margin-top:18px; color:var(--text-muted); max-width: 18ch;">of customers reached in 1–2 days</div>
+        </div>
+        <div class="anim d4">
+          <div style="font-family:var(--font-display); font-weight:800; font-size:var(--type-stat); line-height:0.95; letter-spacing:-0.03em; color:var(--pat-navy);">60</div>
+          <div class="body" style="margin-top:18px; color:var(--text-muted); max-width: 18ch;">fulfillment centers</div>
+        </div>
+      </div>
+    </div>
+    <img class="foot" src="../../assets/brand/patterson-logo-navy.svg" alt="Patterson">
+    <span class="pageno">04</span>
+  </section>
+
+  <!-- 5 · TWO-COLUMN COMPARISON -------------------------------------------- -->
+  <section data-label="Two Markets" class="slide light">
+    <div class="pad">
+      <p class="eyebrow anim">Our Business</p>
+      <h2 class="title anim d1" style="margin-top: var(--gap-title);">Two markets, one mission</h2>
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; flex: 1;">
+        <div class="anim d2" style="background: var(--pat-navy); border-radius: var(--radius-xl); padding: 56px; display:flex; flex-direction:column; color:#fff;">
+          <span style="font-size:var(--type-subtitle); font-weight:800; color:#fff;">Dental</span>
+          <span class="eyebrow" style="color:var(--pat-blue-light); margin-top:10px;">Oral Health</span>
+          <p class="body" style="margin-top:28px; color:rgba(255,255,255,0.82);">Everyday essentials, equipment, technology and practice-management software for dentists across North America.</p>
+          <div style="margin-top:auto; padding-top:32px; font-size:var(--type-small); font-weight:600; color:var(--pat-blue-light); letter-spacing:0.04em;">PATTERSON DENTAL</div>
+        </div>
+        <div class="anim d3" style="background: var(--pat-sky-25); border:1px solid var(--pat-sky-25); border-radius: var(--radius-xl); padding: 56px; display:flex; flex-direction:column;">
+          <span style="font-size:var(--type-subtitle); font-weight:800; color:var(--pat-navy);">Animal Health</span>
+          <span class="eyebrow" style="margin-top:10px;">Veterinary · Production · Equine</span>
+          <p class="body" style="margin-top:28px; color:var(--text-body);">Supplies, equipment and software for veterinarians and producers — supporting the health of companion and production animals internationally.</p>
+          <div style="margin-top:auto; padding-top:32px; font-size:var(--type-small); font-weight:600; color:var(--pat-sky); letter-spacing:0.04em;">PATTERSON VETERINARY</div>
+        </div>
+      </div>
+    </div>
+    <span class="pageno">05</span>
+  </section>
+
+  <!-- 6 · QUOTE ------------------------------------------------------------ -->
+  <section data-label="Quote" class="slide navy wave">
+    <div class="pad" style="justify-content: center;">
+      <div class="anim" style="font-family:var(--font-display); font-size:200px; line-height:0.6; color:var(--pat-sky); height:90px;">&ldquo;</div>
+      <blockquote class="anim d1" style="margin:0; font-family:var(--font-display); font-weight:700; font-size:64px; line-height:1.25; letter-spacing:-0.01em; color:#fff; max-width:1500px;">
+        Generations of quality customer service define our business operations and our personal interactions.
+      </blockquote>
+      <p class="anim d2" style="margin-top:48px; font-size:var(--type-subtitle); font-weight:600; color:var(--pat-blue-light);">The Patterson promise</p>
+    </div>
+    <img class="foot" src="../../assets/brand/patterson-logo-white.svg" alt="Patterson">
+    <span class="pageno">06</span>
+  </section>
+
+  <!-- 7 · TABLE ------------------------------------------------------------ -->
+  <section data-label="Three Capabilities" class="slide light">
+    <div class="pad">
+      <p class="eyebrow anim">What We Do</p>
+      <h2 class="title anim d1" style="margin-top: var(--gap-title);">Three core capabilities</h2>
+      <div class="anim d2" style="margin-top: 56px; border-top: 3px solid var(--pat-navy);">
+        <div style="display:grid; grid-template-columns: 0.9fr 2.4fr 1.3fr; gap: 40px; padding: 28px 24px; border-bottom:1px solid var(--border-default); font-size:var(--type-small); font-weight:700; letter-spacing:0.08em; color:var(--text-muted);">
+          <span>Capability</span><span>What it delivers</span><span>Proof point</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 0.9fr 2.4fr 1.3fr; gap: 40px; padding: 36px 24px; border-bottom:1px solid var(--border-subtle); align-items:center;">
+          <span class="body" style="font-weight:800; color:var(--pat-navy);">Service</span>
+          <span class="body" style="color:var(--text-body);">Dedicated representatives, equipment service and training that know each customer and market.</span>
+          <span class="body" style="font-weight:700; color:var(--pat-sky);">A personal touch</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 0.9fr 2.4fr 1.3fr; gap: 40px; padding: 36px 24px; border-bottom:1px solid var(--border-subtle); align-items:center;">
+          <span class="body" style="font-weight:800; color:var(--pat-navy);">Logistics</span>
+          <span class="body" style="color:var(--text-body);">Fast, reliable, sustainable delivery from fulfillment centers across North America and the UK.</span>
+          <span class="body" style="font-weight:700; color:var(--pat-sky);">98% in 1–2 days</span>
+        </div>
+        <div style="display:grid; grid-template-columns: 0.9fr 2.4fr 1.3fr; gap: 40px; padding: 36px 24px; align-items:center;">
+          <span class="body" style="font-weight:800; color:var(--pat-navy);">Products</span>
+          <span class="body" style="color:var(--text-body);">Everyday consumables through advanced equipment, diagnostics and business software.</span>
+          <span class="body" style="font-weight:700; color:var(--pat-sky);">Essentials to tech</span>
+        </div>
+      </div>
+    </div>
+    <span class="pageno">07</span>
+  </section>
+
+  <!-- 8 · FULL-BLEED IMAGE BAND -------------------------------------------- -->
+  <section data-label="Personal Touch" class="slide navy">
+    <div style="position:absolute; inset:0; background:url('../../assets/brand/photo-markets.webp') center/cover;"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,28,52,0.12) 0%, rgba(0,28,52,0.52) 52%, rgba(0,28,52,0.93) 100%);"></div>
+    <div class="pad" style="position:relative; justify-content:flex-end;">
+      <p class="eyebrow anim" style="color:var(--pat-blue-light);">Our Promise</p>
+      <h2 class="title anim d1" style="margin-top: 24px; font-size: 92px; max-width: 1500px; color:#fff;">Built on a personal touch</h2>
+      <p class="lead anim d2" style="margin-top: 28px; max-width: 1100px; color:rgba(255,255,255,0.85);">Bold solutions, delivered by people who know their customers — that is how we strengthen the practices that keep us and our animals healthy.</p>
+    </div>
+    <span class="pageno" style="color:rgba(255,255,255,0.6);">08</span>
+  </section>
+
+  <!-- 9 · CLOSING ---------------------------------------------------------- -->
+  <section data-label="Closing" class="slide navy wave">
+    <div class="pad" style="justify-content: center;">
+      <div style="display:flex; align-items:center;" class="anim">
+        <img src="../../assets/brand/patterson-logo-white.svg" alt="Patterson" style="height:54px; width:auto; display:block;">
+      </div>
+      <h2 class="title anim d1" style="margin-top: 56px; font-size: 96px;">Let's work together</h2>
+      <p class="lead anim d2" style="margin-top: 32px; max-width: 1100px;">Together, we are transforming the way care is delivered to people and animals.</p>
+      <div class="anim d3" style="display:flex; gap:64px; margin-top:64px; font-size:var(--type-body);">
+        <div><div style="color:var(--pat-blue-light); font-weight:600; margin-bottom:8px;">Web</div><div style="color:#fff; font-weight:700;">pattersoncompanies.com</div></div>
+        <div><div style="color:var(--pat-blue-light); font-weight:600; margin-bottom:8px;">Phone</div><div style="color:#fff; font-weight:700;">1.800.328.5536</div></div>
+        <div><div style="color:var(--pat-blue-light); font-weight:600; margin-bottom:8px;">Headquarters</div><div style="color:#fff; font-weight:700;">Saint Paul, Minnesota</div></div>
+      </div>
+    </div>
+    <span class="pageno">09</span>
+  </section>
+
+</deck-stage>
+<script src="./deck-stage.js"></script>
+</body>
+</html>

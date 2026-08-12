@@ -1,0 +1,45 @@
+/* ============================================================
+   Patterson Companies — Effects: shadows, transitions, focus
+   ------------------------------------------------------------
+   PROVENANCE KEYS
+     [BG25 p.N]  Brand Guide 2025 (VERSION 3.2025), page N
+     [DPL]       Patterson Digital Pattern Library v5.7.2 production CSS
+     [TBD]       Patterson publishes no value; nothing has been invented
+
+   [TBD: Patterson publishes NO elevation scale and NO motion tokens.
+    The only documented shadow anywhere is an inset 2px 2px 3px
+    #E8E8E88F on text inputs [DPL]; the only documented transition is
+    "background-color .3s ease-out, color .3s ease-out" on .button
+    [DPL]. Everything below marked [TBD] is presentation scaffolding
+    the templates depend on, not brand specification. It is tinted
+    with the published navy #003767 rather than an invented hue.]
+   ============================================================ */
+
+:root {
+  /* --- Elevation (navy-tinted) ----------------------------- */
+  --shadow-xs:  0 1px 2px rgba(0, 55, 103, 0.06);  /* [TBD] navy = #003767 [BG25 p.24] */
+  --shadow-sm:  0 1px 3px rgba(0, 55, 103, 0.08), 0 1px 2px rgba(0, 55, 103, 0.06); /* [TBD] */
+  --shadow-md:  0 4px 12px rgba(0, 55, 103, 0.10), 0 2px 4px rgba(0, 55, 103, 0.06); /* [TBD] */
+  --shadow-lg:  0 12px 28px rgba(0, 55, 103, 0.12), 0 4px 10px rgba(0, 55, 103, 0.07); /* [TBD] */
+  --shadow-xl:  0 24px 48px rgba(0, 55, 103, 0.16); /* [TBD] */
+
+  /* The one shadow Patterson actually ships. */
+  --shadow-input-inset: inset 2px 2px 3px #E8E8E88F; /* [DPL] text inputs */
+
+  /* --- Rings ------------------------------------------------ */
+  --ring-focus: 0 0 0 3px rgba(0, 168, 225, 0.45);  /* sky #00A8E1 [BG25 p.24]; ring geometry [TBD] */
+  --ring-error: 0 0 0 3px rgba(208, 2, 27, 0.35);   /* error #D0021B [DPL] .error-text; geometry [TBD] */
+
+  /* --- Motion ---------------------------------------------- */
+  --dur-dpl:    300ms; /* [DPL] .button transition: background-color .3s ease-out */
+  --ease-dpl:   ease-out; /* [DPL] .button */
+  --ease-standard: cubic-bezier(0.2, 0, 0.2, 1); /* [TBD] @kind other */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1); /* [TBD] @kind other */
+  --dur-fast:   120ms; /* [TBD] @kind other */
+  --dur-base:   200ms; /* [TBD] @kind other */
+  --dur-slow:   320ms; /* [TBD] @kind other */
+
+  /* --- Overlay & blur -------------------------------------- */
+  --overlay-scrim: rgba(0, 55, 103, 0.55); /* navy [BG25 p.24]; opacity [TBD] @kind color */
+  --blur-panel: saturate(140%) blur(12px); /* [TBD] @kind other */
+}

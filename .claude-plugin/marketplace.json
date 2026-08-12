@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "patterson-design",
+  "version": "1.1.0",
+  "description": "Patterson Companies design-system marketplace: brand core, deck/page/app/docs templates, and website/storefront/tutorial UI kits — each individually installable as a Claude Code plugin with skills, slash commands and subagents.",
+  "owner": {
+    "name": "Patterson Companies Design System"
+  },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "patterson-brand",
+      "source": "./plugins/patterson-brand",
+      "description": "Patterson Companies design-system core: brand tokens, fonts, logos, brand imagery, React component library, guideline specimens, and framework adapters (Tailwind v3/v4, UnoCSS, Theme UI, shadcn/ui). Foundation plugin for all Patterson work.",
+      "version": "1.1.0",
+      "category": "design-system"
+    },
+    {
+      "name": "patterson-deck",
+      "source": "./plugins/patterson-deck",
+      "description": "Patterson 16:9 presentation deck template: cover, section divider, stats, comparison, quote, capabilities table, full-bleed photo band, and closing slides with the wave watermark and official brand imagery. Static HTML — print-to-PDF ready.",
+      "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-executive-deck",
+      "source": "./plugins/patterson-executive-deck",
+      "description": "Patterson executive-briefing deck template: editorial navy cover, key takeaways, breakdown matrix, requirements, build outputs, and benefits slides — denser and more formal than the standard deck.",
+      "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-corporate-page",
+      "source": "./plugins/patterson-corporate-page",
+      "description": "Patterson corporate web page shell: sticky nav with logo, navy hero, content band, and footer — a React starting point for any on-brand marketing or informational page.",
+      "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-file-manager",
+      "source": "./plugins/patterson-file-manager",
+      "description": "Patterson \"Skill Studio\" file-manager application shell: navy top bar, sidebar tree, content grid — a React prototype template for internal tools and dashboard-style apps.",
+      "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-docs",
+      "source": "./plugins/patterson-docs",
+      "description": "Patterson documentation-site package: a VitePress + Diátaxis styled docs UI kit (sidebar nav, content pages, collections) and a browser-openable docs page template.",
+      "version": "1.1.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-tutorialkit",
+      "source": "./plugins/patterson-tutorialkit",
+      "description": "Patterson theme for TutorialKit (Astro-based interactive tutorials): a runnable starter project with the canonical theme.css, brand logos, a 5-part/18-lesson agent-tooling curriculum, and a static preview page.",
+      "version": "1.3.0",
+      "category": "templates"
+    },
+    {
+      "name": "patterson-corporate-website",
+      "source": "./plugins/patterson-corporate-website",
+      "description": "Patterson corporate-website UI kit: interactive recreation of pattersoncompanies.com — home hero, We-Are-Patterson stats, capability tabs, What-We-Do, newsroom, header and footer as separate React screens.",
+      "version": "1.1.0",
+      "category": "ui-kits"
+    },
+    {
+      "name": "patterson-storefront",
+      "source": "./plugins/patterson-storefront",
+      "description": "Patterson e-commerce storefront UI kit (pattern library v5.7.2 shell), switchable between Dental and Veterinary brands: utility bar, search, category nav + flyouts, hero, featured products, manufacturers, rewards, footer.",
+      "version": "1.1.0",
+      "category": "ui-kits"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+<!-- @dsCard group="Spacing" viewport="700x160" name="Corner radii" subtitle="5px is THE Patterson radius [BG25 p.57]; the other steps are unsourced [TBD]" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--surface-page); }
+  .row { display: flex; gap: 18px; align-items: flex-end; flex-wrap: wrap; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .box { width: 70px; height: 56px; background: var(--pat-navy-25); border: 2px solid var(--pat-navy); }
+  .lbl { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="item"><div class="box" style="border-radius:var(--radius-xs)"></div><span class="lbl">xs · 2 [TBD]</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-sm)"></div><span class="lbl">sm · 5 ★</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-md)"></div><span class="lbl">md · 6 [TBD]</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-lg)"></div><span class="lbl">lg · 10 [TBD]</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-xl)"></div><span class="lbl">xl · 16 [TBD]</span></div>
+    <div class="item"><div class="box" style="border-radius:var(--radius-2xl)"></div><span class="lbl">2xl · 24 [TBD]</span></div>
+    <div class="item"><div class="box" style="width:90px;border-radius:var(--radius-pill)"></div><span class="lbl">pill [TBD]</span></div>
+  </div>
+</body>
+</html>

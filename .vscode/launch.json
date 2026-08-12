@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Serve marketplace docs (npx serve)",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "npx --yes serve -l 3000 .",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Open docs in browser (against running server)",
+      "type": "msedge",
+      "request": "launch",
+      "url": "http://localhost:3000/docs/index.html",
+      "presentation": {
+        "hidden": false,
+        "group": "preview"
+      }
+    }
+  ]
+}
