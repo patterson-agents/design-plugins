@@ -33,11 +33,13 @@ export default defineConfig({
 
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    logo: {
-      light: '/patterson-logo-navy.svg',
-      dark: '/patterson-logo-white.svg',
-      alt: 'Patterson Companies',
-    },
+    // One lockup, not a light/dark pair: the nav bar is navy in both themes,
+    // so the white lockup is the correct one on it in both. The navy lockup is
+    // still shipped and is used by the hero in docs/index.md, which sits on
+    // the page canvas. White on navy, navy on white — never the reverse.
+    // `siteTitle: false` makes this the only site identity in the bar, so it
+    // keeps an explicit alt.
+    logo: { src: '/patterson-logo-white.svg', alt: 'Patterson Companies' },
     siteTitle: false,
 
     nav: [

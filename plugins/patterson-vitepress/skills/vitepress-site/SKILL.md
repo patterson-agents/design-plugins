@@ -97,8 +97,12 @@ in `config.ts`.
 
 ## Dependency rule
 
-`vitepress@1.6.4` is pinned without a caret and is the only dependency. Adding one
-means supply-chain scoring it first and surfacing anything below 90 to the user.
+`vitepress@^2.0.0-alpha.19` is the only dependency. Adding one means supply-chain
+scoring it first and surfacing anything below 90 to the user.
+
+The range is a caret on a pre-release, so `bun install` takes the newest matching 2.x
+rather than the verified build — install from the committed `bun.lock`, and treat a
+version bump as a change that needs the site re-checked in both themes.
 
 ## Contents
 

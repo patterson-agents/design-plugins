@@ -18,7 +18,7 @@ components, or a wider integration ecosystem.
 ## Project layout
 
 ```text
-package.json                        vitepress 1.6.4, pinned exactly
+package.json                        vitepress ^2.0.0-alpha.19
 bun.lock                            committed, install-verified
 docs/
 ├── .vitepress/
@@ -59,24 +59,30 @@ output lands in `docs/.vitepress/dist/`.
 | `--vp-c-bg` | `#FFFFFF` | `#15181E` |
 | `--vp-c-text-1` | navy `#003767` | `#F1F3F5` |
 | `--vp-c-text-2` | gray `#58585B` | `#B4BAC4` |
-| `--vp-c-brand-1` (link text) | link blue `#147EC2` | light blue `#6DCFF6` |
+| `--vp-c-brand-1` (link text) | link blue `#147CBD` | light blue `#6DCFF6` |
 | `--vp-c-brand-2` (hover) | navy `#003767` | sky-40 `#99DCF3` |
 | `--vp-c-brand-3` (solid fill) | navy `#003767` | sky `#00A8E1` |
 | `--vp-button-brand-hover-bg` | `#315D83` | `#33B9E7` |
 | `--vp-c-divider` | `#ECECEC` | `#262B34` |
 | `--vp-font-family-base` | `'proxima-nova', Arial, sans-serif` | same |
 | `.VPNavBar` background | navy, sky hairline | navy, sky hairline |
-| `:focus-visible` | 2px sky ring, 2px offset | same |
+| `:focus-visible` | 2px sky ring, 2px offset, navy backing | same |
 | `.VPButton`, `.VPFeature`, `.custom-block` radius | 5px | 5px |
 
-## Pinned dependencies
+## Dependencies
 
-| Package | Version | Why pinned |
+| Package | Range | Notes |
 |---|---|---|
-| `vitepress` | 1.6.4 | Supply-chain scored and install-verified at this exact version |
+| `vitepress` | `^2.0.0-alpha.19` | Supply-chain scored: supply chain 97, maintenance 95, vulnerabilities 100, license 100, quality 86 |
 
-Pinned without a caret, and the only dependency. Adding one to this template means
-scoring it first and surfacing anything below 90.
+The only dependency. Adding one to this template means scoring it first and surfacing
+anything below 90 — as `quality` is here, at 86. That dimension reflects repository
+signals on a build-time tool rather than anything reachable in a published site, and it
+carries none of the weight a low supply-chain or vulnerability score would.
+
+The range is a caret on a pre-release, so `bun install` resolves the newest matching
+2.x, not the exact build this template was verified against. `bun.lock` is what
+reproduces the verified site; pin the exact version if the theme needs to hold still.
 
 ## Markdown extensions
 

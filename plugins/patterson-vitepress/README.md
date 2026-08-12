@@ -69,7 +69,7 @@ cd my-docs && bun install && bun run docs:dev
 
 ```text
 ds/
-└── templates/vitepress/              # runnable starter (VitePress 1.6.4, pinned exactly)
+└── templates/vitepress/              # runnable starter (VitePress ^2.0.0-alpha.19)
     ├── package.json · bun.lock       # docs:dev / docs:build / docs:preview
     ├── README.md                     # scaffold, customize, accent policy, font policy
     └── docs/                         # the VitePress source root
@@ -126,8 +126,13 @@ no emoji.
 
 ## Dependencies
 
-`vitepress@1.6.4`, pinned without a caret, install-verified, lockfile committed. It is
-the only dependency. Adding one to this template means supply-chain scoring it first.
+`vitepress@^2.0.0-alpha.19`, install-verified, lockfile committed. It is the only
+dependency. Adding one to this template means supply-chain scoring it first.
+
+The range is a caret on a pre-release, so a fresh `bun install` takes the newest
+matching 2.x rather than the build the theme was verified against. `bun.lock` is the
+reproducibility guarantee here, not the version string — install from it, and pin the
+exact version if you need the theme to hold still across installs.
 
 Proxima Nova is served by Adobe Fonts kit `uth1qfm` via the `head` entry in
 `docs/.vitepress/config.ts`. It is never self-hosted — Adobe's terms bar re-hosting

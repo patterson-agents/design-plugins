@@ -20,8 +20,8 @@ hero:
 features:
   - title: On brand by default
     details: Every Patterson token is mapped onto VitePress's theme variables in one file. The default theme is extended, not forked, so the branding survives VitePress upgrades.
-  - title: Pinned and verified
-    details: VitePress 1.6.4, pinned exactly and install-verified, with a committed lockfile. One dependency, nothing native to compile.
+  - title: One dependency, verified
+    details: VitePress ^2.0.0-alpha.19, install-verified, with a committed lockfile that reproduces the checked build. One dependency, nothing native to compile.
   - title: Diataxis structure
     details: Start here, Guides, and Reference are wired into the nav and sidebar, ready for task-shaped how-tos and lookup-shaped reference.
   - title: Light and dark

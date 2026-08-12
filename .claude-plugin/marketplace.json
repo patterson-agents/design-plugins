@@ -63,7 +63,7 @@
       "name": "patterson-vitepress",
       "source": "./plugins/patterson-vitepress",
       "description": "Patterson-branded VitePress documentation site: a runnable starter with the Patterson VitePress theme, Diátaxis nav and sidebar, brand logos, and starter content — install-verified with a committed lockfile.",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "category": "templates"
     },
     {

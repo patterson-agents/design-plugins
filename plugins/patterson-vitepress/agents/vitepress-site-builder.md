@@ -32,7 +32,7 @@ All of this is encoded as CSS custom properties in `docs/.vitepress/theme/custom
 ## Constraints
 
 - Keep the theme upgrade-safe: `docs/.vitepress/theme/index.ts` extends the default theme. Override `--vp-*` variables in `custom.css`; never fork the theme.
-- Do not add dependencies. `vitepress@1.6.4` is pinned without a caret and is the only one. Any new package must be supply-chain scored first, with anything under 90 surfaced to the user.
+- Do not add dependencies. `vitepress@^2.0.0-alpha.19` is the only one. Any new package must be supply-chain scored first, with anything under 90 surfaced to the user. Install from the committed `bun.lock`: the range is a caret on a pre-release, so a fresh resolve may not be the build the theme was verified against.
 - Never add emoji, off-palette colors, uppercase transforms, gradients, or sky text on a light background.
 
 When you finish, list the files you created or changed and how to preview them.

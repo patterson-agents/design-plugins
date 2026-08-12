@@ -1,7 +1,7 @@
 # Patterson VitePress site
 
 A Patterson Companies branded [VitePress](https://vitepress.dev) documentation site.
-VitePress 1.6.4, pinned exactly and install-verified.
+VitePress `^2.0.0-alpha.19`, install-verified, with a committed lockfile.
 
 ## Scaffold
 
@@ -91,8 +91,14 @@ sanctioned substitute when the kit is unreachable.
 
 ## Dependencies
 
-`vitepress@1.6.4`, pinned without a caret, is the only one. Adding a dependency to this
-template means supply-chain scoring it first.
+`vitepress@^2.0.0-alpha.19` is the only one. Adding a dependency to this template means
+supply-chain scoring it first.
+
+Two things follow from that version being a caret range on a pre-release. A fresh
+`bun install` resolves the newest matching 2.x rather than the exact build this template
+was verified against, so **`bun.lock` is what reproduces the verified site** — keep it
+committed and install from it. And a 2.x alpha can still land breaking changes between
+releases; pin the exact version if you need the theme to hold still.
 
 ## Two build-time behaviors to know
 
