@@ -24,6 +24,7 @@ packaged as nine individually installable [Claude Code plugins](https://code.cla
 
 ## Table of contents
 
+- [Live site](#live-site)
 - [What this is](#what-this-is)
 - [Quick start](#quick-start)
 - [Plugin catalog](#plugin-catalog)
@@ -35,6 +36,14 @@ packaged as nine individually installable [Claude Code plugins](https://code.cla
 - [Maintenance](#maintenance)
 - [Decisions](#decisions)
 - [Brand & licensing](#brand--licensing)
+
+## Live site
+
+**[design.patterson.sh](https://design.patterson.sh)** — the design-system plugin marketplace:
+11 Claude Code plugins for building on-brand Patterson Companies interfaces, decks, docs sites
+and storefronts.
+
+<img src="docs/screenshots/site-home.webp" width="100%" alt="design-plugins documentation site home page">
 
 ## What this is
 
