@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="docs/assets/banner.svg" width="100%" alt="Patterson Design — Patterson Companies">
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="plugins/patterson-brand/ds/assets/brand/patterson-logo-white.svg">
   <img src="plugins/patterson-brand/ds/assets/brand/patterson-logo-navy.svg" alt="Patterson Companies" width="260">
@@ -147,6 +149,11 @@ design-plugins/
 > walks through publishing, validation, the Codespaces path, and the snapshot-sync maintenance loop.
 
 ## Demos
+
+<p align="center">
+  <img src="docs/screenshots/demo-gallery.webp" width="820" alt="the demo gallery: every plugin's live artifact in one browsable page">
+  <br><sub>The demo gallery — every plugin's live artifact, one browsable page.</sub>
+</p>
 
 - **[demos/index.html](demos/index.html)** — a browsable gallery of every plugin's live artifact (open locally, or `npx serve` and visit `/demos/`).
 - **[demos/vhs/](demos/vhs/)** — one [VHS](https://github.com/charmbracelet/vhs) tape per plugin scripting a real terminal session (install → slash command). Render the GIFs with:
