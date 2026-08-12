@@ -24,10 +24,37 @@ jobs:
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install site dependencies
+        working-directory: site
+        run: bun install --frozen-lockfile
+
+      - name: Build the Starlight showcase
+        working-directory: site
+        run: bun run build
+
+      # Compose the published root: the built showcase site PLUS every
+      # existing deep link this repo already serves (demo gallery, every
+      # plugin's untouched ds/ artifacts, docs/screenshots and diagrams).
+      # Exclude node_modules — a plugin template (e.g. patterson-starlight,
+      # patterson-vitepress) may carry one locally, and it must never ship.
+      - name: Compose the Pages artifact
+        run: |
+          set -eu
+          mkdir -p dist
+          cp -R site/dist/. dist/
+          for dir in plugins demos docs prototypes; do
+            rsync -a --exclude 'node_modules' "$dir"/ "dist/$dir"/
+          done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'dist'
 
   deploy:
     needs: build
