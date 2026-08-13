@@ -243,6 +243,24 @@
   border-bottom: var(--pat-hairline) solid var(--pat-sky);
 }
 
+/* The sky hairline above is the bar's only bottom rule.
+   VitePress also draws one under the logo link — `.VPNavBarTitle.has-sidebar
+   .title` takes `border-bottom-color: var(--vp-c-divider)` at >= 960px — to
+   divide the sidebar column from the nav on a light bar. On a navy bar that
+   is a second rule painted over the first across the logo column, so it is
+   cleared here.
+
+   Note the selector: `.title` appears TWICE inside `.VPNavBar` — once as
+   VitePress's own layout column (`.container > .title`, no border) and once
+   as the logo link inside `.VPNavBarTitle`. Only the link carries the border,
+   so the rule goes through `.VPNavBarTitle` rather than matching both.
+
+   Scoped to that element rather than done by zeroing `--vp-c-divider`, which
+   still draws the separators between the nav groups. */
+#app .VPNavBarTitle .title {
+  border-bottom-color: transparent;
+}
+
 /* The bar is a dark surface in both themes, so re-point the theme variables
    inside it. VitePress's own scoped rules read these — `.VPNavBarMenuLink`
    is `color: var(--vp-c-text-1)`, which is navy on the light theme and so
