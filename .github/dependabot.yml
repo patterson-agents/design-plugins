@@ -1,30 +1,34 @@
 # Dependabot configuration — keeps the repo's real dependency surface current.
-# The marketplace itself ships no runtime deps; the only npm manifest is the
-# runnable TutorialKit starter under plugins/patterson-tutorialkit/ds/.
+# The marketplace itself ships no runtime deps; the only npm manifests are the
+# runnable docs-site starters under plugins/patterson-{starlight,vitepress}/ds/.
 version: 2
 updates:
-  # --- TutorialKit starter (the one npm manifest in the repo) ---
+  # --- Starlight starter ---
+  # Pins are exact and the committed bun.lock is the install-verified tree, so
+  # a bump here is a deliberate re-verification, not a range widening.
   - package-ecosystem: "npm"
-    directory: "/plugins/patterson-tutorialkit/ds/templates/tutorialkit"
+    directory: "/plugins/patterson-starlight/ds/templates/starlight"
     schedule:
       interval: "daily"
     open-pull-requests-limit: 5
     groups:
-      tutorialkit-template:
+      starlight-template:
+        patterns: ["*"]
+
+  # --- VitePress starter ---
+  # Held on the `next` line: vitepress 2.0.0-alpha.19 is the newest release,
+  # and `latest` (1.6.4) would be a downgrade. Suppress the major-version
+  # "update" that would propose exactly that.
+  - package-ecosystem: "npm"
+    directory: "/plugins/patterson-vitepress/ds/templates/vitepress"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 5
+    groups:
+      vitepress-template:
         patterns: ["*"]
     ignore:
-      # astro is transitively pinned to ^4 by @tutorialkit/astro (latest 1.6.0).
-      # A major/minor astro bump cannot merge until TutorialKit ships astro-5+
-      # support, so suppress that noise here. Security alerts still surface via
-      # Dependabot alerts (repo Settings → Security), and react/@types/react are
-      # likewise held at the v18 line TutorialKit 1.6 requires.
-      - dependency-name: "astro"
-        update-types: ["version-update:semver-major", "version-update:semver-minor"]
-      - dependency-name: "react"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react-dom"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@types/react"
+      - dependency-name: "vitepress"
         update-types: ["version-update:semver-major"]
 
   # --- GitHub Actions used by the CI workflows (clean, always-mergeable) ---
